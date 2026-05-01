@@ -6,8 +6,11 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import sqlite3
 import subprocess
+import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -20,6 +23,7 @@ TOPICS_PATH = Path("topics.yaml")
 DB_PATH = Path("issues.sqlite")
 MARKDOWN_PATH = Path("ISSUES.md")
 CSV_PATH = Path("issues.csv")
+DEFAULT_SEARCH_DELAY_SECONDS = float(os.getenv("GH_SEARCH_DELAY_SECONDS", "2.2"))
 
 ISSUE_COLUMNS = [
     "topic",
@@ -67,10 +71,79 @@ class GhCommandError(RuntimeError):
     """Raised when the GitHub CLI exits unsuccessfully."""
 
 
+class GhRateLimitError(GhCommandError):
+    """Raised when GitHub rejects a request because a rate limit was exceeded."""
+
+
+class SearchRateLimiter:
+    """Keep GitHub search-category requests below the 30/minute bucket."""
+
+    def __init__(
+        self,
+        min_interval_seconds: float,
+        *,
+        clock: Any = time.monotonic,
+        sleep: Any = time.sleep,
+    ) -> None:
+        self.min_interval_seconds = max(0.0, min_interval_seconds)
+        self._clock = clock
+        self._sleep = sleep
+        self._last_call_started_at: float | None = None
+
+    def wait(self) -> None:
+        if self.min_interval_seconds <= 0:
+            return
+
+        now = self._clock()
+        if self._last_call_started_at is not None:
+            elapsed = now - self._last_call_started_at
+            remaining = self.min_interval_seconds - elapsed
+            if remaining > 0:
+                self._sleep(remaining)
+                now = self._clock()
+        self._last_call_started_at = now
+
+
 def format_command(command: Any) -> str:
     if isinstance(command, list):
         return " ".join(str(part) for part in command)
     return str(command)
+
+
+def is_rate_limit_error(details: str) -> bool:
+    return "rate limit" in details.lower()
+
+
+def stderr_progress(message: str) -> None:
+    print(message, file=sys.stderr, flush=True)
+
+
+def emit_progress(progress: Any | None, message: str) -> None:
+    if progress is not None:
+        progress(message)
+
+
+def count_topic_queries(topics: dict[str, dict[str, Any]]) -> int:
+    return sum(len(topic["queries"]) for topic in topics.values())
+
+
+def format_seconds(seconds: float) -> str:
+    whole_seconds = int(round(seconds))
+    minutes, seconds = divmod(whole_seconds, 60)
+    if minutes:
+        return f"{minutes}m {seconds}s"
+    return f"{seconds}s"
+
+
+def format_reset_time(reset_epoch: Any) -> str:
+    if reset_epoch is None:
+        return "unknown"
+    try:
+        reset_int = int(reset_epoch)
+    except (TypeError, ValueError):
+        return str(reset_epoch)
+    reset_iso = datetime.fromtimestamp(reset_int, timezone.utc).isoformat()
+    return f"{reset_int} ({reset_iso})"
 
 
 def utc_now() -> str:
@@ -252,10 +325,77 @@ def run_gh_json(args: list[str]) -> Any:
         )
         if details:
             message = f"{message}\n{details}"
+        if is_rate_limit_error(details):
+            message = (
+                f"{message}\n\n"
+                "GitHub search requests are limited separately from the normal "
+                "REST API bucket. Wait for the search bucket to reset, or rerun "
+                "with a larger delay, for example: "
+                "GH_SEARCH_DELAY_SECONDS=3 python daily_update.py"
+            )
+            raise GhRateLimitError(message) from exc
         raise GhCommandError(message) from exc
     if not completed.stdout.strip():
         return None
     return json.loads(completed.stdout)
+
+
+def search_rate_limit_status() -> dict[str, Any]:
+    payload = run_gh_json(["api", "rate_limit"]) or {}
+    resources = payload.get("resources") or {}
+    status = resources.get("search") or {}
+    if not isinstance(status, dict):
+        return {}
+    return status
+
+
+def ensure_search_rate_available(status: dict[str, Any]) -> None:
+    remaining = status.get("remaining")
+    if remaining is None:
+        return
+    try:
+        remaining_int = int(remaining)
+    except (TypeError, ValueError):
+        return
+    if remaining_int > 0:
+        return
+
+    reset = format_reset_time(status.get("reset"))
+    raise GhRateLimitError(
+        "GitHub search rate limit is exhausted. "
+        f"Wait until reset at {reset}, then rerun with a conservative delay, "
+        "for example: GH_SEARCH_DELAY_SECONDS=3 python daily_update.py"
+    )
+
+
+def wait_for_search_rate_reset(
+    status: dict[str, Any],
+    min_remaining: int = 10,
+    *,
+    now: Any = time.time,
+    sleep: Any = time.sleep,
+    progress: Any | None = None,
+) -> None:
+    try:
+        remaining = int(status.get("remaining"))
+        reset = int(status.get("reset"))
+    except (TypeError, ValueError):
+        return
+
+    if remaining >= min_remaining:
+        return
+
+    wait_seconds = max(0, reset - int(now()) + 5)
+    if wait_seconds <= 0:
+        return
+
+    emit_progress(
+        progress,
+        "GitHub search bucket is low "
+        f"({remaining} remaining). Waiting {format_seconds(wait_seconds)} "
+        f"for reset at {format_reset_time(reset)}.",
+    )
+    sleep(wait_seconds)
 
 
 def search_issues(query: str, limit: int = 10) -> list[dict[str, Any]]:
@@ -311,10 +451,21 @@ def sync_search_results(
     conn: sqlite3.Connection,
     topics: dict[str, dict[str, Any]],
     now: str,
+    search_limiter: SearchRateLimiter | None = None,
+    progress: Any | None = None,
 ) -> None:
     seen: set[int] = set()
+    total_queries = count_topic_queries(topics)
+    query_index = 0
     for topic_name, topic in topics.items():
         for query in topic["queries"]:
+            query_index += 1
+            emit_progress(
+                progress,
+                f"Searching {query_index}/{total_queries} [{topic_name}]: {query}",
+            )
+            if search_limiter is not None:
+                search_limiter.wait()
             for issue in search_issues(query, limit=10):
                 issue_number = int(issue["number"])
                 if issue_number in seen:
@@ -335,14 +486,27 @@ def active_issue_numbers(conn: sqlite3.Connection) -> list[int]:
     return [int(row["issue_number"]) for row in rows]
 
 
-def refresh_active_issues(conn: sqlite3.Connection, now: str) -> None:
-    for issue_number in active_issue_numbers(conn):
+def refresh_active_issues(
+    conn: sqlite3.Connection,
+    now: str,
+    linked_pr_limiter: SearchRateLimiter | None = None,
+    progress: Any | None = None,
+) -> None:
+    issue_numbers = active_issue_numbers(conn)
+    total_issues = len(issue_numbers)
+    for issue_index, issue_number in enumerate(issue_numbers, start=1):
+        emit_progress(
+            progress,
+            f"Refreshing {issue_index}/{total_issues}: issue #{issue_number}",
+        )
         issue = fetch_issue(issue_number)
         state = (issue.get("state") or "").lower()
         if state == "closed":
             archive_issue(conn, issue_number, "closed", now)
             continue
 
+        if linked_pr_limiter is not None:
+            linked_pr_limiter.wait()
         linked_prs = find_linked_prs(issue_number)
         if linked_prs:
             archive_issue(conn, issue_number, "linked_pr", now)
@@ -505,7 +669,11 @@ def export_csv(conn: sqlite3.Connection, output_path: Path = CSV_PATH) -> None:
         f"SELECT {', '.join(ISSUE_COLUMNS)} FROM issues ORDER BY topic, issue_number"
     ).fetchall()
     with output_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=ISSUE_COLUMNS)
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=ISSUE_COLUMNS,
+            lineterminator="\n",
+        )
         writer.writeheader()
         for row in rows:
             writer.writerow({column: row[column] for column in ISSUE_COLUMNS})
@@ -516,15 +684,49 @@ def sync(
     db_path: Path = DB_PATH,
     markdown_path: Path = MARKDOWN_PATH,
     csv_path: Path = CSV_PATH,
+    search_delay_seconds: float = DEFAULT_SEARCH_DELAY_SECONDS,
+    progress: Any | None = stderr_progress,
 ) -> None:
     now = utc_now()
     topics = load_topics(topics_path)
+    rate_status = search_rate_limit_status()
+    ensure_search_rate_available(rate_status)
+    wait_for_search_rate_reset(rate_status, progress=progress)
+    search_limiter = SearchRateLimiter(search_delay_seconds)
     with connect_db(db_path) as conn:
         ensure_schema(conn)
-        sync_search_results(conn, topics, now)
-        refresh_active_issues(conn, now)
+        active_count = len(active_issue_numbers(conn))
+        search_request_count = count_topic_queries(topics) + active_count
+        minimum_wait = max(0, search_request_count - 1) * search_delay_seconds
+        remaining = rate_status.get("remaining", "unknown")
+        reset = format_reset_time(rate_status.get("reset"))
+        emit_progress(
+            progress,
+            f"GitHub search bucket remaining: {remaining}; reset: {reset}",
+        )
+        emit_progress(
+            progress,
+            "Sync will make "
+            f"{count_topic_queries(topics)} topic searches and up to "
+            f"{active_count} linked-PR searches. Minimum rate-limit wait: "
+            f"{format_seconds(minimum_wait)}.",
+        )
+        sync_search_results(
+            conn,
+            topics,
+            now,
+            search_limiter=search_limiter,
+            progress=progress,
+        )
+        refresh_active_issues(
+            conn,
+            now,
+            linked_pr_limiter=search_limiter,
+            progress=progress,
+        )
         render_markdown(conn, markdown_path, topics, generated_at=now)
         export_csv(conn, csv_path)
+        emit_progress(progress, f"Regenerated {markdown_path} and {csv_path}.")
 
 
 def parse_args() -> argparse.Namespace:
@@ -533,6 +735,20 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--db", type=Path, default=DB_PATH)
     parser.add_argument("--markdown", type=Path, default=MARKDOWN_PATH)
     parser.add_argument("--csv", type=Path, default=CSV_PATH)
+    parser.add_argument(
+        "--search-delay-seconds",
+        type=float,
+        default=DEFAULT_SEARCH_DELAY_SECONDS,
+        help=(
+            "Minimum delay between GitHub search-category requests. "
+            "Defaults to GH_SEARCH_DELAY_SECONDS or 2.2 seconds."
+        ),
+    )
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Suppress sync progress output.",
+    )
     return parser.parse_args()
 
 
@@ -544,6 +760,8 @@ def main() -> None:
             db_path=args.db,
             markdown_path=args.markdown,
             csv_path=args.csv,
+            search_delay_seconds=args.search_delay_seconds,
+            progress=None if args.quiet else stderr_progress,
         )
     except GhCommandError as exc:
         raise SystemExit(

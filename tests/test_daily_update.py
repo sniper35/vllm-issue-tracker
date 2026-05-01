@@ -54,6 +54,73 @@ topics:
     }
 
 
+def test_real_topics_include_expanded_learning_components():
+    topics = daily_update.load_topics()
+
+    expected_topics = {
+        "multimodal_input_processing": [
+            "multimodal -linked:pr",
+            "prompt embedding -linked:pr",
+        ],
+        "sampling_logits_output": [
+            "sampling -linked:pr",
+            "logprobs -linked:pr",
+        ],
+        "pooling_embeddings": [
+            "pooling -linked:pr",
+            "embedding model -linked:pr",
+        ],
+        "compilation_runtime": [
+            "torch.compile -linked:pr",
+            "compile cache -linked:pr",
+        ],
+        "observability_metrics": [
+            "metrics -linked:pr",
+            "prometheus -linked:pr",
+        ],
+        "tokenization_chat_templates": [
+            "tokenizer -linked:pr",
+            "chat template -linked:pr",
+        ],
+        "model_loading_hf": [
+            "model loading -linked:pr",
+            "safetensors -linked:pr",
+        ],
+    }
+
+    for topic_name, required_queries in expected_topics.items():
+        assert topic_name in topics
+        for query in required_queries:
+            assert query in topics[topic_name]["queries"]
+
+
+def test_real_topics_include_prioritized_model_family_buckets():
+    topics = daily_update.load_topics()
+
+    expected_model_topics = {
+        "model_family_gemma4": [
+            "Gemma4 -linked:pr",
+            '"Gemma 4" -linked:pr',
+        ],
+        "model_family_deepseek_v4": [
+            "DeepSeek-V4 -linked:pr",
+            '"DeepSeek V4" -linked:pr',
+        ],
+        "model_family_gpt_oss": [
+            "gpt-oss -linked:pr",
+            "gptoss -linked:pr",
+            "gpt_oss -linked:pr",
+            "openai/gpt-oss -linked:pr",
+        ],
+    }
+
+    assert list(topics)[: len(expected_model_topics)] == list(expected_model_topics)
+    for topic_name, required_queries in expected_model_topics.items():
+        assert topic_name in topics
+        for query in required_queries:
+            assert query in topics[topic_name]["queries"]
+
+
 def test_upsert_issue_preserves_personal_triage_fields():
     conn = make_conn()
     daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
@@ -173,12 +240,165 @@ def test_action_queue_sorts_by_status_learning_value_and_recent_updates():
     assert [row["issue_number"] for row in rows] == [124, 125, 123]
 
 
+def test_search_rate_limiter_sleeps_between_calls():
+    now = [100.0]
+    sleeps = []
+
+    def clock():
+        return now[0]
+
+    def sleep(seconds):
+        sleeps.append(seconds)
+        now[0] += seconds
+
+    limiter = daily_update.SearchRateLimiter(
+        min_interval_seconds=2.0,
+        clock=clock,
+        sleep=sleep,
+    )
+
+    limiter.wait()
+    limiter.wait()
+
+    assert sleeps == [2.0]
+
+
+def test_sync_search_results_rate_limits_each_search_query(monkeypatch):
+    conn = make_conn()
+    waits = []
+    queries = []
+    progress_messages = []
+
+    class FakeLimiter:
+        def wait(self):
+            waits.append("wait")
+
+    def fake_search_issues(query, limit=10):
+        queries.append((query, limit))
+        return []
+
+    monkeypatch.setattr(daily_update, "search_issues", fake_search_issues)
+
+    daily_update.sync_search_results(
+        conn,
+        {
+            "kv_cache": {
+                "description": "KV cache behavior.",
+                "queries": ["kv cache -linked:pr", "prefix cache -linked:pr"],
+            }
+        },
+        "2026-05-01T12:00:00Z",
+        search_limiter=FakeLimiter(),
+        progress=progress_messages.append,
+    )
+
+    assert waits == ["wait", "wait"]
+    assert queries == [
+        ("kv cache -linked:pr", 10),
+        ("prefix cache -linked:pr", 10),
+    ]
+    assert progress_messages == [
+        "Searching 1/2 [kv_cache]: kv cache -linked:pr",
+        "Searching 2/2 [kv_cache]: prefix cache -linked:pr",
+    ]
+
+
+def test_refresh_active_issues_rate_limits_linked_pr_search(monkeypatch):
+    conn = make_conn()
+    daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
+    waits = []
+
+    class FakeLimiter:
+        def wait(self):
+            waits.append("wait")
+
+    monkeypatch.setattr(
+        daily_update,
+        "fetch_issue",
+        lambda issue_number: {
+            "state": "open",
+            "title": "KV cache blocks",
+            "url": f"https://github.com/vllm-project/vllm/issues/{issue_number}",
+            "labels": [],
+            "updatedAt": "2026-05-01T13:00:00Z",
+        },
+    )
+    monkeypatch.setattr(daily_update, "find_linked_prs", lambda issue_number: [])
+
+    daily_update.refresh_active_issues(
+        conn,
+        "2026-05-01T14:00:00Z",
+        linked_pr_limiter=FakeLimiter(),
+    )
+
+    assert waits == ["wait"]
+
+
+def test_sync_raises_clear_error_when_search_bucket_is_empty(monkeypatch, tmp_path):
+    topics_file = tmp_path / "topics.yaml"
+    topics_file.write_text(
+        """
+topics:
+  kv_cache:
+    description: KV cache behavior.
+    queries:
+      - 'kv cache -linked:pr'
+""".lstrip(),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        daily_update,
+        "search_rate_limit_status",
+        lambda: {"remaining": 0, "reset": 1770000000},
+    )
+
+    with pytest.raises(daily_update.GhRateLimitError) as exc_info:
+        daily_update.sync(
+            topics_path=topics_file,
+            db_path=tmp_path / "issues.sqlite",
+            markdown_path=tmp_path / "ISSUES.md",
+            csv_path=tmp_path / "issues.csv",
+        )
+
+    message = str(exc_info.value)
+    assert "GitHub search rate limit is exhausted" in message
+    assert "1770000000" in message
+
+
+def test_wait_for_search_rate_reset_sleeps_when_remaining_is_low():
+    sleeps = []
+
+    daily_update.wait_for_search_rate_reset(
+        {"remaining": 3, "reset": 120},
+        min_remaining=10,
+        now=lambda: 100,
+        sleep=sleeps.append,
+    )
+
+    assert sleeps == [25]
+
+
+def test_wait_for_search_rate_reset_does_not_sleep_when_budget_is_available():
+    sleeps = []
+
+    daily_update.wait_for_search_rate_reset(
+        {"remaining": 12, "reset": 120},
+        min_remaining=10,
+        now=lambda: 100,
+        sleep=sleeps.append,
+    )
+
+    assert sleeps == []
+
+
 def test_export_csv_writes_all_schema_columns(tmp_path):
     conn = make_conn()
     daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
     output_file = tmp_path / "issues.csv"
 
     daily_update.export_csv(conn, output_file)
+
+    assert b"\r\n" not in output_file.read_bytes()
 
     with output_file.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
@@ -224,3 +444,22 @@ def test_run_gh_json_reports_cli_failures(monkeypatch):
     message = str(exc_info.value)
     assert "gh auth status" in message
     assert "token is invalid" in message
+
+
+def test_run_gh_json_reports_rate_limit_guidance(monkeypatch):
+    def fail_run(*args, **kwargs):
+        raise subprocess.CalledProcessError(
+            returncode=1,
+            cmd=["gh", "search", "issues", "kv cache"],
+            stderr="HTTP 403: API rate limit exceeded for user ID 123",
+        )
+
+    monkeypatch.setattr(daily_update.subprocess, "run", fail_run)
+
+    with pytest.raises(daily_update.GhRateLimitError) as exc_info:
+        daily_update.run_gh_json(["search", "issues", "kv cache"])
+
+    message = str(exc_info.value)
+    assert "API rate limit exceeded" in message
+    assert "GitHub search requests are limited separately" in message
+    assert "GH_SEARCH_DELAY_SECONDS" in message

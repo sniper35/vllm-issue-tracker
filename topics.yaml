@@ -1,4 +1,31 @@
 topics:
+  model_family_gemma4:
+    description: Gemma 4 / Gemma4 model-family issues, especially multimodal, tool calling, quantization, MoE, and HF integration.
+    queries:
+      - 'Gemma4 -linked:pr'
+      - '"Gemma 4" -linked:pr'
+      - 'gemma4 -linked:pr'
+      - 'Gemma4-31B -linked:pr'
+      - 'google/gemma-4 -linked:pr'
+
+  model_family_deepseek_v4:
+    description: DeepSeek V4 model-family issues, including DeepSeek-V4 Flash/Pro, MoE routing, distributed serving, kernels, and tokenizer/template behavior.
+    queries:
+      - 'DeepSeek-V4 -linked:pr'
+      - '"DeepSeek V4" -linked:pr'
+      - 'deepseek-v4 -linked:pr'
+      - 'DeepSeekV4 -linked:pr'
+      - 'DeepSeek V4 Flash -linked:pr'
+
+  model_family_gpt_oss:
+    description: gpt-oss model-family issues, including Harmony formatting, Responses API behavior, streaming/tools, MXFP4 MoE, ROCm, and performance.
+    queries:
+      - 'gpt-oss -linked:pr'
+      - 'GPT-OSS -linked:pr'
+      - 'gptoss -linked:pr'
+      - 'gpt_oss -linked:pr'
+      - 'openai/gpt-oss -linked:pr'
+
   kv_cache:
     description: KV cache allocation, block management, eviction, offload, prefix reuse, KV dtype/layout.
     queries:
@@ -86,3 +113,74 @@ topics:
       - 'data parallel -linked:pr'
       - 'disaggregated prefill -linked:pr'
       - 'kv transfer -linked:pr'
+
+  multimodal_input_processing:
+    description: Multimodal inputs, prompt embeddings, HF processors, image/video/audio preprocessing, encoder budgeting.
+    queries:
+      - 'multimodal -linked:pr'
+      - 'vision language -linked:pr'
+      - 'image input -linked:pr'
+      - 'video -linked:pr'
+      - 'prompt embedding -linked:pr'
+      - 'mm processor -linked:pr'
+
+  sampling_logits_output:
+    description: Sampling, logits processors, logprobs, output processing, parallel sampling, max token accounting.
+    queries:
+      - 'sampling -linked:pr'
+      - 'logprobs -linked:pr'
+      - 'logits processor -linked:pr'
+      - 'parallel sampling -linked:pr'
+      - 'max_tokens -linked:pr'
+      - 'beam search -linked:pr'
+
+  pooling_embeddings:
+    description: Embedding, pooling, reranking, scoring, classification, reward and token embedding models.
+    queries:
+      - 'pooling -linked:pr'
+      - 'embedding model -linked:pr'
+      - 'embeddings -linked:pr'
+      - 'pooler -linked:pr'
+      - 'rerank -linked:pr'
+      - 'score model -linked:pr'
+
+  compilation_runtime:
+    description: torch.compile, CUDA graphs, compile cache, custom ops, Triton/TileLang JIT, fusion passes.
+    queries:
+      - 'torch.compile -linked:pr'
+      - 'compile cache -linked:pr'
+      - 'cuda graph -linked:pr'
+      - 'cudagraph -linked:pr'
+      - 'inductor -linked:pr'
+      - 'custom op -linked:pr'
+      - 'TileLang -linked:pr'
+
+  observability_metrics:
+    description: Metrics, Prometheus, OpenTelemetry, traces, request timing, logging and production observability.
+    queries:
+      - 'metrics -linked:pr'
+      - 'prometheus -linked:pr'
+      - 'OpenTelemetry -linked:pr'
+      - 'OTEL -linked:pr'
+      - 'tracing -linked:pr'
+      - 'log stats -linked:pr'
+
+  tokenization_chat_templates:
+    description: Tokenizers, tokenizer modes, chat templates, prompt formatting, HF processor/tokenizer compatibility.
+    queries:
+      - 'tokenizer -linked:pr'
+      - 'chat template -linked:pr'
+      - 'tokenizer mode -linked:pr'
+      - 'mistral tokenizer -linked:pr'
+      - 'DeepSeek tokenizer -linked:pr'
+      - 'HF processor -linked:pr'
+
+  model_loading_hf:
+    description: Model loading, Hugging Face config integration, weight formats, model registry and architecture support.
+    queries:
+      - 'model loading -linked:pr'
+      - 'safetensors -linked:pr'
+      - 'Hugging Face -linked:pr'
+      - 'model config -linked:pr'
+      - 'trust remote code -linked:pr'
+      - 'model registry -linked:pr'

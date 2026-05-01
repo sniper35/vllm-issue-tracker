@@ -1,0 +1,88 @@
+topics:
+  kv_cache:
+    description: KV cache allocation, block management, eviction, offload, prefix reuse, KV dtype/layout.
+    queries:
+      - 'kv cache -linked:pr'
+      - 'kv-cache -linked:pr'
+      - 'prefix cache -linked:pr'
+      - 'prefix caching -linked:pr'
+      - 'kv offload -linked:pr'
+
+  scheduler_batching:
+    description: V1 scheduler, continuous batching, preemption, chunked prefill, partial prefill, fairness.
+    queries:
+      - 'scheduler -linked:pr'
+      - 'continuous batching -linked:pr'
+      - 'chunked prefill -linked:pr'
+      - 'partial prefill -linked:pr'
+      - 'preemption -linked:pr'
+
+  attention_kernels:
+    description: PagedAttention, FlashAttention, FlashInfer, MLA, CUDA graphs, CPU attention kernels.
+    queries:
+      - 'attention -linked:pr'
+      - 'pagedattention -linked:pr'
+      - 'flashinfer -linked:pr'
+      - 'MLA attention -linked:pr'
+      - 'cuda graph attention -linked:pr'
+
+  speculative_decoding:
+    description: Speculative decoding, draft models, EAGLE, MTP, ngram, tree attention.
+    queries:
+      - 'speculative decoding -linked:pr'
+      - 'speculative -linked:pr'
+      - 'EAGLE -linked:pr'
+      - 'MTP -linked:pr'
+      - 'ngram proposer -linked:pr'
+
+  quantization:
+    description: FP8, AWQ, GPTQ, Marlin, TurboQuant, KV cache quantization.
+    queries:
+      - 'quantization -linked:pr'
+      - 'fp8 -linked:pr'
+      - 'AWQ -linked:pr'
+      - 'GPTQ -linked:pr'
+      - 'TurboQuant -linked:pr'
+
+  moe:
+    description: Mixture of Experts, routing, expert parallelism, DeepEP, EPLB, MoE kernels.
+    queries:
+      - 'moe -linked:pr'
+      - 'expert parallel -linked:pr'
+      - 'DeepEP -linked:pr'
+      - 'EPLB -linked:pr'
+      - 'routing experts -linked:pr'
+
+  lora_adapters:
+    description: LoRA loading, dynamic adapters, multimodal LoRA, adapter serving.
+    queries:
+      - 'lora -linked:pr'
+      - 'adapter -linked:pr'
+      - 'dynamic lora -linked:pr'
+      - 'multi-lora -linked:pr'
+
+  structured_output_tooling:
+    description: Structured outputs, guided decoding, xgrammar, tool calling, reasoning parsers.
+    queries:
+      - 'structured output -linked:pr'
+      - 'guided decoding -linked:pr'
+      - 'xgrammar -linked:pr'
+      - 'tool calling -linked:pr'
+      - 'reasoning parser -linked:pr'
+
+  openai_server:
+    description: OpenAI-compatible API server, streaming, chat completions, tools, metrics.
+    queries:
+      - 'openai server -linked:pr'
+      - 'chat completions streaming -linked:pr'
+      - 'streaming tool -linked:pr'
+      - 'metrics -linked:pr'
+
+  distributed_pd:
+    description: Distributed execution, tensor/data/pipeline parallelism, disaggregated prefill, KV transfer.
+    queries:
+      - 'distributed -linked:pr'
+      - 'tensor parallel -linked:pr'
+      - 'data parallel -linked:pr'
+      - 'disaggregated prefill -linked:pr'
+      - 'kv transfer -linked:pr'

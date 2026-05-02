@@ -89,7 +89,8 @@ pace limit in normal use.
 
 Because there are many topic queries, a normal full sync can take several
 minutes. The script prints progress such as `Searching 12/106 [...]` while it is
-working. If you do not see progress output, rerun without `--quiet`.
+working. At the end it prints a UTC finish timestamp and elapsed runtime. If
+you do not see progress output, rerun without `--quiet`.
 
 You can make the sync more conservative:
 
@@ -213,6 +214,29 @@ Suggested workflow:
 5. Before starting any fix, check the upstream vLLM repository for duplicate
    PRs or recent changes.
 6. Do the actual vLLM code work in the vLLM checkout, not in this repository.
+
+## RFC And Subissue Tracking
+
+Some RFCs and roadmap issues are too broad to treat as solved just because one
+pull request links to them. For those tracked sources, the sync keeps the parent
+issue active with:
+
+```text
+linked_pr_status = linked_partial
+```
+
+It then parses known task lists or action bullet sections into synthetic child
+rows such as `#28262.1`. These rows point back to the parent GitHub issue but can
+have their own `my_status`, `next_action`, and triage fields.
+
+Current fine-grained sources include:
+
+- `#27653`: gpt-oss Harmony past-reasoning RFC parent
+- `#28262`: gpt-oss Responses API Harmony metadata action list
+- `#32713`: unified parser RFC TODO list
+
+Synthetic child rows use negative internal IDs in `issues.sqlite`, but
+`ISSUES.md` renders them as parent-style labels like `#32713.3`.
 
 ## Editing Topics
 

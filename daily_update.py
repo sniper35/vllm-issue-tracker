@@ -7,6 +7,7 @@ import argparse
 import csv
 import json
 import os
+import re
 import sqlite3
 import subprocess
 import sys
@@ -64,6 +65,44 @@ ACTION_QUEUE_STATUSES = {
     "triage",
     "learning",
     "needs_repro",
+}
+
+RFC_SUBISSUE_SOURCES = {
+    27653: {
+        "topic": "model_family_gpt_oss",
+        "component": "gpt-oss/harmony chat completions",
+        "learning_value": "high",
+        "fixability": "medium",
+        "labels": "rfc-subissue, gpt-oss, harmony",
+        "markers": [],
+        "parent_next_action": (
+            "Track concrete Harmony follow-ups instead of treating one linked "
+            "PR as complete RFC coverage"
+        ),
+    },
+    28262: {
+        "topic": "model_family_gpt_oss",
+        "component": "gpt-oss/responses api harmony",
+        "learning_value": "high",
+        "fixability": "medium",
+        "labels": "rfc-subissue, gpt-oss, harmony",
+        "markers": ["The changes we can make are:"],
+        "parent_next_action": (
+            "Track parsed subissues instead of treating linked PRs as complete "
+            "coverage"
+        ),
+    },
+    32713: {
+        "topic": "structured_output_tooling",
+        "component": "parser/harmony unification",
+        "learning_value": "high",
+        "fixability": "medium",
+        "labels": "rfc-subissue, parser, harmony",
+        "markers": ["### TODOs"],
+        "parent_next_action": (
+            "Review parser RFC TODO slices and pick a bounded entrypoint"
+        ),
+    },
 }
 
 
@@ -215,6 +254,45 @@ def labels_to_text(labels: Any) -> str:
     return ", ".join(names)
 
 
+def issue_has_label(issue: dict[str, Any], label_name: str) -> bool:
+    target = label_name.lower()
+    for label in issue.get("labels") or []:
+        if isinstance(label, dict):
+            name = label.get("name", "")
+        else:
+            name = str(label)
+        if name.lower() == target:
+            return True
+    return False
+
+
+def is_rfc_like_issue(issue: dict[str, Any]) -> bool:
+    title = issue.get("title", "")
+    return issue_has_label(issue, "RFC") or title.lower().startswith("[rfc")
+
+
+def synthetic_subissue_number(parent_issue_number: int, index: int) -> int:
+    return -(int(parent_issue_number) * 100 + int(index))
+
+
+def split_synthetic_subissue_number(issue_number: int) -> tuple[int, int] | None:
+    if issue_number >= 0:
+        return None
+    value = abs(int(issue_number))
+    parent_issue_number, index = divmod(value, 100)
+    if not parent_issue_number or not index:
+        return None
+    return parent_issue_number, index
+
+
+def display_issue_number(issue_number: int) -> str:
+    subissue = split_synthetic_subissue_number(int(issue_number))
+    if subissue is None:
+        return str(issue_number)
+    parent_issue_number, index = subissue
+    return f"{parent_issue_number}.{index}"
+
+
 def issue_payload_to_row(topic: str, issue: dict[str, Any], now: str) -> dict[str, Any]:
     return {
         "topic": topic,
@@ -305,6 +383,43 @@ def archive_issue(
         WHERE issue_number = ?
         """,
         (state, now, reason, linked_status, my_status, issue_number),
+    )
+    conn.commit()
+
+
+def mark_issue_linked_partial(
+    conn: sqlite3.Connection,
+    issue: dict[str, Any],
+    now: str,
+) -> None:
+    conn.execute(
+        """
+        UPDATE issues
+        SET state = ?,
+            title = ?,
+            url = ?,
+            labels = ?,
+            updated_at = ?,
+            last_seen_at = ?,
+            archived_at = '',
+            archive_reason = '',
+            linked_pr_status = 'linked_partial',
+            my_status = CASE
+                WHEN my_status IN ('archived_linked_pr', 'archived_closed')
+                THEN 'triage'
+                ELSE my_status
+            END
+        WHERE issue_number = ?
+        """,
+        (
+            (issue.get("state") or "open").lower(),
+            issue.get("title", ""),
+            issue.get("url", ""),
+            labels_to_text(issue.get("labels")),
+            issue.get("updatedAt", ""),
+            now,
+            int(issue["number"]),
+        ),
     )
     conn.commit()
 
@@ -417,7 +532,7 @@ def search_issues(query: str, limit: int = 10) -> list[dict[str, Any]]:
 
 
 def fetch_issue(issue_number: int) -> dict[str, Any]:
-    return run_gh_json(
+    issue = run_gh_json(
         [
             "issue",
             "view",
@@ -428,6 +543,24 @@ def fetch_issue(issue_number: int) -> dict[str, Any]:
             "state,title,url,updatedAt,createdAt,labels",
         ]
     )
+    issue["number"] = issue_number
+    return issue
+
+
+def fetch_issue_with_body(issue_number: int) -> dict[str, Any]:
+    issue = run_gh_json(
+        [
+            "issue",
+            "view",
+            str(issue_number),
+            "--repo",
+            REPO,
+            "--json",
+            "state,title,url,updatedAt,createdAt,labels,body",
+        ]
+    )
+    issue["number"] = issue_number
+    return issue
 
 
 def find_linked_prs(issue_number: int) -> list[dict[str, Any]]:
@@ -445,6 +578,127 @@ def find_linked_prs(issue_number: int) -> list[dict[str, Any]]:
             "number,title,url",
         ]
     )
+
+
+def clean_subissue_title(title: str) -> str:
+    return re.sub(r"\s+", " ", title).strip()
+
+
+def extract_issue_subissues(body: str, markers: list[str]) -> list[str]:
+    if not body or not markers:
+        return []
+
+    subissues: list[str] = []
+    in_section = False
+    for raw_line in body.splitlines():
+        line = raw_line.rstrip()
+        stripped = line.strip()
+        if any(marker in stripped for marker in markers):
+            in_section = True
+            continue
+        if not in_section:
+            continue
+        if stripped.startswith("### ") and subissues:
+            break
+        if not line.startswith("- "):
+            continue
+
+        task_match = re.match(r"^- \[(?P<checked>[ xX])\]\s+(?P<title>.+)$", line)
+        if task_match:
+            if task_match.group("checked").lower() == "x":
+                continue
+            subissues.append(clean_subissue_title(task_match.group("title")))
+            continue
+
+        bullet_match = re.match(r"^- (?!\[)(?P<title>.+)$", line)
+        if bullet_match:
+            subissues.append(clean_subissue_title(bullet_match.group("title")))
+
+    return subissues
+
+
+def apply_tracking_defaults(
+    conn: sqlite3.Connection,
+    issue_number: int,
+    source: dict[str, Any],
+    *,
+    parent: bool = False,
+) -> None:
+    next_action = (
+        source.get("parent_next_action")
+        if parent
+        else "Check linked PR coverage, then reproduce this slice if uncovered"
+    )
+    default_status = "triage"
+    conn.execute(
+        """
+        UPDATE issues
+        SET component = COALESCE(NULLIF(component, ''), ?),
+            learning_value = COALESCE(NULLIF(learning_value, ''), ?),
+            fixability = COALESCE(NULLIF(fixability, ''), ?),
+            my_status = CASE
+                WHEN COALESCE(my_status, '') IN (
+                    '', 'new', 'archived_linked_pr', 'archived_closed'
+                )
+                THEN ?
+                ELSE my_status
+            END,
+            next_action = COALESCE(NULLIF(next_action, ''), ?)
+        WHERE issue_number = ?
+        """,
+        (
+            source.get("component", ""),
+            source.get("learning_value", ""),
+            source.get("fixability", ""),
+            default_status,
+            next_action or "",
+            issue_number,
+        ),
+    )
+    conn.commit()
+
+
+def subissue_payload(
+    parent_issue: dict[str, Any],
+    source: dict[str, Any],
+    index: int,
+    title: str,
+) -> dict[str, Any]:
+    parent_issue_number = int(parent_issue["number"])
+    return {
+        "number": synthetic_subissue_number(parent_issue_number, index),
+        "title": f"[Subissue #{parent_issue_number}.{index}] {title}",
+        "url": parent_issue.get("url", ""),
+        "state": parent_issue.get("state", "open"),
+        "labels": source.get("labels", "rfc-subissue"),
+        "createdAt": parent_issue.get("createdAt", ""),
+        "updatedAt": parent_issue.get("updatedAt", ""),
+    }
+
+
+def sync_issue_subissues(
+    conn: sqlite3.Connection,
+    sources: dict[int, dict[str, Any]],
+    now: str,
+    progress: Any | None = None,
+) -> None:
+    for issue_number, source in sources.items():
+        emit_progress(progress, f"Parsing subissues from #{issue_number}.")
+        issue = fetch_issue_with_body(issue_number)
+        if not issue:
+            continue
+        issue["number"] = issue_number
+        upsert_issue(conn, source["topic"], issue, now)
+        mark_issue_linked_partial(conn, issue, now)
+        apply_tracking_defaults(conn, issue_number, source, parent=True)
+
+        for index, title in enumerate(
+            extract_issue_subissues(issue.get("body", ""), source.get("markers", [])),
+            start=1,
+        ):
+            child = subissue_payload(issue, source, index, title)
+            upsert_issue(conn, source["topic"], child, now)
+            apply_tracking_defaults(conn, int(child["number"]), source)
 
 
 def sync_search_results(
@@ -480,6 +734,7 @@ def active_issue_numbers(conn: sqlite3.Connection) -> list[int]:
         SELECT issue_number
         FROM issues
         WHERE COALESCE(archive_reason, '') = ''
+          AND issue_number > 0
         ORDER BY issue_number
         """
     ).fetchall()
@@ -500,6 +755,7 @@ def refresh_active_issues(
             f"Refreshing {issue_index}/{total_issues}: issue #{issue_number}",
         )
         issue = fetch_issue(issue_number)
+        issue["number"] = issue_number
         state = (issue.get("state") or "").lower()
         if state == "closed":
             archive_issue(conn, issue_number, "closed", now)
@@ -509,6 +765,9 @@ def refresh_active_issues(
             linked_pr_limiter.wait()
         linked_prs = find_linked_prs(issue_number)
         if linked_prs:
+            if is_rfc_like_issue(issue) or issue_number in RFC_SUBISSUE_SOURCES:
+                mark_issue_linked_partial(conn, issue, now)
+                continue
             archive_issue(conn, issue_number, "linked_pr", now)
             continue
 
@@ -586,7 +845,7 @@ def escape_markdown_cell(value: Any) -> str:
 
 
 def markdown_row(row: sqlite3.Row, include_topic: bool = False) -> str:
-    number = f"[#{row['issue_number']}]({row['url']})"
+    number = f"[#{display_issue_number(row['issue_number'])}]({row['url']})"
     values = [
         number,
         row["title"],
@@ -687,6 +946,7 @@ def sync(
     search_delay_seconds: float = DEFAULT_SEARCH_DELAY_SECONDS,
     progress: Any | None = stderr_progress,
 ) -> None:
+    started_at_monotonic = time.monotonic()
     now = utc_now()
     topics = load_topics(topics_path)
     rate_status = search_rate_limit_status()
@@ -718,6 +978,7 @@ def sync(
             search_limiter=search_limiter,
             progress=progress,
         )
+        sync_issue_subissues(conn, RFC_SUBISSUE_SOURCES, now, progress=progress)
         refresh_active_issues(
             conn,
             now,
@@ -727,6 +988,11 @@ def sync(
         render_markdown(conn, markdown_path, topics, generated_at=now)
         export_csv(conn, csv_path)
         emit_progress(progress, f"Regenerated {markdown_path} and {csv_path}.")
+        elapsed = time.monotonic() - started_at_monotonic
+        emit_progress(
+            progress,
+            f"Finished sync at {utc_now()} (elapsed: {format_seconds(elapsed)}).",
+        )
 
 
 def parse_args() -> argparse.Namespace:

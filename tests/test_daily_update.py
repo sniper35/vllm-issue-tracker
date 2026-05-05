@@ -761,6 +761,35 @@ def test_run_gh_json_reports_cli_failures(monkeypatch):
     assert "token is invalid" in message
 
 
+def test_run_gh_json_retries_transient_github_failures(monkeypatch):
+    calls = []
+    sleeps = []
+
+    def flaky_run(*args, **kwargs):
+        calls.append(args[0])
+        if len(calls) == 1:
+            raise subprocess.CalledProcessError(
+                returncode=1,
+                cmd=["gh", "issue", "view", "40544"],
+                stderr="HTTP 504: 504 Gateway Timeout (https://api.github.com/graphql)",
+            )
+        return subprocess.CompletedProcess(
+            args=["gh", "issue", "view", "40544"],
+            returncode=0,
+            stdout='{"state":"open"}',
+            stderr="",
+        )
+
+    monkeypatch.setattr(daily_update.subprocess, "run", flaky_run)
+    monkeypatch.setattr(daily_update.time, "sleep", sleeps.append)
+
+    payload = daily_update.run_gh_json(["issue", "view", "40544"])
+
+    assert payload == {"state": "open"}
+    assert len(calls) == 2
+    assert sleeps == [5.0]
+
+
 def test_run_gh_json_reports_rate_limit_guidance(monkeypatch):
     def fail_run(*args, **kwargs):
         raise subprocess.CalledProcessError(

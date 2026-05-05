@@ -25,6 +25,12 @@ DB_PATH = Path("issues.sqlite")
 MARKDOWN_PATH = Path("ISSUES.md")
 CSV_PATH = Path("issues.csv")
 DEFAULT_SEARCH_DELAY_SECONDS = float(os.getenv("GH_SEARCH_DELAY_SECONDS", "2.2"))
+DEFAULT_GH_COMMAND_MAX_ATTEMPTS = max(
+    1, int(os.getenv("GH_COMMAND_MAX_ATTEMPTS", "3"))
+)
+DEFAULT_GH_COMMAND_RETRY_DELAY_SECONDS = float(
+    os.getenv("GH_COMMAND_RETRY_DELAY_SECONDS", "5")
+)
 
 ISSUE_COLUMNS = [
     "topic",
@@ -451,32 +457,69 @@ def mark_issue_linked_partial(
     conn.commit()
 
 
+def is_transient_gh_error(details: str) -> bool:
+    normalized = details.lower()
+    transient_markers = (
+        "http 502",
+        "http 503",
+        "http 504",
+        "bad gateway",
+        "gateway timeout",
+        "service unavailable",
+        "couldn't respond to your request in time",
+        "try resubmitting your request",
+    )
+    return any(marker in normalized for marker in transient_markers)
+
+
+def gh_command_error_message(
+    command: list[str],
+    returncode: int,
+    details: str,
+) -> str:
+    message = f"{format_command(command)} failed with exit code {returncode}"
+    if details:
+        message = f"{message}\n{details}"
+    return message
+
+
 def run_gh_json(args: list[str]) -> Any:
     command = ["gh", *args]
-    try:
-        completed = subprocess.run(
-            command,
-            check=True,
-            capture_output=True,
-            text=True,
-        )
-    except subprocess.CalledProcessError as exc:
-        details = (exc.stderr or exc.stdout or "").strip()
-        message = (
-            f"{format_command(exc.cmd)} failed with exit code {exc.returncode}"
-        )
-        if details:
-            message = f"{message}\n{details}"
-        if is_rate_limit_error(details):
-            message = (
-                f"{message}\n\n"
-                "GitHub search requests are limited separately from the normal "
-                "REST API bucket. Wait for the search bucket to reset, or rerun "
-                "with a larger delay, for example: "
-                "GH_SEARCH_DELAY_SECONDS=3 python daily_update.py"
+    for attempt in range(1, DEFAULT_GH_COMMAND_MAX_ATTEMPTS + 1):
+        try:
+            completed = subprocess.run(
+                command,
+                check=True,
+                capture_output=True,
+                text=True,
             )
-            raise GhRateLimitError(message) from exc
-        raise GhCommandError(message) from exc
+            break
+        except subprocess.CalledProcessError as exc:
+            details = (exc.stderr or exc.stdout or "").strip()
+            message = gh_command_error_message(exc.cmd, exc.returncode, details)
+            if is_rate_limit_error(details):
+                message = (
+                    f"{message}\n\n"
+                    "GitHub search requests are limited separately from the normal "
+                    "REST API bucket. Wait for the search bucket to reset, or rerun "
+                    "with a larger delay, for example: "
+                    "GH_SEARCH_DELAY_SECONDS=3 python daily_update.py"
+                )
+                raise GhRateLimitError(message) from exc
+            if (
+                is_transient_gh_error(details)
+                and attempt < DEFAULT_GH_COMMAND_MAX_ATTEMPTS
+            ):
+                wait_seconds = DEFAULT_GH_COMMAND_RETRY_DELAY_SECONDS * attempt
+                print(
+                    "Transient GitHub CLI error; retrying "
+                    f"{format_command(command)} in {format_seconds(wait_seconds)} "
+                    f"(attempt {attempt + 1}/{DEFAULT_GH_COMMAND_MAX_ATTEMPTS}).",
+                    file=sys.stderr,
+                )
+                time.sleep(wait_seconds)
+                continue
+            raise GhCommandError(message) from exc
     if not completed.stdout.strip():
         return None
     return json.loads(completed.stdout)

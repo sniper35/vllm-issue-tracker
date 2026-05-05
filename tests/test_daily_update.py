@@ -204,6 +204,23 @@ def test_archive_issue_records_closed_reason_and_status():
     assert row["my_status"] == "archived_closed"
 
 
+def test_refresh_active_issues_archives_unresolvable_issue(monkeypatch):
+    conn = make_conn()
+    daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
+
+    def missing_issue(issue_number):
+        raise daily_update.GhNotFoundError("issue no longer exists")
+
+    monkeypatch.setattr(daily_update, "fetch_issue", missing_issue)
+
+    daily_update.refresh_active_issues(conn, "2026-05-05T06:00:00Z")
+
+    row = fetch_issue(conn, 123)
+    assert row["archive_reason"] == "not_found"
+    assert row["archived_at"] == "2026-05-05T06:00:00Z"
+    assert row["my_status"] == "archived_not_found"
+
+
 def test_active_issue_numbers_excludes_synthetic_subissues():
     conn = make_conn()
     daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
@@ -788,6 +805,23 @@ def test_run_gh_json_retries_transient_github_failures(monkeypatch):
     assert payload == {"state": "open"}
     assert len(calls) == 2
     assert sleeps == [5.0]
+
+
+def test_run_gh_json_reports_unresolvable_issue(monkeypatch):
+    def fail_run(*args, **kwargs):
+        raise subprocess.CalledProcessError(
+            returncode=1,
+            cmd=["gh", "issue", "view", "41144"],
+            stderr=(
+                "GraphQL: Could not resolve to an issue or pull request with "
+                "the number of 41144. (repository.issue)"
+            ),
+        )
+
+    monkeypatch.setattr(daily_update.subprocess, "run", fail_run)
+
+    with pytest.raises(daily_update.GhNotFoundError):
+        daily_update.run_gh_json(["issue", "view", "41144"])
 
 
 def test_run_gh_json_reports_rate_limit_guidance(monkeypatch):

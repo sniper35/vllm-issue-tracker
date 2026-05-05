@@ -120,6 +120,10 @@ class GhRateLimitError(GhCommandError):
     """Raised when GitHub rejects a request because a rate limit was exceeded."""
 
 
+class GhNotFoundError(GhCommandError):
+    """Raised when GitHub cannot resolve a previously tracked issue."""
+
+
 class SearchRateLimiter:
     """Keep GitHub search-category requests below the 30/minute bucket."""
 
@@ -400,10 +404,11 @@ def archive_issue(
         "closed": "archived_closed",
         "linked_pr": "archived_linked_pr",
         "removed_topic": "archived_removed_topic",
+        "not_found": "archived_not_found",
     }
     if reason not in status_by_reason:
         raise ValueError(f"Unsupported archive reason: {reason}")
-    state = "closed" if reason == "closed" else "open"
+    state = "closed" if reason in {"closed", "not_found"} else "open"
     linked_status = "linked" if reason == "linked_pr" else "unlinked"
     conn.execute(
         """
@@ -472,6 +477,11 @@ def is_transient_gh_error(details: str) -> bool:
     return any(marker in normalized for marker in transient_markers)
 
 
+def is_not_found_error(details: str) -> bool:
+    normalized = details.lower()
+    return "could not resolve to an issue or pull request with the number" in normalized
+
+
 def gh_command_error_message(
     command: list[str],
     returncode: int,
@@ -506,6 +516,8 @@ def run_gh_json(args: list[str]) -> Any:
                     "GH_SEARCH_DELAY_SECONDS=3 python daily_update.py"
                 )
                 raise GhRateLimitError(message) from exc
+            if is_not_found_error(details):
+                raise GhNotFoundError(message) from exc
             if (
                 is_transient_gh_error(details)
                 and attempt < DEFAULT_GH_COMMAND_MAX_ATTEMPTS
@@ -853,7 +865,11 @@ def refresh_active_issues(
             progress,
             f"Refreshing {issue_index}/{total_issues}: issue #{issue_number}",
         )
-        issue = fetch_issue(issue_number)
+        try:
+            issue = fetch_issue(issue_number)
+        except GhNotFoundError:
+            archive_issue(conn, issue_number, "not_found", now)
+            continue
         issue["number"] = issue_number
         state = (issue.get("state") or "").lower()
         if state == "closed":

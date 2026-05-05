@@ -338,16 +338,39 @@ def upsert_issue(
         conn.execute(
             """
             UPDATE issues
-            SET title = ?,
+            SET topic = CASE
+                    WHEN archive_reason = 'removed_topic' THEN ?
+                    ELSE topic
+                END,
+                title = ?,
                 url = ?,
                 state = ?,
                 labels = ?,
                 created_at = COALESCE(NULLIF(created_at, ''), ?),
                 updated_at = ?,
-                last_seen_at = ?
+                last_seen_at = ?,
+                archived_at = CASE
+                    WHEN archive_reason = 'removed_topic' THEN ''
+                    ELSE archived_at
+                END,
+                archive_reason = CASE
+                    WHEN archive_reason = 'removed_topic' THEN ''
+                    ELSE archive_reason
+                END,
+                linked_pr_status = CASE
+                    WHEN archive_reason = 'removed_topic' THEN 'unlinked'
+                    ELSE linked_pr_status
+                END,
+                my_status = CASE
+                    WHEN archive_reason = 'removed_topic'
+                         AND my_status = 'archived_removed_topic'
+                    THEN 'triage'
+                    ELSE my_status
+                END
             WHERE issue_number = ?
             """,
             (
+                row["topic"],
                 row["title"],
                 row["url"],
                 row["state"],
@@ -367,9 +390,13 @@ def archive_issue(
     reason: str,
     now: str,
 ) -> None:
-    if reason not in {"closed", "linked_pr"}:
+    status_by_reason = {
+        "closed": "archived_closed",
+        "linked_pr": "archived_linked_pr",
+        "removed_topic": "archived_removed_topic",
+    }
+    if reason not in status_by_reason:
         raise ValueError(f"Unsupported archive reason: {reason}")
-    my_status = "archived_closed" if reason == "closed" else "archived_linked_pr"
     state = "closed" if reason == "closed" else "open"
     linked_status = "linked" if reason == "linked_pr" else "unlinked"
     conn.execute(
@@ -382,7 +409,7 @@ def archive_issue(
             my_status = ?
         WHERE issue_number = ?
         """,
-        (state, now, reason, linked_status, my_status, issue_number),
+        (state, now, reason, linked_status, status_by_reason[reason], issue_number),
     )
     conn.commit()
 
@@ -728,6 +755,35 @@ def sync_search_results(
                 upsert_issue(conn, topic_name, issue, now)
 
 
+def archive_unconfigured_topic_issues(
+    conn: sqlite3.Connection,
+    configured_topics: set[str],
+    now: str,
+) -> None:
+    placeholders = ", ".join("?" for _ in configured_topics)
+    if placeholders:
+        rows = conn.execute(
+            f"""
+            SELECT issue_number
+            FROM issues
+            WHERE COALESCE(archive_reason, '') = ''
+              AND topic NOT IN ({placeholders})
+            """,
+            tuple(sorted(configured_topics)),
+        ).fetchall()
+    else:
+        rows = conn.execute(
+            """
+            SELECT issue_number
+            FROM issues
+            WHERE COALESCE(archive_reason, '') = ''
+            """
+        ).fetchall()
+
+    for row in rows:
+        archive_issue(conn, int(row["issue_number"]), "removed_topic", now)
+
+
 def active_issue_numbers(conn: sqlite3.Connection) -> list[int]:
     rows = conn.execute(
         """
@@ -955,6 +1011,7 @@ def sync(
     search_limiter = SearchRateLimiter(search_delay_seconds)
     with connect_db(db_path) as conn:
         ensure_schema(conn)
+        archive_unconfigured_topic_issues(conn, set(topics), now)
         active_count = len(active_issue_numbers(conn))
         search_request_count = count_topic_queries(topics) + active_count
         minimum_wait = max(0, search_request_count - 1) * search_delay_seconds

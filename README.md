@@ -28,10 +28,14 @@ families you chose to focus on:
 - DeepSeek V4
 - gpt-oss
 
+There is also a hardware-access bucket for NVIDIA B200/B300 and GB200/GB300
+issues. This is intentionally narrow: the goal is to find open issues where
+short-lived access to scarce accelerators can produce useful reproductions,
+benchmarks, or fixes before an issue already has active PR work.
+
 The rest cover vLLM components such as KV cache, scheduler, attention kernels,
-speculative decoding, quantization, MoE, LoRA, OpenAI-compatible serving,
-multimodal processing, sampling/logprobs, embeddings, compilation, metrics,
-tokenization, and model loading.
+speculative decoding, MoE, OpenAI-compatible serving, multimodal processing,
+structured outputs/tooling, distributed prefill/decode, and tokenization.
 
 ## Repository Layout
 
@@ -62,10 +66,11 @@ and your personal triage fields.
 1. Reads topic definitions from `topics.yaml`.
 2. Searches open issues in `vllm-project/vllm` with `gh search issues`.
 3. Inserts new matching issues into `issues.sqlite`.
-4. Refreshes existing active issues with current GitHub metadata.
-5. Archives tracked issues that are closed.
-6. Archives tracked issues that have an open PR referencing the issue number.
-7. Regenerates `ISSUES.md` and `issues.csv`.
+4. Archives active issues whose topic bucket was removed from `topics.yaml`.
+5. Refreshes existing active issues with current GitHub metadata.
+6. Archives tracked issues that are closed.
+7. Archives tracked issues that have an open PR referencing the issue number.
+8. Regenerates `ISSUES.md` and `issues.csv`.
 
 New issues start with:
 
@@ -75,6 +80,8 @@ linked_pr_status = unlinked
 ```
 
 The sync preserves personal fields when GitHub metadata changes.
+When a topic is removed, matching active rows are kept in the database as
+history with `archive_reason = removed_topic`.
 
 ## GitHub API Rate Limits
 

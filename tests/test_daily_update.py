@@ -54,7 +54,7 @@ topics:
     }
 
 
-def test_real_topics_include_expanded_learning_components():
+def test_real_topics_include_focused_contribution_components():
     topics = daily_update.load_topics()
 
     expected_topics = {
@@ -62,36 +62,35 @@ def test_real_topics_include_expanded_learning_components():
             "multimodal -linked:pr",
             "prompt embedding -linked:pr",
         ],
-        "sampling_logits_output": [
-            "sampling -linked:pr",
-            "logprobs -linked:pr",
-        ],
-        "pooling_embeddings": [
-            "pooling -linked:pr",
-            "embedding model -linked:pr",
-        ],
-        "compilation_runtime": [
-            "torch.compile -linked:pr",
-            "compile cache -linked:pr",
-        ],
-        "observability_metrics": [
-            "metrics -linked:pr",
-            "prometheus -linked:pr",
-        ],
         "tokenization_chat_templates": [
             "tokenizer -linked:pr",
             "chat template -linked:pr",
         ],
-        "model_loading_hf": [
-            "model loading -linked:pr",
-            "safetensors -linked:pr",
+        "hardware_b200_b300": [
+            "B200 -linked:pr",
+            "B300 -linked:pr",
+            "GB200 -linked:pr",
+            "GB300 -linked:pr",
         ],
+    }
+    removed_topics = {
+        "model_loading_hf",
+        "observability_metrics",
+        "compilation_runtime",
+        "pooling_embeddings",
+        "sampling_logits_output",
+        "lora_adapters",
+        "quantization",
     }
 
     for topic_name, required_queries in expected_topics.items():
         assert topic_name in topics
         for query in required_queries:
             assert query in topics[topic_name]["queries"]
+    for topic_name in removed_topics:
+        assert topic_name not in topics
+    assert "Blackwell -linked:pr" not in topics["hardware_b200_b300"]["queries"]
+    assert '"Blackwell GPU" -linked:pr' not in topics["hardware_b200_b300"]["queries"]
 
 
 def test_real_topics_include_prioritized_model_family_buckets():
@@ -149,6 +148,47 @@ def test_upsert_issue_preserves_personal_triage_fields():
     assert row["notes"] == "Read block_manager.py"
     assert row["learning_value"] == "high"
     assert row["fixability"] == "medium"
+
+
+def test_upsert_issue_retargets_removed_topic_archive_when_seen_again():
+    conn = make_conn()
+    daily_update.upsert_issue(
+        conn,
+        "quantization",
+        make_issue(41360, "B200 old topic issue"),
+        "2026-05-01T12:00:00Z",
+    )
+    conn.execute(
+        """
+        UPDATE issues
+        SET my_status = ?, notes = ?, archive_reason = ?, archived_at = ?
+        WHERE issue_number = ?
+        """,
+        (
+            "archived_removed_topic",
+            "Keep repro notes",
+            "removed_topic",
+            "2026-05-02T12:00:00Z",
+            41360,
+        ),
+    )
+    conn.commit()
+
+    daily_update.upsert_issue(
+        conn,
+        "hardware_b200_b300",
+        make_issue(41360, "B200 current topic issue"),
+        "2026-05-03T12:00:00Z",
+    )
+
+    row = fetch_issue(conn, 41360)
+    assert row["topic"] == "hardware_b200_b300"
+    assert row["title"] == "B200 current topic issue"
+    assert row["archive_reason"] == ""
+    assert row["archived_at"] == ""
+    assert row["linked_pr_status"] == "unlinked"
+    assert row["my_status"] == "triage"
+    assert row["notes"] == "Keep repro notes"
 
 
 def test_archive_issue_records_closed_reason_and_status():
@@ -383,6 +423,60 @@ topics:
         message.startswith("Finished sync at ") and "elapsed: 5s" in message
         for message in progress_messages
     )
+
+
+def test_sync_archives_issues_from_removed_topics(monkeypatch, tmp_path):
+    topics_file = tmp_path / "topics.yaml"
+    db_file = tmp_path / "issues.sqlite"
+    topics_file.write_text(
+        """
+topics:
+  kv_cache:
+    description: KV cache behavior.
+    queries: []
+""".lstrip(),
+        encoding="utf-8",
+    )
+    with daily_update.connect_db(db_file) as conn:
+        daily_update.ensure_schema(conn)
+        daily_update.upsert_issue(
+            conn,
+            "model_loading_hf",
+            make_issue(321, "Removed topic issue"),
+            "2026-05-01T12:00:00Z",
+        )
+
+    monkeypatch.setattr(
+        daily_update,
+        "search_rate_limit_status",
+        lambda: {"remaining": 30, "reset": 1770000000},
+    )
+    monkeypatch.setattr(daily_update, "fetch_issue_with_body", lambda issue_number: None)
+    monkeypatch.setattr(
+        daily_update,
+        "fetch_issue",
+        lambda issue_number: {
+            "state": "open",
+            "title": "Removed topic issue",
+            "url": f"https://github.com/vllm-project/vllm/issues/{issue_number}",
+            "labels": [],
+            "updatedAt": "2026-05-01T13:00:00Z",
+        },
+    )
+    monkeypatch.setattr(daily_update, "find_linked_prs", lambda issue_number: [])
+
+    daily_update.sync(
+        topics_path=topics_file,
+        db_path=db_file,
+        markdown_path=tmp_path / "ISSUES.md",
+        csv_path=tmp_path / "issues.csv",
+        progress=None,
+    )
+
+    with daily_update.connect_db(db_file) as conn:
+        row = fetch_issue(conn, 321)
+    assert row["archive_reason"] == "removed_topic"
+    assert row["my_status"] == "archived_removed_topic"
 
 
 def test_render_markdown_groups_active_issues_and_excludes_archived(tmp_path):

@@ -18,7 +18,7 @@ topics:
       - 'DeepSeek V4 Flash -linked:pr'
 
   model_family_gpt_oss:
-    description: gpt-oss model-family issues, including Harmony formatting, Responses API behavior, streaming/tools, MXFP4 MoE, ROCm, and performance.
+    description: gpt-oss model-family issues, including Harmony formatting, Responses API behavior, streaming/tools, MXFP4 MoE, and performance.
     queries:
       - 'gpt-oss -linked:pr'
       - 'GPT-OSS -linked:pr'

@@ -39,6 +39,7 @@ ISSUE_COLUMNS = [
     "url",
     "state",
     "labels",
+    "assignees",
     "created_at",
     "updated_at",
     "last_seen_at",
@@ -72,6 +73,18 @@ ACTION_QUEUE_STATUSES = {
     "learning",
     "needs_repro",
 }
+
+EXCLUDED_HARDWARE_LABEL_KEYWORDS = ("amd", "rocm")
+EXCLUDED_HARDWARE_TITLE_KEYWORDS = (
+    "amd",
+    "rocm",
+    "mi250",
+    "mi300",
+    "mi325",
+    "mi350",
+    "mi355",
+    "gfx",
+)
 
 RFC_SUBISSUE_SOURCES = {
     27653: {
@@ -215,6 +228,7 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
             url TEXT,
             state TEXT,
             labels TEXT,
+            assignees TEXT,
             created_at TEXT,
             updated_at TEXT,
             last_seen_at TEXT,
@@ -231,6 +245,11 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
         )
         """
     )
+    existing_columns = {
+        row["name"] for row in conn.execute("PRAGMA table_info(issues)").fetchall()
+    }
+    if "assignees" not in existing_columns:
+        conn.execute("ALTER TABLE issues ADD COLUMN assignees TEXT DEFAULT ''")
     conn.commit()
 
 
@@ -264,16 +283,75 @@ def labels_to_text(labels: Any) -> str:
     return ", ".join(names)
 
 
-def issue_has_label(issue: dict[str, Any], label_name: str) -> bool:
-    target = label_name.lower()
-    for label in issue.get("labels") or []:
+def assignees_to_text(assignees: Any) -> str:
+    if not assignees:
+        return ""
+    if isinstance(assignees, str):
+        return assignees
+    names = []
+    for assignee in assignees:
+        if isinstance(assignee, dict):
+            name = assignee.get("login") or assignee.get("name")
+        else:
+            name = str(assignee)
+        if name:
+            names.append(str(name))
+    return ", ".join(names)
+
+
+def label_names(labels: Any) -> list[str]:
+    if not labels:
+        return []
+    if isinstance(labels, str):
+        return [part.strip() for part in labels.split(",") if part.strip()]
+    names = []
+    for label in labels:
         if isinstance(label, dict):
-            name = label.get("name", "")
+            name = label.get("name")
         else:
             name = str(label)
+        if name:
+            names.append(str(name))
+    return names
+
+
+def issue_has_label(issue: dict[str, Any], label_name: str) -> bool:
+    target = label_name.lower()
+    for name in label_names(issue.get("labels")):
         if name.lower() == target:
             return True
     return False
+
+
+def labels_have_excluded_hardware_label(labels: Any) -> bool:
+    for name in label_names(labels):
+        normalized = name.lower()
+        if any(keyword in normalized for keyword in EXCLUDED_HARDWARE_LABEL_KEYWORDS):
+            return True
+    return False
+
+
+def text_has_excluded_hardware_keyword(text: Any) -> bool:
+    normalized = str(text or "").lower()
+    return any(keyword in normalized for keyword in EXCLUDED_HARDWARE_TITLE_KEYWORDS)
+
+
+def issue_has_excluded_hardware_signal(issue: dict[str, Any]) -> bool:
+    return labels_have_excluded_hardware_label(
+        issue.get("labels")
+    ) or text_has_excluded_hardware_keyword(issue.get("title"))
+
+
+def issue_has_assignees(issue: dict[str, Any]) -> bool:
+    return bool(assignees_to_text(issue.get("assignees")).strip())
+
+
+def issue_exclusion_reason(issue: dict[str, Any]) -> str | None:
+    if issue_has_assignees(issue):
+        return "assigned"
+    if issue_has_excluded_hardware_signal(issue):
+        return "excluded_amd_rocm"
+    return None
 
 
 def is_rfc_like_issue(issue: dict[str, Any]) -> bool:
@@ -311,6 +389,7 @@ def issue_payload_to_row(topic: str, issue: dict[str, Any], now: str) -> dict[st
         "url": issue.get("url", ""),
         "state": (issue.get("state") or "open").lower(),
         "labels": labels_to_text(issue.get("labels")),
+        "assignees": assignees_to_text(issue.get("assignees")),
         "created_at": issue.get("createdAt") or issue.get("created_at") or "",
         "updated_at": issue.get("updatedAt") or issue.get("updated_at") or "",
         "last_seen_at": now,
@@ -349,31 +428,60 @@ def upsert_issue(
             """
             UPDATE issues
             SET topic = CASE
-                    WHEN archive_reason = 'removed_topic' THEN ?
+                    WHEN archive_reason IN (
+                        'removed_topic',
+                        'excluded_amd_rocm',
+                        'assigned'
+                    )
+                    THEN ?
                     ELSE topic
                 END,
                 title = ?,
                 url = ?,
                 state = ?,
                 labels = ?,
+                assignees = ?,
                 created_at = COALESCE(NULLIF(created_at, ''), ?),
                 updated_at = ?,
                 last_seen_at = ?,
                 archived_at = CASE
-                    WHEN archive_reason = 'removed_topic' THEN ''
+                    WHEN archive_reason IN (
+                        'removed_topic',
+                        'excluded_amd_rocm',
+                        'assigned'
+                    )
+                    THEN ''
                     ELSE archived_at
                 END,
                 archive_reason = CASE
-                    WHEN archive_reason = 'removed_topic' THEN ''
+                    WHEN archive_reason IN (
+                        'removed_topic',
+                        'excluded_amd_rocm',
+                        'assigned'
+                    )
+                    THEN ''
                     ELSE archive_reason
                 END,
                 linked_pr_status = CASE
-                    WHEN archive_reason = 'removed_topic' THEN 'unlinked'
+                    WHEN archive_reason IN (
+                        'removed_topic',
+                        'excluded_amd_rocm',
+                        'assigned'
+                    )
+                    THEN 'unlinked'
                     ELSE linked_pr_status
                 END,
                 my_status = CASE
-                    WHEN archive_reason = 'removed_topic'
-                         AND my_status = 'archived_removed_topic'
+                    WHEN archive_reason IN (
+                        'removed_topic',
+                        'excluded_amd_rocm',
+                        'assigned'
+                    )
+                         AND my_status IN (
+                             'archived_removed_topic',
+                             'archived_excluded_amd_rocm',
+                             'archived_assigned'
+                         )
                     THEN 'triage'
                     ELSE my_status
                 END
@@ -385,6 +493,7 @@ def upsert_issue(
                 row["url"],
                 row["state"],
                 row["labels"],
+                row["assignees"],
                 row["created_at"],
                 row["updated_at"],
                 row["last_seen_at"],
@@ -405,6 +514,8 @@ def archive_issue(
         "linked_pr": "archived_linked_pr",
         "removed_topic": "archived_removed_topic",
         "not_found": "archived_not_found",
+        "excluded_amd_rocm": "archived_excluded_amd_rocm",
+        "assigned": "archived_assigned",
     }
     if reason not in status_by_reason:
         raise ValueError(f"Unsupported archive reason: {reason}")
@@ -425,6 +536,33 @@ def archive_issue(
     conn.commit()
 
 
+def archive_excluded_issues(
+    conn: sqlite3.Connection,
+    now: str,
+) -> None:
+    rows = conn.execute(
+        """
+        SELECT issue_number, title, labels, assignees
+        FROM issues
+        WHERE COALESCE(archive_reason, '') = ''
+        """
+    ).fetchall()
+    for row in rows:
+        if assignees_to_text(row["assignees"]):
+            archive_issue(conn, int(row["issue_number"]), "assigned", now)
+        elif labels_have_excluded_hardware_label(
+            row["labels"]
+        ) or text_has_excluded_hardware_keyword(row["title"]):
+            archive_issue(conn, int(row["issue_number"]), "excluded_amd_rocm", now)
+
+
+def archive_excluded_hardware_issues(
+    conn: sqlite3.Connection,
+    now: str,
+) -> None:
+    archive_excluded_issues(conn, now)
+
+
 def mark_issue_linked_partial(
     conn: sqlite3.Connection,
     issue: dict[str, Any],
@@ -437,6 +575,7 @@ def mark_issue_linked_partial(
             title = ?,
             url = ?,
             labels = ?,
+            assignees = ?,
             updated_at = ?,
             last_seen_at = ?,
             archived_at = '',
@@ -454,6 +593,7 @@ def mark_issue_linked_partial(
             issue.get("title", ""),
             issue.get("url", ""),
             labels_to_text(issue.get("labels")),
+            assignees_to_text(issue.get("assignees")),
             issue.get("updatedAt", ""),
             now,
             int(issue["number"]),
@@ -605,10 +745,11 @@ def search_issues(query: str, limit: int = 10) -> list[dict[str, Any]]:
             REPO,
             "--state",
             "open",
+            "--no-assignee",
             "--limit",
             str(limit),
             "--json",
-            "number,title,url,updatedAt,createdAt,labels",
+            "number,title,url,updatedAt,createdAt,labels,assignees",
         ]
     )
 
@@ -622,7 +763,7 @@ def fetch_issue(issue_number: int) -> dict[str, Any]:
             "--repo",
             REPO,
             "--json",
-            "state,title,url,updatedAt,createdAt,labels",
+            "state,title,url,updatedAt,createdAt,labels,assignees",
         ]
     )
     issue["number"] = issue_number
@@ -638,7 +779,7 @@ def fetch_issue_with_body(issue_number: int) -> dict[str, Any]:
             "--repo",
             REPO,
             "--json",
-            "state,title,url,updatedAt,createdAt,labels,body",
+            "state,title,url,updatedAt,createdAt,labels,assignees,body",
         ]
     )
     issue["number"] = issue_number
@@ -753,6 +894,7 @@ def subissue_payload(
         "url": parent_issue.get("url", ""),
         "state": parent_issue.get("state", "open"),
         "labels": source.get("labels", "rfc-subissue"),
+        "assignees": [],
         "createdAt": parent_issue.get("createdAt", ""),
         "updatedAt": parent_issue.get("updatedAt", ""),
     }
@@ -771,6 +913,10 @@ def sync_issue_subissues(
             continue
         issue["number"] = issue_number
         upsert_issue(conn, source["topic"], issue, now)
+        exclusion_reason = issue_exclusion_reason(issue)
+        if exclusion_reason is not None:
+            archive_issue(conn, issue_number, exclusion_reason, now)
+            continue
         mark_issue_linked_partial(conn, issue, now)
         apply_tracking_defaults(conn, issue_number, source, parent=True)
 
@@ -807,6 +953,8 @@ def sync_search_results(
                 if issue_number in seen:
                     continue
                 seen.add(issue_number)
+                if issue_exclusion_reason(issue) is not None:
+                    continue
                 upsert_issue(conn, topic_name, issue, now)
 
 
@@ -876,6 +1024,34 @@ def refresh_active_issues(
             archive_issue(conn, issue_number, "closed", now)
             continue
 
+        exclusion_reason = issue_exclusion_reason(issue)
+        if exclusion_reason is not None:
+            conn.execute(
+                """
+                UPDATE issues
+                SET state = ?,
+                    title = ?,
+                    url = ?,
+                    labels = ?,
+                    assignees = ?,
+                    updated_at = ?,
+                    last_seen_at = ?
+                WHERE issue_number = ?
+                """,
+                (
+                    state or "open",
+                    issue.get("title", ""),
+                    issue.get("url", ""),
+                    labels_to_text(issue.get("labels")),
+                    assignees_to_text(issue.get("assignees")),
+                    issue.get("updatedAt", ""),
+                    now,
+                    issue_number,
+                ),
+            )
+            archive_issue(conn, issue_number, exclusion_reason, now)
+            continue
+
         if linked_pr_limiter is not None:
             linked_pr_limiter.wait()
         linked_prs = find_linked_prs(issue_number)
@@ -893,6 +1069,7 @@ def refresh_active_issues(
                 title = ?,
                 url = ?,
                 labels = ?,
+                assignees = ?,
                 updated_at = ?,
                 last_seen_at = ?,
                 linked_pr_status = ?
@@ -903,6 +1080,7 @@ def refresh_active_issues(
                 issue.get("title", ""),
                 issue.get("url", ""),
                 labels_to_text(issue.get("labels")),
+                assignees_to_text(issue.get("assignees")),
                 issue.get("updatedAt", ""),
                 now,
                 "unlinked",
@@ -1071,6 +1249,7 @@ def sync(
     with connect_db(db_path) as conn:
         ensure_schema(conn)
         archive_unconfigured_topic_issues(conn, set(topics), now)
+        archive_excluded_issues(conn, now)
         active_count = len(active_issue_numbers(conn))
         search_request_count = count_topic_queries(topics) + active_count
         minimum_wait = max(0, search_request_count - 1) * search_delay_seconds
@@ -1095,6 +1274,7 @@ def sync(
             progress=progress,
         )
         sync_issue_subissues(conn, RFC_SUBISSUE_SOURCES, now, progress=progress)
+        archive_excluded_issues(conn, now)
         refresh_active_issues(
             conn,
             now,

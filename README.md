@@ -64,13 +64,19 @@ and your personal triage fields.
 `daily_update.py` performs one sync run:
 
 1. Reads topic definitions from `topics.yaml`.
-2. Searches open issues in `vllm-project/vllm` with `gh search issues`.
-3. Inserts new matching issues into `issues.sqlite`.
-4. Archives active issues whose topic bucket was removed from `topics.yaml`.
-5. Refreshes existing active issues with current GitHub metadata.
-6. Archives tracked issues that are closed.
-7. Archives tracked issues that have an open PR referencing the issue number.
-8. Regenerates `ISSUES.md` and `issues.csv`.
+2. Archives active issues whose topic bucket was removed from `topics.yaml`.
+3. Archives active issues that already have assignees, AMD/ROCm labels, or
+   obvious AMD GPU title markers such as MI250, MI300, MI325, MI355, or gfx.
+4. Searches unassigned open issues in `vllm-project/vllm` with
+   `gh search issues --no-assignee`.
+5. Skips search results with assignees or the same AMD/ROCm labels/title
+   markers.
+6. Inserts new matching issues into `issues.sqlite`.
+7. Parses configured RFC-style issues into subissues.
+8. Refreshes existing active issues and archives ones that are closed,
+   assigned, AMD/ROCm-labeled, or already have an open PR referencing the issue
+   number.
+9. Regenerates `ISSUES.md` and `issues.csv`.
 
 New issues start with:
 
@@ -82,6 +88,10 @@ linked_pr_status = unlinked
 The sync preserves personal fields when GitHub metadata changes.
 When a topic is removed, matching active rows are kept in the database as
 history with `archive_reason = removed_topic`.
+When an issue already has an assignee, it is excluded from active tracking with
+`archive_reason = assigned`.
+When an issue has an AMD/ROCm label or an obvious AMD GPU title marker, it is
+excluded from active tracking with `archive_reason = excluded_amd_rocm`.
 
 ## GitHub API Rate Limits
 

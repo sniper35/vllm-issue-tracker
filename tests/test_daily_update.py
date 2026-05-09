@@ -13,6 +13,7 @@ def make_issue(number=123, title="KV cache blocks"):
         "url": f"https://github.com/vllm-project/vllm/issues/{number}",
         "state": "open",
         "labels": [{"name": "bug"}, {"name": "help wanted"}],
+        "assignees": [],
         "createdAt": "2026-04-01T10:00:00Z",
         "updatedAt": "2026-04-02T11:00:00Z",
     }
@@ -191,6 +192,33 @@ def test_upsert_issue_retargets_removed_topic_archive_when_seen_again():
     assert row["notes"] == "Keep repro notes"
 
 
+def test_upsert_issue_reactivates_assigned_archive_when_seen_unassigned():
+    conn = make_conn()
+    assigned_issue = make_issue(41360, "Previously assigned issue")
+    assigned_issue["assignees"] = [{"login": "maintainer"}]
+    daily_update.upsert_issue(
+        conn,
+        "kv_cache",
+        assigned_issue,
+        "2026-05-01T12:00:00Z",
+    )
+    daily_update.archive_issue(conn, 41360, "assigned", "2026-05-02T12:00:00Z")
+
+    daily_update.upsert_issue(
+        conn,
+        "kv_cache",
+        make_issue(41360, "Now unassigned issue"),
+        "2026-05-03T12:00:00Z",
+    )
+
+    row = fetch_issue(conn, 41360)
+    assert row["title"] == "Now unassigned issue"
+    assert row["assignees"] == ""
+    assert row["archive_reason"] == ""
+    assert row["archived_at"] == ""
+    assert row["my_status"] == "triage"
+
+
 def test_archive_issue_records_closed_reason_and_status():
     conn = make_conn()
     daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
@@ -202,6 +230,53 @@ def test_archive_issue_records_closed_reason_and_status():
     assert row["archive_reason"] == "closed"
     assert row["archived_at"] == "2026-05-03T08:00:00Z"
     assert row["my_status"] == "archived_closed"
+
+
+def test_archive_issue_records_assigned_reason_and_status():
+    conn = make_conn()
+    daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
+
+    daily_update.archive_issue(conn, 123, "assigned", "2026-05-03T08:00:00Z")
+
+    row = fetch_issue(conn, 123)
+    assert row["state"] == "open"
+    assert row["archive_reason"] == "assigned"
+    assert row["archived_at"] == "2026-05-03T08:00:00Z"
+    assert row["my_status"] == "archived_assigned"
+
+
+def test_archive_excluded_hardware_issues_archives_stored_rocm_rows():
+    conn = make_conn()
+    rocm_issue = make_issue(123, "ROCm-only issue")
+    rocm_issue["labels"] = [{"name": "bug"}, {"name": "rocm"}]
+    cuda_issue = make_issue(124, "CUDA issue")
+    daily_update.upsert_issue(conn, "kv_cache", rocm_issue, "2026-05-01T12:00:00Z")
+    daily_update.upsert_issue(conn, "kv_cache", cuda_issue, "2026-05-01T12:00:00Z")
+
+    daily_update.archive_excluded_hardware_issues(conn, "2026-05-03T08:00:00Z")
+
+    rocm_row = fetch_issue(conn, 123)
+    cuda_row = fetch_issue(conn, 124)
+    assert rocm_row["archive_reason"] == "excluded_amd_rocm"
+    assert rocm_row["archived_at"] == "2026-05-03T08:00:00Z"
+    assert rocm_row["my_status"] == "archived_excluded_amd_rocm"
+    assert cuda_row["archive_reason"] == ""
+
+
+def test_archive_excluded_hardware_issues_archives_stored_amd_gpu_titles():
+    conn = make_conn()
+    daily_update.upsert_issue(
+        conn,
+        "kv_cache",
+        make_issue(123, "[CI Failure]: mi300_1: V1 Core + KV + Metrics"),
+        "2026-05-01T12:00:00Z",
+    )
+
+    daily_update.archive_excluded_hardware_issues(conn, "2026-05-03T08:00:00Z")
+
+    row = fetch_issue(conn, 123)
+    assert row["archive_reason"] == "excluded_amd_rocm"
+    assert row["my_status"] == "archived_excluded_amd_rocm"
 
 
 def test_refresh_active_issues_archives_unresolvable_issue(monkeypatch):
@@ -219,6 +294,69 @@ def test_refresh_active_issues_archives_unresolvable_issue(monkeypatch):
     assert row["archive_reason"] == "not_found"
     assert row["archived_at"] == "2026-05-05T06:00:00Z"
     assert row["my_status"] == "archived_not_found"
+
+
+def test_refresh_active_issues_archives_excluded_hardware_label(monkeypatch):
+    conn = make_conn()
+    daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
+
+    monkeypatch.setattr(
+        daily_update,
+        "fetch_issue",
+        lambda issue_number: {
+            "state": "open",
+            "title": "ROCm-only issue",
+            "url": f"https://github.com/vllm-project/vllm/issues/{issue_number}",
+            "labels": [{"name": "ROCm"}],
+            "updatedAt": "2026-05-01T13:00:00Z",
+        },
+    )
+
+    def fail_linked_pr_search(issue_number):
+        raise AssertionError("excluded hardware issues should not search linked PRs")
+
+    monkeypatch.setattr(daily_update, "find_linked_prs", fail_linked_pr_search)
+
+    daily_update.refresh_active_issues(conn, "2026-05-05T06:00:00Z")
+
+    row = fetch_issue(conn, 123)
+    assert row["title"] == "ROCm-only issue"
+    assert row["labels"] == "ROCm"
+    assert row["archive_reason"] == "excluded_amd_rocm"
+    assert row["archived_at"] == "2026-05-05T06:00:00Z"
+    assert row["my_status"] == "archived_excluded_amd_rocm"
+
+
+def test_refresh_active_issues_archives_assigned_issue(monkeypatch):
+    conn = make_conn()
+    daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
+
+    monkeypatch.setattr(
+        daily_update,
+        "fetch_issue",
+        lambda issue_number: {
+            "state": "open",
+            "title": "Assigned issue",
+            "url": f"https://github.com/vllm-project/vllm/issues/{issue_number}",
+            "labels": [{"name": "bug"}],
+            "assignees": [{"login": "maintainer"}],
+            "updatedAt": "2026-05-01T13:00:00Z",
+        },
+    )
+
+    def fail_linked_pr_search(issue_number):
+        raise AssertionError("assigned issues should not search linked PRs")
+
+    monkeypatch.setattr(daily_update, "find_linked_prs", fail_linked_pr_search)
+
+    daily_update.refresh_active_issues(conn, "2026-05-05T06:00:00Z")
+
+    row = fetch_issue(conn, 123)
+    assert row["title"] == "Assigned issue"
+    assert row["assignees"] == "maintainer"
+    assert row["archive_reason"] == "assigned"
+    assert row["archived_at"] == "2026-05-05T06:00:00Z"
+    assert row["my_status"] == "archived_assigned"
 
 
 def test_active_issue_numbers_excludes_synthetic_subissues():
@@ -635,6 +773,87 @@ def test_sync_search_results_rate_limits_each_search_query(monkeypatch):
     ]
 
 
+def test_sync_search_results_skips_excluded_hardware_labels(monkeypatch):
+    conn = make_conn()
+
+    def fake_search_issues(query, limit=10):
+        rocm_issue = make_issue(123, "ROCm-only issue")
+        rocm_issue["labels"] = [{"name": "bug"}, {"name": "rocm"}]
+        amd_issue = make_issue(124, "AMD-only issue")
+        amd_issue["labels"] = [{"name": "AMD"}]
+        cuda_issue = make_issue(125, "CUDA issue")
+        return [rocm_issue, amd_issue, cuda_issue]
+
+    monkeypatch.setattr(daily_update, "search_issues", fake_search_issues)
+
+    daily_update.sync_search_results(
+        conn,
+        {
+            "kv_cache": {
+                "description": "KV cache behavior.",
+                "queries": ["kv cache -linked:pr"],
+            }
+        },
+        "2026-05-01T12:00:00Z",
+    )
+
+    assert fetch_issue(conn, 123) is None
+    assert fetch_issue(conn, 124) is None
+    assert fetch_issue(conn, 125)["title"] == "CUDA issue"
+
+
+def test_sync_search_results_skips_obvious_amd_gpu_titles(monkeypatch):
+    conn = make_conn()
+
+    def fake_search_issues(query, limit=10):
+        mi300_issue = make_issue(123, "[CI Failure]: mi300_1: V1 Core + KV")
+        mi300_issue["labels"] = [{"name": "ci-failure"}]
+        cuda_issue = make_issue(124, "CUDA issue")
+        return [mi300_issue, cuda_issue]
+
+    monkeypatch.setattr(daily_update, "search_issues", fake_search_issues)
+
+    daily_update.sync_search_results(
+        conn,
+        {
+            "kv_cache": {
+                "description": "KV cache behavior.",
+                "queries": ["kv cache -linked:pr"],
+            }
+        },
+        "2026-05-01T12:00:00Z",
+    )
+
+    assert fetch_issue(conn, 123) is None
+    assert fetch_issue(conn, 124)["title"] == "CUDA issue"
+
+
+def test_sync_search_results_skips_assigned_issues(monkeypatch):
+    conn = make_conn()
+
+    def fake_search_issues(query, limit=10):
+        assigned_issue = make_issue(123, "Assigned issue")
+        assigned_issue["assignees"] = [{"login": "maintainer"}]
+        unassigned_issue = make_issue(124, "Unassigned issue")
+        return [assigned_issue, unassigned_issue]
+
+    monkeypatch.setattr(daily_update, "search_issues", fake_search_issues)
+
+    daily_update.sync_search_results(
+        conn,
+        {
+            "kv_cache": {
+                "description": "KV cache behavior.",
+                "queries": ["kv cache -linked:pr"],
+            }
+        },
+        "2026-05-01T12:00:00Z",
+    )
+
+    assert fetch_issue(conn, 123) is None
+    assert fetch_issue(conn, 124)["title"] == "Unassigned issue"
+
+
 def test_refresh_active_issues_rate_limits_linked_pr_search(monkeypatch):
     conn = make_conn()
     daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
@@ -743,6 +962,7 @@ def test_export_csv_writes_all_schema_columns(tmp_path):
             "url": "https://github.com/vllm-project/vllm/issues/123",
             "state": "open",
             "labels": "bug, help wanted",
+            "assignees": "",
             "created_at": "2026-04-01T10:00:00Z",
             "updated_at": "2026-04-02T11:00:00Z",
             "last_seen_at": "2026-05-01T12:00:00Z",

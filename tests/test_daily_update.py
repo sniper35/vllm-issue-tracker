@@ -410,12 +410,16 @@ def test_refresh_active_issues_keeps_rfc_parent_active_when_pr_is_linked(monkeyp
     assert row["my_status"] == "new"
 
 
-def test_refresh_active_issues_keeps_decomposed_parent_active_when_pr_is_linked(monkeypatch):
+def test_refresh_active_issues_keeps_decomposed_parent_active_when_pr_is_linked(
+    monkeypatch,
+):
     conn = make_conn()
     daily_update.upsert_issue(
         conn,
         "model_family_gpt_oss",
-        make_issue(28262, "[Bug]: [gpt-oss] Responses API incorrect input/output handling"),
+        make_issue(
+            28262, "[Bug]: [gpt-oss] Responses API incorrect input/output handling"
+        ),
         "2026-05-01T12:00:00Z",
     )
 
@@ -446,7 +450,9 @@ def test_refresh_active_issues_keeps_decomposed_parent_active_when_pr_is_linked(
 def test_markdown_displays_synthetic_subissue_parent_and_index(tmp_path):
     conn = make_conn()
     subissue_number = daily_update.synthetic_subissue_number(28262, 1)
-    subissue = make_issue(subissue_number, "[Subissue #28262.1] Reasoning channel metadata")
+    subissue = make_issue(
+        subissue_number, "[Subissue #28262.1] Reasoning channel metadata"
+    )
     subissue["url"] = "https://github.com/vllm-project/vllm/issues/28262"
     daily_update.upsert_issue(
         conn,
@@ -494,7 +500,9 @@ def test_extract_issue_subissues_parses_unchecked_tasks_and_top_level_bullets():
 
 def test_sync_issue_subissues_reactivates_parent_and_tracks_children(monkeypatch):
     conn = make_conn()
-    parent = make_issue(28262, "[Bug]: [gpt-oss] Responses API incorrect input/output handling")
+    parent = make_issue(
+        28262, "[Bug]: [gpt-oss] Responses API incorrect input/output handling"
+    )
     parent["labels"] = [{"name": "bug"}, {"name": "stale"}]
     parent["body"] = """
 The changes we can make are:
@@ -510,7 +518,9 @@ The changes we can make are:
     )
     daily_update.archive_issue(conn, 28262, "linked_pr", "2026-05-01T13:00:00Z")
 
-    monkeypatch.setattr(daily_update, "fetch_issue_with_body", lambda issue_number: parent)
+    monkeypatch.setattr(
+        daily_update, "fetch_issue_with_body", lambda issue_number: parent
+    )
     source = {
         "topic": "model_family_gpt_oss",
         "component": "gpt-oss/responses api harmony",
@@ -541,7 +551,10 @@ The changes we can make are:
     assert first_child["learning_value"] == "high"
     assert first_child["fixability"] == "medium"
     assert first_child["my_status"] == "triage"
-    assert first_child["next_action"] == "Check linked PR coverage, then reproduce this slice if uncovered"
+    assert (
+        first_child["next_action"]
+        == "Check linked PR coverage, then reproduce this slice if uncovered"
+    )
 
 
 def test_sync_outputs_finished_time_and_elapsed(monkeypatch, tmp_path):
@@ -563,7 +576,9 @@ topics:
         "search_rate_limit_status",
         lambda: {"remaining": 30, "reset": 1770000000},
     )
-    monkeypatch.setattr(daily_update, "fetch_issue_with_body", lambda issue_number: None)
+    monkeypatch.setattr(
+        daily_update, "fetch_issue_with_body", lambda issue_number: None
+    )
     monkeypatch.setattr(daily_update.time, "monotonic", lambda: next(ticks))
 
     daily_update.sync(
@@ -606,7 +621,9 @@ topics:
         "search_rate_limit_status",
         lambda: {"remaining": 30, "reset": 1770000000},
     )
-    monkeypatch.setattr(daily_update, "fetch_issue_with_body", lambda issue_number: None)
+    monkeypatch.setattr(
+        daily_update, "fetch_issue_with_body", lambda issue_number: None
+    )
     monkeypatch.setattr(
         daily_update,
         "fetch_issue",
@@ -637,7 +654,9 @@ topics:
 def test_render_markdown_groups_active_issues_and_excludes_archived(tmp_path):
     conn = make_conn()
     daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
-    daily_update.upsert_issue(conn, "kv_cache", make_issue(124, "Closed issue"), "2026-05-01T12:00:00Z")
+    daily_update.upsert_issue(
+        conn, "kv_cache", make_issue(124, "Closed issue"), "2026-05-01T12:00:00Z"
+    )
     conn.execute(
         """
         UPDATE issues
@@ -670,6 +689,77 @@ def test_render_markdown_groups_active_issues_and_excludes_archived(tmp_path):
     assert "Closed issue" not in markdown
     assert "### scheduler_batching" in markdown
     assert "_No active issues._" in markdown
+
+
+def test_render_markdown_orders_topics_by_non_stale_counts_and_hides_stale(tmp_path):
+    conn = make_conn()
+    scheduler_one = make_issue(201, "Scheduler first issue")
+    scheduler_two = make_issue(202, "Scheduler second issue")
+    stale_scheduler = make_issue(203, "Stale scheduler issue")
+    stale_scheduler["labels"] = [{"name": "bug"}, {"name": "stale"}]
+    kv_issue = make_issue(204, "KV cache issue")
+    unstale_issue = make_issue(205, "Unstale label issue")
+    unstale_issue["labels"] = [{"name": "unstale"}]
+    stale_model = make_issue(206, "Only stale model issue")
+    stale_model["labels"] = [{"name": "Stale"}]
+
+    daily_update.upsert_issue(
+        conn,
+        "scheduler_batching",
+        scheduler_one,
+        "2026-05-01T12:00:00Z",
+    )
+    daily_update.upsert_issue(
+        conn,
+        "scheduler_batching",
+        scheduler_two,
+        "2026-05-01T12:00:00Z",
+    )
+    daily_update.upsert_issue(
+        conn,
+        "scheduler_batching",
+        stale_scheduler,
+        "2026-05-01T12:00:00Z",
+    )
+    daily_update.upsert_issue(conn, "kv_cache", kv_issue, "2026-05-01T12:00:00Z")
+    daily_update.upsert_issue(
+        conn,
+        "attention_kernels",
+        unstale_issue,
+        "2026-05-01T12:00:00Z",
+    )
+    daily_update.upsert_issue(
+        conn,
+        "model_family_gpt_oss",
+        stale_model,
+        "2026-05-01T12:00:00Z",
+    )
+    output_file = tmp_path / "ISSUES.md"
+
+    daily_update.render_markdown(
+        conn,
+        output_file,
+        {
+            "kv_cache": {"description": "KV cache behavior.", "queries": []},
+            "scheduler_batching": {"description": "Scheduler behavior.", "queries": []},
+            "attention_kernels": {"description": "Attention behavior.", "queries": []},
+            "model_family_gpt_oss": {
+                "description": "gpt-oss model-family issues.",
+                "queries": [],
+            },
+        },
+        generated_at="2026-05-04T09:00:00Z",
+    )
+
+    markdown = output_file.read_text(encoding="utf-8")
+    assert "Stale scheduler issue" not in markdown
+    assert "Only stale model issue" not in markdown
+    assert "Unstale label issue" in markdown
+    assert markdown.index("### scheduler_batching") < markdown.index("### kv_cache")
+    assert markdown.index("### kv_cache") < markdown.index("### attention_kernels")
+    assert markdown.index("### attention_kernels") < markdown.index(
+        "### model_family_gpt_oss"
+    )
 
 
 def test_action_queue_sorts_by_status_learning_value_and_recent_updates():

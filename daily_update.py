@@ -25,9 +25,7 @@ DB_PATH = Path("issues.sqlite")
 MARKDOWN_PATH = Path("ISSUES.md")
 CSV_PATH = Path("issues.csv")
 DEFAULT_SEARCH_DELAY_SECONDS = float(os.getenv("GH_SEARCH_DELAY_SECONDS", "2.2"))
-DEFAULT_GH_COMMAND_MAX_ATTEMPTS = max(
-    1, int(os.getenv("GH_COMMAND_MAX_ATTEMPTS", "3"))
-)
+DEFAULT_GH_COMMAND_MAX_ATTEMPTS = max(1, int(os.getenv("GH_COMMAND_MAX_ATTEMPTS", "3")))
 DEFAULT_GH_COMMAND_RETRY_DELAY_SECONDS = float(
     os.getenv("GH_COMMAND_RETRY_DELAY_SECONDS", "5")
 )
@@ -85,6 +83,7 @@ EXCLUDED_HARDWARE_TITLE_KEYWORDS = (
     "mi355",
     "gfx",
 )
+STALE_LABEL = "stale"
 
 RFC_SUBISSUE_SOURCES = {
     27653: {
@@ -107,8 +106,7 @@ RFC_SUBISSUE_SOURCES = {
         "labels": "rfc-subissue, gpt-oss, harmony",
         "markers": ["The changes we can make are:"],
         "parent_next_action": (
-            "Track parsed subissues instead of treating linked PRs as complete "
-            "coverage"
+            "Track parsed subissues instead of treating linked PRs as complete coverage"
         ),
     },
     32713: {
@@ -315,12 +313,13 @@ def label_names(labels: Any) -> list[str]:
     return names
 
 
-def issue_has_label(issue: dict[str, Any], label_name: str) -> bool:
+def labels_include(labels: Any, label_name: str) -> bool:
     target = label_name.lower()
-    for name in label_names(issue.get("labels")):
-        if name.lower() == target:
-            return True
-    return False
+    return any(name.lower() == target for name in label_names(labels))
+
+
+def issue_has_label(issue: dict[str, Any], label_name: str) -> bool:
+    return labels_include(issue.get("labels"), label_name)
 
 
 def labels_have_excluded_hardware_label(labels: Any) -> bool:
@@ -1101,6 +1100,14 @@ def active_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
     ).fetchall()
 
 
+def report_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
+    return [
+        row
+        for row in active_rows(conn)
+        if not labels_include(row["labels"], STALE_LABEL)
+    ]
+
+
 def status_rank(status: str) -> int:
     return {
         "selected": 0,
@@ -1122,9 +1129,7 @@ def learning_rank(value: str) -> int:
 
 def action_queue_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
     rows = [
-        row
-        for row in active_rows(conn)
-        if row["my_status"] in ACTION_QUEUE_STATUSES
+        row for row in report_rows(conn) if row["my_status"] in ACTION_QUEUE_STATUSES
     ]
     rows.sort(key=lambda row: row["updated_at"] or "", reverse=True)
     rows.sort(key=lambda row: learning_rank(row["learning_value"] or ""))
@@ -1185,9 +1190,18 @@ def render_markdown(
 ) -> None:
     topics = topics or {}
     generated_at = generated_at or utc_now()
+    rows = report_rows(conn)
     rows_by_topic: dict[str, list[sqlite3.Row]] = {name: [] for name in topics}
-    for row in active_rows(conn):
+    for row in rows:
         rows_by_topic.setdefault(row["topic"], []).append(row)
+    topic_positions = {name: index for index, name in enumerate(topics)}
+    ordered_topics = sorted(
+        topics.items(),
+        key=lambda item: (
+            -len(rows_by_topic.get(item[0], [])),
+            topic_positions[item[0]],
+        ),
+    )
 
     lines = [
         "# vLLM Issue Tracker",
@@ -1204,7 +1218,7 @@ def render_markdown(
         lines.append("_No active action items._")
 
     lines.extend(["", "## Topics", ""])
-    for topic_name, topic in topics.items():
+    for topic_name, topic in ordered_topics:
         lines.extend([f"### {topic_name}", "", topic.get("description", ""), ""])
         topic_rows = rows_by_topic.get(topic_name, [])
         if topic_rows:

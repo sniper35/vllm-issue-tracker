@@ -78,6 +78,9 @@ and your personal triage fields.
    number.
 9. Regenerates `ISSUES.md` and `issues.csv`.
 
+`ISSUES.md` hides active issues labeled `stale` and orders topic sections by
+the number of visible, non-stale issues in each topic.
+
 New issues start with:
 
 ```text

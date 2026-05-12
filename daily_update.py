@@ -1213,7 +1213,15 @@ def render_markdown(
     ]
     queue = action_queue_rows(conn)
     if queue:
-        lines.extend(markdown_table(queue, include_topic=True))
+        queue_by_topic: dict[str, list[sqlite3.Row]] = {}
+        for row in queue:
+            queue_by_topic.setdefault(row["topic"], []).append(row)
+        for topic_name, _topic in ordered_topics:
+            topic_queue = queue_by_topic.get(topic_name, [])
+            if topic_queue:
+                lines.extend([f"### {topic_name}", ""])
+                lines.extend(markdown_table(topic_queue))
+                lines.append("")
     else:
         lines.append("_No active action items._")
 

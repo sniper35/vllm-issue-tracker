@@ -762,6 +762,76 @@ def test_render_markdown_orders_topics_by_non_stale_counts_and_hides_stale(tmp_p
     )
 
 
+def test_render_markdown_groups_action_queue_by_topic(tmp_path):
+    conn = make_conn()
+    scheduler_one = make_issue(301, "Scheduler selected issue")
+    scheduler_two = make_issue(302, "Scheduler new issue")
+    kv_issue = make_issue(303, "KV fixable issue")
+    attention_issue = make_issue(304, "Attention issue")
+    daily_update.upsert_issue(
+        conn,
+        "scheduler_batching",
+        scheduler_one,
+        "2026-05-01T12:00:00Z",
+    )
+    daily_update.upsert_issue(
+        conn,
+        "scheduler_batching",
+        scheduler_two,
+        "2026-05-01T12:00:00Z",
+    )
+    daily_update.upsert_issue(conn, "kv_cache", kv_issue, "2026-05-01T12:00:00Z")
+    daily_update.upsert_issue(
+        conn,
+        "attention_kernels",
+        attention_issue,
+        "2026-05-01T12:00:00Z",
+    )
+    conn.execute(
+        "UPDATE issues SET my_status = ?, learning_value = ? WHERE issue_number = ?",
+        ("selected", "low", 301),
+    )
+    conn.execute(
+        "UPDATE issues SET my_status = ?, learning_value = ? WHERE issue_number = ?",
+        ("new", "high", 302),
+    )
+    conn.execute(
+        "UPDATE issues SET my_status = ?, learning_value = ? WHERE issue_number = ?",
+        ("fixable", "high", 303),
+    )
+    conn.execute(
+        "UPDATE issues SET my_status = ?, learning_value = ? WHERE issue_number = ?",
+        ("new", "low", 304),
+    )
+    output_file = tmp_path / "ISSUES.md"
+
+    daily_update.render_markdown(
+        conn,
+        output_file,
+        {
+            "kv_cache": {"description": "KV cache behavior.", "queries": []},
+            "scheduler_batching": {"description": "Scheduler behavior.", "queries": []},
+            "attention_kernels": {"description": "Attention behavior.", "queries": []},
+        },
+        generated_at="2026-05-04T09:00:00Z",
+    )
+
+    markdown = output_file.read_text(encoding="utf-8")
+    action_queue = markdown.split("## Topics", maxsplit=1)[0]
+    assert action_queue.index("### scheduler_batching") < action_queue.index(
+        "### kv_cache"
+    )
+    assert action_queue.index("### kv_cache") < action_queue.index(
+        "### attention_kernels"
+    )
+    scheduler_group = action_queue.split("### scheduler_batching", maxsplit=1)[1].split(
+        "### kv_cache", maxsplit=1
+    )[0]
+    assert "Scheduler selected issue" in scheduler_group
+    assert "Scheduler new issue" in scheduler_group
+    assert "KV fixable issue" not in scheduler_group
+
+
 def test_action_queue_sorts_by_status_learning_value_and_recent_updates():
     conn = make_conn()
     daily_update.upsert_issue(

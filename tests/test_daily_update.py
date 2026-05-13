@@ -32,6 +32,12 @@ def fetch_issue(conn, number):
     ).fetchone()
 
 
+def test_default_vllm_output_paths_are_prefixed():
+    assert daily_update.MARKDOWN_PATH == daily_update.Path("VLLM_ISSUES.md")
+    assert daily_update.CSV_PATH == daily_update.Path("vllm_issues.csv")
+    assert daily_update.DB_PATH == daily_update.Path("vllm_issues.sqlite")
+
+
 def test_load_topics_reads_topic_definitions(tmp_path):
     topics_file = tmp_path / "topics.yaml"
     topics_file.write_text(
@@ -119,6 +125,35 @@ def test_real_topics_include_prioritized_model_family_buckets():
         assert topic_name in topics
         for query in required_queries:
             assert query in topics[topic_name]["queries"]
+
+
+def test_vllm_omni_topics_track_selected_buckets_without_hardware():
+    topics = daily_update.load_topics(daily_update.Path("topics_vllm_omni.yaml"))
+
+    expected_topics = {
+        "diffusion_image_video",
+        "tts_audio_voice",
+        "qwen3_omni",
+        "ci_testing_regressions",
+        "orchestrator_engine_pipeline",
+        "serving_api_entrypoints",
+        "disaggregated_transfer_memory",
+        "quantization",
+        "robotics_world_models",
+        "metrics_observability",
+        "attention_cache_kernels",
+        "docs_devex_release",
+        "new_model_requests",
+        "performance_latency",
+        "config_deployment",
+        "lora_adapters",
+        "rl_training_rollout",
+        "other_general",
+    }
+
+    assert set(topics) == expected_topics
+    assert "hardware_accelerators" not in topics
+    assert "NPU -linked:pr" not in str(topics)
 
 
 def test_upsert_issue_preserves_personal_triage_fields():
@@ -460,7 +495,7 @@ def test_markdown_displays_synthetic_subissue_parent_and_index(tmp_path):
         subissue,
         "2026-05-01T12:00:00Z",
     )
-    output_file = tmp_path / "ISSUES.md"
+    output_file = tmp_path / "VLLM_ISSUES.md"
 
     daily_update.render_markdown(
         conn,
@@ -583,9 +618,9 @@ topics:
 
     daily_update.sync(
         topics_path=topics_file,
-        db_path=tmp_path / "issues.sqlite",
-        markdown_path=tmp_path / "ISSUES.md",
-        csv_path=tmp_path / "issues.csv",
+        db_path=tmp_path / "vllm_issues.sqlite",
+        markdown_path=tmp_path / "VLLM_ISSUES.md",
+        csv_path=tmp_path / "vllm_issues.csv",
         progress=progress_messages.append,
     )
 
@@ -595,9 +630,45 @@ topics:
     )
 
 
+def test_sync_skips_vllm_subissue_sources_for_other_repos(monkeypatch, tmp_path):
+    topics_file = tmp_path / "topics.yaml"
+    topics_file.write_text(
+        """
+topics:
+  qwen3_omni:
+    description: Qwen3-Omni issues.
+    queries: []
+""".lstrip(),
+        encoding="utf-8",
+    )
+    subissue_calls = []
+
+    monkeypatch.setattr(
+        daily_update,
+        "search_rate_limit_status",
+        lambda: {"remaining": 30, "reset": 1770000000},
+    )
+    monkeypatch.setattr(
+        daily_update,
+        "sync_issue_subissues",
+        lambda *args, **kwargs: subissue_calls.append((args, kwargs)),
+    )
+
+    daily_update.sync(
+        topics_path=topics_file,
+        db_path=tmp_path / "vllm_issues.sqlite",
+        markdown_path=tmp_path / "VLLM_ISSUES.md",
+        csv_path=tmp_path / "vllm_issues.csv",
+        progress=None,
+        repo="vllm-project/vllm-omni",
+    )
+
+    assert subissue_calls == []
+
+
 def test_sync_archives_issues_from_removed_topics(monkeypatch, tmp_path):
     topics_file = tmp_path / "topics.yaml"
-    db_file = tmp_path / "issues.sqlite"
+    db_file = tmp_path / "vllm_issues.sqlite"
     topics_file.write_text(
         """
 topics:
@@ -640,8 +711,8 @@ topics:
     daily_update.sync(
         topics_path=topics_file,
         db_path=db_file,
-        markdown_path=tmp_path / "ISSUES.md",
-        csv_path=tmp_path / "issues.csv",
+        markdown_path=tmp_path / "VLLM_ISSUES.md",
+        csv_path=tmp_path / "vllm_issues.csv",
         progress=None,
     )
 
@@ -666,7 +737,7 @@ def test_render_markdown_groups_active_issues_and_excludes_archived(tmp_path):
         ("fixable", "high", "medium", "Reproduce locally", 123),
     )
     daily_update.archive_issue(conn, 124, "linked_pr", "2026-05-03T08:00:00Z")
-    output_file = tmp_path / "ISSUES.md"
+    output_file = tmp_path / "VLLM_ISSUES.md"
 
     daily_update.render_markdown(
         conn,
@@ -734,7 +805,7 @@ def test_render_markdown_orders_topics_by_non_stale_counts_and_hides_stale(tmp_p
         stale_model,
         "2026-05-01T12:00:00Z",
     )
-    output_file = tmp_path / "ISSUES.md"
+    output_file = tmp_path / "VLLM_ISSUES.md"
 
     daily_update.render_markdown(
         conn,
@@ -803,7 +874,7 @@ def test_render_markdown_groups_action_queue_by_topic(tmp_path):
         "UPDATE issues SET my_status = ?, learning_value = ? WHERE issue_number = ?",
         ("new", "low", 304),
     )
-    output_file = tmp_path / "ISSUES.md"
+    output_file = tmp_path / "VLLM_ISSUES.md"
 
     daily_update.render_markdown(
         conn,
@@ -1066,9 +1137,9 @@ topics:
     with pytest.raises(daily_update.GhRateLimitError) as exc_info:
         daily_update.sync(
             topics_path=topics_file,
-            db_path=tmp_path / "issues.sqlite",
-            markdown_path=tmp_path / "ISSUES.md",
-            csv_path=tmp_path / "issues.csv",
+            db_path=tmp_path / "vllm_issues.sqlite",
+            markdown_path=tmp_path / "VLLM_ISSUES.md",
+            csv_path=tmp_path / "vllm_issues.csv",
         )
 
     message = str(exc_info.value)
@@ -1102,10 +1173,27 @@ def test_wait_for_search_rate_reset_does_not_sleep_when_budget_is_available():
     assert sleeps == []
 
 
+def test_search_issues_uses_configured_repo(monkeypatch):
+    commands = []
+
+    def fake_run_gh_json(command):
+        commands.append(command)
+        return []
+
+    monkeypatch.setattr(daily_update, "run_gh_json", fake_run_gh_json)
+
+    daily_update.search_issues(
+        "qwen3 omni -linked:pr",
+        repo="vllm-project/vllm-omni",
+    )
+
+    assert commands[0][commands[0].index("--repo") + 1] == "vllm-project/vllm-omni"
+
+
 def test_export_csv_writes_all_schema_columns(tmp_path):
     conn = make_conn()
     daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
-    output_file = tmp_path / "issues.csv"
+    output_file = tmp_path / "vllm_issues.csv"
 
     daily_update.export_csv(conn, output_file)
 
@@ -1138,6 +1226,31 @@ def test_export_csv_writes_all_schema_columns(tmp_path):
             "next_action": "",
         }
     ]
+
+
+def test_export_csv_excludes_linked_pr_archives(tmp_path):
+    conn = make_conn()
+    daily_update.upsert_issue(
+        conn,
+        "attention_kernels",
+        make_issue(34444, "[RFC]: Decoupled Attention/FFN Parallelism"),
+        "2026-05-01T12:00:00Z",
+    )
+    daily_update.archive_issue(conn, 34444, "linked_pr", "2026-05-02T12:00:00Z")
+    daily_update.upsert_issue(
+        conn,
+        "kv_cache",
+        make_issue(34555, "Active issue"),
+        "2026-05-01T12:00:00Z",
+    )
+    output_file = tmp_path / "vllm_issues.csv"
+
+    daily_update.export_csv(conn, output_file)
+
+    with output_file.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+
+    assert [row["issue_number"] for row in rows] == ["34555"]
 
 
 def test_run_gh_json_reports_cli_failures(monkeypatch):

@@ -42,9 +42,13 @@ structured outputs/tooling, distributed prefill/decode, and tokenization.
 ```text
 daily_update.py              Sync script and report generator
 topics.yaml                  Search topics and GitHub issue queries
-issues.sqlite                Local source-of-truth SQLite tracker database
-ISSUES.md                    Generated Markdown dashboard
-issues.csv                   Generated CSV export
+vllm_issues.sqlite                Local source-of-truth SQLite tracker database
+VLLM_ISSUES.md                    Generated Markdown dashboard
+vllm_issues.csv                   Generated CSV export
+topics_vllm_omni.yaml        Search topics for vllm-project/vllm-omni
+vllm_omni_issues.sqlite      Local vLLM-Omni tracker database
+VLLM_OMNI_ISSUES.md          Generated vLLM-Omni Markdown dashboard
+vllm_omni_issues.csv         Generated vLLM-Omni CSV export
 requirements.txt             Python dependencies
 .github/workflows/daily.yml  Scheduled GitHub Actions deployment
 tests/                       Unit tests
@@ -53,11 +57,13 @@ PLAN.md                      Original implementation plan
 
 Generated files:
 
-- `ISSUES.md`
-- `issues.csv`
+- `VLLM_ISSUES.md`
+- `vllm_issues.csv`
+- `VLLM_OMNI_ISSUES.md`
+- `vllm_omni_issues.csv`
 
-The SQLite database, `issues.sqlite`, is the source of truth for tracked issues
-and your personal triage fields.
+The SQLite databases, `vllm_issues.sqlite` and `vllm_omni_issues.sqlite`, are the
+source of truth for tracked issues and your personal triage fields.
 
 ## How The Sync Works
 
@@ -71,16 +77,17 @@ and your personal triage fields.
    `gh search issues --no-assignee`.
 5. Skips search results with assignees or the same AMD/ROCm labels/title
    markers.
-6. Inserts new matching issues into `issues.sqlite`.
+6. Inserts new matching issues into `vllm_issues.sqlite`.
 7. Parses configured RFC-style issues into subissues.
 8. Refreshes existing active issues and archives ones that are closed,
    assigned, AMD/ROCm-labeled, or already have an open PR referencing the issue
    number.
-9. Regenerates `ISSUES.md` and `issues.csv`.
+9. Regenerates `VLLM_ISSUES.md` and `vllm_issues.csv`.
 
-`ISSUES.md` hides active issues labeled `stale`, groups action-queue rows by
-topic, and orders topic sections by the number of visible, non-stale issues in
-each topic.
+`VLLM_ISSUES.md` and `vllm_issues.csv` hide active issues labeled `stale` and archived
+issues, including issues archived because an open PR is linked. `VLLM_ISSUES.md`
+also groups action-queue rows by topic and orders topic sections by the number
+of visible, non-stale issues in each topic.
 
 New issues start with:
 
@@ -96,6 +103,26 @@ When an issue already has an assignee, it is excluded from active tracking with
 `archive_reason = assigned`.
 When an issue has an AMD/ROCm label or an obvious AMD GPU title marker, it is
 excluded from active tracking with `archive_reason = excluded_amd_rocm`.
+
+## vLLM-Omni Tracker
+
+The vLLM-Omni tracker uses the same sync script with a different repository,
+topics file, database, and outputs:
+
+```bash
+python daily_update.py \
+  --repo vllm-project/vllm-omni \
+  --topics topics_vllm_omni.yaml \
+  --db vllm_omni_issues.sqlite \
+  --markdown VLLM_OMNI_ISSUES.md \
+  --csv vllm_omni_issues.csv \
+  --search-delay-seconds 3
+```
+
+`topics_vllm_omni.yaml` tracks the selected vLLM-Omni buckets except
+`hardware_accelerators`. The initial vLLM-Omni files were seeded from a cached
+issue snapshot without making linked-PR checks; the next normal sync will
+refresh active issues and archive rows with linked open PRs.
 
 ## GitHub API Rate Limits
 
@@ -159,9 +186,9 @@ python daily_update.py
 
 After the run, inspect:
 
-- `ISSUES.md` for the human-readable dashboard
-- `issues.csv` for spreadsheet import
-- `issues.sqlite` for full triage state
+- `VLLM_ISSUES.md` for the human-readable dashboard
+- `vllm_issues.csv` for spreadsheet import
+- `vllm_issues.sqlite` for full triage state
 
 ## Deploy With GitHub Actions
 
@@ -200,7 +227,7 @@ different token.
 
 ## Personal Triage Workflow
 
-Edit these fields in `issues.sqlite` with a SQLite UI or the `sqlite3` CLI:
+Edit these fields in `vllm_issues.sqlite` with a SQLite UI or the `sqlite3` CLI:
 
 - `difficulty`
 - `component`
@@ -227,10 +254,10 @@ archived_closed
 
 Suggested workflow:
 
-1. Open `ISSUES.md` and review the Action Queue.
+1. Open `VLLM_ISSUES.md` and review the Action Queue.
 2. Pick an issue with high learning value and realistic fixability.
 3. Update `my_status`, `component`, `notes`, and `next_action` in
-   `issues.sqlite`.
+   `vllm_issues.sqlite`.
 4. Reproduce or analyze the issue in a separate vLLM checkout.
 5. Before starting any fix, check the upstream vLLM repository for duplicate
    PRs or recent changes.
@@ -256,8 +283,8 @@ Current fine-grained sources include:
 - `#28262`: gpt-oss Responses API Harmony metadata action list
 - `#32713`: unified parser RFC TODO list
 
-Synthetic child rows use negative internal IDs in `issues.sqlite`, but
-`ISSUES.md` renders them as parent-style labels like `#32713.3`.
+Synthetic child rows use negative internal IDs in `vllm_issues.sqlite`, but
+`VLLM_ISSUES.md` renders them as parent-style labels like `#32713.3`.
 
 ## Editing Topics
 

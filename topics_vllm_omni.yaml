@@ -1,0 +1,154 @@
+topics:
+  diffusion_image_video:
+    description: Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux, GLM-Image, DiT, VAE, and related pipelines.
+    queries:
+      - 'diffusion -linked:pr'
+      - 'Hunyuan -linked:pr'
+      - 'Wan2 -linked:pr'
+      - 'Qwen-Image -linked:pr'
+      - 'image video -linked:pr'
+
+  tts_audio_voice:
+    description: TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and streaming audio behavior.
+    queries:
+      - 'Qwen3-TTS -linked:pr'
+      - 'tts -linked:pr'
+      - 'audio speech -linked:pr'
+      - 'voice cloning -linked:pr'
+      - 'CosyVoice -linked:pr'
+
+  qwen3_omni:
+    description: Qwen3-Omni model-family issues including thinker/talker behavior, multimodal streaming, prefix caching, and stage transfer.
+    queries:
+      - 'Qwen3-Omni -linked:pr'
+      - 'Qwen3 Omni -linked:pr'
+      - 'thinker talker -linked:pr'
+      - 'Daily-Omni -linked:pr'
+
+  ci_testing_regressions:
+    description: CI failures, accuracy/performance regressions, nightly coverage, Buildkite failures, and flaky test failures.
+    queries:
+      - 'ci-failure -linked:pr'
+      - 'CI Failure -linked:pr'
+      - 'accuracy test -linked:pr'
+      - 'function test -linked:pr'
+      - 'nightly test -linked:pr'
+
+  orchestrator_engine_pipeline:
+    description: Orchestrator, engine layer, model runner, multi-stage pipeline, stage overrides, and pipeline protocol issues.
+    queries:
+      - 'orchestrator -linked:pr'
+      - 'engine layer -linked:pr'
+      - 'model runner -linked:pr'
+      - 'multi-stage -linked:pr'
+      - 'stage pipeline -linked:pr'
+
+  serving_api_entrypoints:
+    description: Online serving, OpenAI-compatible endpoints, websocket/streaming APIs, entrypoints, request/response semantics, and abnormal input behavior.
+    queries:
+      - 'online serving -linked:pr'
+      - 'websocket -linked:pr'
+      - 'streaming input -linked:pr'
+      - 'entrypoint -linked:pr'
+      - 'OpenAI requests -linked:pr'
+
+  disaggregated_transfer_memory:
+    description: Disaggregated serving, transfer engines, Mooncake/Yuanrong connectors, IPC, cross-process weight sharing, and encoder embedding data sharing.
+    queries:
+      - 'disaggregated -linked:pr'
+      - 'Mooncake -linked:pr'
+      - 'transfer engine -linked:pr'
+      - 'IPC connector -linked:pr'
+      - 'embedding data sharing -linked:pr'
+
+  quantization:
+    description: Quantization, FP8, AutoRound, GGUF, ModelOpt, TurboQuant, quantized attention backends, and non-standard checkpoint naming.
+    queries:
+      - 'quantization -linked:pr'
+      - 'FP8 -linked:pr'
+      - 'AutoRound -linked:pr'
+      - 'GGUF -linked:pr'
+      - 'ModelOpt -linked:pr'
+
+  robotics_world_models:
+    description: Robotics, world model, VLA, GR00T, Isaac, autonomous driving, and related model integrations.
+    queries:
+      - 'robotics -linked:pr'
+      - 'world model -linked:pr'
+      - 'VLA -linked:pr'
+      - 'Isaac GR00T -linked:pr'
+      - 'autonomous driving -linked:pr'
+
+  metrics_observability:
+    description: Prometheus, metrics UX, multimodal SLOs, observability, logging clarity, and per-stage/replica labels.
+    queries:
+      - 'Prometheus -linked:pr'
+      - 'metrics -linked:pr'
+      - 'observability -linked:pr'
+      - 'SLO -linked:pr'
+      - 'logging -linked:pr'
+
+  attention_cache_kernels:
+    description: Attention kernels, KV cache, prefix caching, sparse/ring attention, FlashAttention, CUDNN attention, and hidden-state cache I/O.
+    queries:
+      - 'attention -linked:pr'
+      - 'KV cache -linked:pr'
+      - 'prefix caching -linked:pr'
+      - 'sparse attention -linked:pr'
+      - 'ring attention -linked:pr'
+
+  docs_devex_release:
+    description: Documentation, examples, Docker/release requests, contributor workflow, pre-commit checks, internationalization, and community recipes.
+    queries:
+      - 'documentation -linked:pr'
+      - 'README -linked:pr'
+      - 'Docker image -linked:pr'
+      - 'example -linked:pr'
+      - 'pre-commit -linked:pr'
+
+  new_model_requests:
+    description: New model support requests and model-porting tasks that are not already covered by a more specific modality bucket.
+    queries:
+      - 'new model -linked:pr'
+      - 'add support -linked:pr'
+      - 'model support -linked:pr'
+      - 'port model -linked:pr'
+
+  performance_latency:
+    description: Performance, latency, throughput, concurrency, benchmark, first-token/first-frame timing, and scaling issues.
+    queries:
+      - 'performance -linked:pr'
+      - 'latency -linked:pr'
+      - 'throughput -linked:pr'
+      - 'benchmark -linked:pr'
+      - 'concurrency -linked:pr'
+
+  config_deployment:
+    description: Deployment config, YAML ownership, parser/default handling, Helm, deployment topology, and environment-specific configuration.
+    queries:
+      - 'deploy config -linked:pr'
+      - 'deployment -linked:pr'
+      - 'YAML -linked:pr'
+      - 'sentinel default -linked:pr'
+      - 'Helm -linked:pr'
+
+  lora_adapters:
+    description: LoRA, adapter loading, LyCORIS, LoKr, LoHa, and diffusion/TTS adapter support.
+    queries:
+      - 'LoRA -linked:pr'
+      - 'adapter -linked:pr'
+      - 'LyCORIS -linked:pr'
+      - 'LoKr -linked:pr'
+      - 'LoHa -linked:pr'
+
+  rl_training_rollout:
+    description: Reinforcement learning, deterministic rollout, and training support for omni-modal and diffusion models.
+    queries:
+      - 'reinforcement learning -linked:pr'
+      - 'RL training -linked:pr'
+      - 'rollout -linked:pr'
+      - 'training -linked:pr'
+
+  other_general:
+    description: Cached initial issues that did not match a focused vLLM-Omni bucket. This catch-all is not searched during future syncs.
+    queries: []

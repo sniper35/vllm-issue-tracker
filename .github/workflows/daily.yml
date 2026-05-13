@@ -22,10 +22,20 @@ jobs:
       - run: python daily_update.py
         env:
           GH_TOKEN: ${{ github.token }}
+      - run: >
+          python daily_update.py
+          --repo vllm-project/vllm-omni
+          --topics topics_vllm_omni.yaml
+          --db vllm_omni_issues.sqlite
+          --markdown VLLM_OMNI_ISSUES.md
+          --csv vllm_omni_issues.csv
+          --search-delay-seconds 3
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Commit generated updates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ISSUES.md issues.csv issues.sqlite
+          git add VLLM_ISSUES.md vllm_issues.csv vllm_issues.sqlite VLLM_OMNI_ISSUES.md vllm_omni_issues.csv vllm_omni_issues.sqlite
           git diff --cached --quiet || git commit -m "Update vLLM issue tracker"
           git push

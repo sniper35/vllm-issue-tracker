@@ -17,12 +17,12 @@ Primary source of truth: local SQLite database.
 
 Generated outputs:
 
-- `ISSUES.md`
-- `issues.csv`
+- `VLLM_ISSUES.md`
+- `vllm_issues.csv`
 
 Optional later output:
 
-- Google Sheet sync from `issues.csv`
+- Google Sheet sync from `vllm_issues.csv`
 
 ## Repository Scope
 
@@ -38,13 +38,13 @@ Create these files:
 topics.yaml
 daily_update.py
 requirements.txt
-ISSUES.md
-issues.csv
+VLLM_ISSUES.md
+vllm_issues.csv
 .github/workflows/daily.yml
 README.md
 ```
 
-The generated files are `ISSUES.md` and `issues.csv`. The rest are authored files.
+The generated files are `VLLM_ISSUES.md` and `vllm_issues.csv`. The rest are authored files.
 
 ## Data Model
 
@@ -221,13 +221,13 @@ For each topic and query:
 6. Regenerate:
 
    ```text
-   ISSUES.md
-   issues.csv
+   VLLM_ISSUES.md
+   vllm_issues.csv
    ```
 
 ## Dashboard Format
 
-`ISSUES.md` should be grouped by topic.
+`VLLM_ISSUES.md` should be grouped by topic.
 
 Each row should include:
 
@@ -309,7 +309,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ISSUES.md issues.csv issues.sqlite
+          git add VLLM_ISSUES.md vllm_issues.csv vllm_issues.sqlite
           git diff --cached --quiet || git commit -m "Update vLLM issue tracker"
           git push
 ```
@@ -328,7 +328,7 @@ The next agent should stop when:
 - `daily_update.py` can run locally with `gh` authenticated
 - `topics.yaml` exists with the topic definitions above
 - SQLite is created or updated
-- `ISSUES.md` and `issues.csv` are generated
+- `VLLM_ISSUES.md` and `vllm_issues.csv` are generated
 - linked-PR and closed issues are archived, not shown in active issue lists
 - README explains how to run the sync manually
 - GitHub Actions workflow is present if this repo is pushed to GitHub
@@ -343,5 +343,5 @@ python daily_update.py
 git status --short
 ```
 
-Review `ISSUES.md`, then choose one issue with high learning value and realistic fixability.
+Review `VLLM_ISSUES.md`, then choose one issue with high learning value and realistic fixability.
 

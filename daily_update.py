@@ -21,9 +21,9 @@ import yaml
 
 REPO = "vllm-project/vllm"
 TOPICS_PATH = Path("topics.yaml")
-DB_PATH = Path("issues.sqlite")
-MARKDOWN_PATH = Path("ISSUES.md")
-CSV_PATH = Path("issues.csv")
+DB_PATH = Path("vllm_issues.sqlite")
+MARKDOWN_PATH = Path("VLLM_ISSUES.md")
+CSV_PATH = Path("vllm_issues.csv")
 DEFAULT_SEARCH_DELAY_SECONDS = float(os.getenv("GH_SEARCH_DELAY_SECONDS", "2.2"))
 DEFAULT_GH_COMMAND_MAX_ATTEMPTS = max(1, int(os.getenv("GH_COMMAND_MAX_ATTEMPTS", "3")))
 DEFAULT_GH_COMMAND_RETRY_DELAY_SECONDS = float(
@@ -734,14 +734,18 @@ def wait_for_search_rate_reset(
     sleep(wait_seconds)
 
 
-def search_issues(query: str, limit: int = 10) -> list[dict[str, Any]]:
+def search_issues(
+    query: str,
+    limit: int = 10,
+    repo: str = REPO,
+) -> list[dict[str, Any]]:
     return run_gh_json(
         [
             "search",
             "issues",
             query,
             "--repo",
-            REPO,
+            repo,
             "--state",
             "open",
             "--no-assignee",
@@ -753,14 +757,14 @@ def search_issues(query: str, limit: int = 10) -> list[dict[str, Any]]:
     )
 
 
-def fetch_issue(issue_number: int) -> dict[str, Any]:
+def fetch_issue(issue_number: int, repo: str = REPO) -> dict[str, Any]:
     issue = run_gh_json(
         [
             "issue",
             "view",
             str(issue_number),
             "--repo",
-            REPO,
+            repo,
             "--json",
             "state,title,url,updatedAt,createdAt,labels,assignees",
         ]
@@ -769,14 +773,14 @@ def fetch_issue(issue_number: int) -> dict[str, Any]:
     return issue
 
 
-def fetch_issue_with_body(issue_number: int) -> dict[str, Any]:
+def fetch_issue_with_body(issue_number: int, repo: str = REPO) -> dict[str, Any]:
     issue = run_gh_json(
         [
             "issue",
             "view",
             str(issue_number),
             "--repo",
-            REPO,
+            repo,
             "--json",
             "state,title,url,updatedAt,createdAt,labels,assignees,body",
         ]
@@ -785,13 +789,13 @@ def fetch_issue_with_body(issue_number: int) -> dict[str, Any]:
     return issue
 
 
-def find_linked_prs(issue_number: int) -> list[dict[str, Any]]:
+def find_linked_prs(issue_number: int, repo: str = REPO) -> list[dict[str, Any]]:
     return run_gh_json(
         [
             "pr",
             "list",
             "--repo",
-            REPO,
+            repo,
             "--state",
             "open",
             "--search",
@@ -904,10 +908,14 @@ def sync_issue_subissues(
     sources: dict[int, dict[str, Any]],
     now: str,
     progress: Any | None = None,
+    repo: str = REPO,
 ) -> None:
     for issue_number, source in sources.items():
         emit_progress(progress, f"Parsing subissues from #{issue_number}.")
-        issue = fetch_issue_with_body(issue_number)
+        if repo == REPO:
+            issue = fetch_issue_with_body(issue_number)
+        else:
+            issue = fetch_issue_with_body(issue_number, repo=repo)
         if not issue:
             continue
         issue["number"] = issue_number
@@ -934,6 +942,7 @@ def sync_search_results(
     now: str,
     search_limiter: SearchRateLimiter | None = None,
     progress: Any | None = None,
+    repo: str = REPO,
 ) -> None:
     seen: set[int] = set()
     total_queries = count_topic_queries(topics)
@@ -947,7 +956,11 @@ def sync_search_results(
             )
             if search_limiter is not None:
                 search_limiter.wait()
-            for issue in search_issues(query, limit=10):
+            if repo == REPO:
+                issues = search_issues(query, limit=10)
+            else:
+                issues = search_issues(query, limit=10, repo=repo)
+            for issue in issues:
                 issue_number = int(issue["number"])
                 if issue_number in seen:
                     continue
@@ -1004,6 +1017,7 @@ def refresh_active_issues(
     now: str,
     linked_pr_limiter: SearchRateLimiter | None = None,
     progress: Any | None = None,
+    repo: str = REPO,
 ) -> None:
     issue_numbers = active_issue_numbers(conn)
     total_issues = len(issue_numbers)
@@ -1013,7 +1027,10 @@ def refresh_active_issues(
             f"Refreshing {issue_index}/{total_issues}: issue #{issue_number}",
         )
         try:
-            issue = fetch_issue(issue_number)
+            if repo == REPO:
+                issue = fetch_issue(issue_number)
+            else:
+                issue = fetch_issue(issue_number, repo=repo)
         except GhNotFoundError:
             archive_issue(conn, issue_number, "not_found", now)
             continue
@@ -1053,7 +1070,10 @@ def refresh_active_issues(
 
         if linked_pr_limiter is not None:
             linked_pr_limiter.wait()
-        linked_prs = find_linked_prs(issue_number)
+        if repo == REPO:
+            linked_prs = find_linked_prs(issue_number)
+        else:
+            linked_prs = find_linked_prs(issue_number, repo=repo)
         if linked_prs:
             if is_rfc_like_issue(issue) or issue_number in RFC_SUBISSUE_SOURCES:
                 mark_issue_linked_partial(conn, issue, now)
@@ -1239,9 +1259,9 @@ def render_markdown(
 
 
 def export_csv(conn: sqlite3.Connection, output_path: Path = CSV_PATH) -> None:
-    rows = conn.execute(
-        f"SELECT {', '.join(ISSUE_COLUMNS)} FROM issues ORDER BY topic, issue_number"
-    ).fetchall()
+    rows = sorted(
+        report_rows(conn), key=lambda row: (row["topic"], row["issue_number"])
+    )
     with output_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
             handle,
@@ -1260,6 +1280,7 @@ def sync(
     csv_path: Path = CSV_PATH,
     search_delay_seconds: float = DEFAULT_SEARCH_DELAY_SECONDS,
     progress: Any | None = stderr_progress,
+    repo: str = REPO,
 ) -> None:
     started_at_monotonic = time.monotonic()
     now = utc_now()
@@ -1294,14 +1315,23 @@ def sync(
             now,
             search_limiter=search_limiter,
             progress=progress,
+            repo=repo,
         )
-        sync_issue_subissues(conn, RFC_SUBISSUE_SOURCES, now, progress=progress)
+        if repo == REPO:
+            sync_issue_subissues(
+                conn,
+                RFC_SUBISSUE_SOURCES,
+                now,
+                progress=progress,
+                repo=repo,
+            )
         archive_excluded_issues(conn, now)
         refresh_active_issues(
             conn,
             now,
             linked_pr_limiter=search_limiter,
             progress=progress,
+            repo=repo,
         )
         render_markdown(conn, markdown_path, topics, generated_at=now)
         export_csv(conn, csv_path)
@@ -1315,6 +1345,7 @@ def sync(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--repo", default=REPO)
     parser.add_argument("--topics", type=Path, default=TOPICS_PATH)
     parser.add_argument("--db", type=Path, default=DB_PATH)
     parser.add_argument("--markdown", type=Path, default=MARKDOWN_PATH)
@@ -1346,6 +1377,7 @@ def main() -> None:
             csv_path=args.csv,
             search_delay_seconds=args.search_delay_seconds,
             progress=None if args.quiet else stderr_progress,
+            repo=args.repo,
         )
     except GhCommandError as exc:
         raise SystemExit(

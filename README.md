@@ -103,6 +103,9 @@ When an issue already has an assignee, it is excluded from active tracking with
 `archive_reason = assigned`.
 When an issue has an AMD/ROCm label or an obvious AMD GPU title marker, it is
 excluded from active tracking with `archive_reason = excluded_amd_rocm`.
+For the vLLM-Omni tracker, unsupported hardware-specific issues for
+NPU/XPU/ROCm/Ascend are excluded with
+`archive_reason = excluded_unsupported_hardware`.
 
 ## vLLM-Omni Tracker
 
@@ -120,9 +123,11 @@ python daily_update.py \
 ```
 
 `topics_vllm_omni.yaml` tracks the selected vLLM-Omni buckets except
-`hardware_accelerators`. The initial vLLM-Omni files were seeded from a cached
-issue snapshot without making linked-PR checks; the next normal sync will
-refresh active issues and archive rows with linked open PRs.
+`hardware_accelerators`, and the sync also filters NPU/XPU/ROCm/Ascend issues
+because they require hardware that is not available for local follow-up. The
+initial vLLM-Omni files were seeded from a cached issue snapshot without making
+linked-PR checks; the next normal sync will refresh active issues and archive
+rows with linked open PRs.
 
 ## GitHub API Rate Limits
 

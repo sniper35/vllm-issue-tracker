@@ -314,6 +314,53 @@ def test_archive_excluded_hardware_issues_archives_stored_amd_gpu_titles():
     assert row["my_status"] == "archived_excluded_amd_rocm"
 
 
+def test_archive_excluded_issues_uses_omni_hardware_policy():
+    conn = make_conn()
+    npu_issue = make_issue(123, "Qwen3 Omni fails on Ascend NPU")
+    npu_issue["labels"] = [{"name": "bug"}, {"name": "NPU"}]
+    xpu_issue = make_issue(124, "Intel XPU runtime error")
+    rocm_issue = make_issue(125, "ROCm build failure")
+    cuda_issue = make_issue(126, "CUDA graph issue")
+    daily_update.upsert_issue(conn, "qwen3_omni", npu_issue, "2026-05-01T12:00:00Z")
+    daily_update.upsert_issue(conn, "qwen3_omni", xpu_issue, "2026-05-01T12:00:00Z")
+    daily_update.upsert_issue(conn, "qwen3_omni", rocm_issue, "2026-05-01T12:00:00Z")
+    daily_update.upsert_issue(conn, "qwen3_omni", cuda_issue, "2026-05-01T12:00:00Z")
+
+    daily_update.archive_excluded_issues(
+        conn,
+        "2026-05-03T08:00:00Z",
+        repo=daily_update.VLLM_OMNI_REPO,
+    )
+
+    assert fetch_issue(conn, 123)["archive_reason"] == "excluded_unsupported_hardware"
+    assert fetch_issue(conn, 124)["archive_reason"] == "excluded_unsupported_hardware"
+    assert fetch_issue(conn, 125)["archive_reason"] == "excluded_unsupported_hardware"
+    assert fetch_issue(conn, 126)["archive_reason"] == ""
+    assert (
+        fetch_issue(conn, 123)["my_status"] == "archived_excluded_unsupported_hardware"
+    )
+
+
+def test_default_vllm_hardware_policy_does_not_exclude_npu():
+    issue = make_issue(123, "Qwen3 Omni fails on Ascend NPU")
+    issue["labels"] = [{"name": "bug"}, {"name": "NPU"}]
+
+    assert daily_update.issue_exclusion_reason(issue, repo=daily_update.REPO) is None
+
+
+def test_omni_hardware_policy_does_not_treat_input_as_npu():
+    issue = make_issue(123, "Streaming input support for Qwen3-Omni")
+    issue["labels"] = [{"name": "input-processing"}]
+
+    assert (
+        daily_update.issue_exclusion_reason(
+            issue,
+            repo=daily_update.VLLM_OMNI_REPO,
+        )
+        is None
+    )
+
+
 def test_refresh_active_issues_archives_unresolvable_issue(monkeypatch):
     conn = make_conn()
     daily_update.upsert_issue(conn, "kv_cache", make_issue(), "2026-05-01T12:00:00Z")
@@ -1057,6 +1104,37 @@ def test_sync_search_results_skips_obvious_amd_gpu_titles(monkeypatch):
 
     assert fetch_issue(conn, 123) is None
     assert fetch_issue(conn, 124)["title"] == "CUDA issue"
+
+
+def test_sync_search_results_skips_omni_unsupported_hardware(monkeypatch):
+    conn = make_conn()
+
+    def fake_search_issues(query, limit=10, repo=daily_update.REPO):
+        npu_issue = make_issue(123, "Qwen3 Omni fails on Ascend NPU")
+        npu_issue["labels"] = [{"name": "bug"}, {"name": "NPU"}]
+        xpu_issue = make_issue(124, "Intel XPU runtime error")
+        rocm_issue = make_issue(125, "ROCm build failure")
+        cuda_issue = make_issue(126, "CUDA issue")
+        return [npu_issue, xpu_issue, rocm_issue, cuda_issue]
+
+    monkeypatch.setattr(daily_update, "search_issues", fake_search_issues)
+
+    daily_update.sync_search_results(
+        conn,
+        {
+            "qwen3_omni": {
+                "description": "Qwen3 Omni behavior.",
+                "queries": ["qwen3 omni -linked:pr"],
+            }
+        },
+        "2026-05-01T12:00:00Z",
+        repo=daily_update.VLLM_OMNI_REPO,
+    )
+
+    assert fetch_issue(conn, 123) is None
+    assert fetch_issue(conn, 124) is None
+    assert fetch_issue(conn, 125) is None
+    assert fetch_issue(conn, 126)["title"] == "CUDA issue"
 
 
 def test_sync_search_results_skips_assigned_issues(monkeypatch):

@@ -20,6 +20,7 @@ import yaml
 
 
 REPO = "vllm-project/vllm"
+VLLM_OMNI_REPO = "vllm-project/vllm-omni"
 TOPICS_PATH = Path("topics.yaml")
 DB_PATH = Path("vllm_issues.sqlite")
 MARKDOWN_PATH = Path("VLLM_ISSUES.md")
@@ -83,6 +84,21 @@ EXCLUDED_HARDWARE_TITLE_KEYWORDS = (
     "mi355",
     "gfx",
 )
+VLLM_OMNI_EXCLUDED_HARDWARE_LABEL_KEYWORDS = (
+    "amd",
+    "rocm",
+    "npu",
+    "xpu",
+    "ascend",
+)
+VLLM_OMNI_EXCLUDED_HARDWARE_TITLE_KEYWORDS = (
+    "amd",
+    "rocm",
+    "npu",
+    "xpu",
+    "ascend",
+)
+TOKEN_MATCH_HARDWARE_KEYWORDS = {"npu", "xpu"}
 STALE_LABEL = "stale"
 
 RFC_SUBISSUE_SOURCES = {
@@ -322,34 +338,68 @@ def issue_has_label(issue: dict[str, Any], label_name: str) -> bool:
     return labels_include(issue.get("labels"), label_name)
 
 
-def labels_have_excluded_hardware_label(labels: Any) -> bool:
+def excluded_hardware_policy(
+    repo: str,
+) -> tuple[str, tuple[str, ...], tuple[str, ...]]:
+    if repo == VLLM_OMNI_REPO:
+        return (
+            "excluded_unsupported_hardware",
+            VLLM_OMNI_EXCLUDED_HARDWARE_LABEL_KEYWORDS,
+            VLLM_OMNI_EXCLUDED_HARDWARE_TITLE_KEYWORDS,
+        )
+    return (
+        "excluded_amd_rocm",
+        EXCLUDED_HARDWARE_LABEL_KEYWORDS,
+        EXCLUDED_HARDWARE_TITLE_KEYWORDS,
+    )
+
+
+def token_keyword_matches(text: str, keyword: str) -> bool:
+    if keyword in TOKEN_MATCH_HARDWARE_KEYWORDS:
+        pattern = rf"(?<![a-z0-9]){re.escape(keyword)}(?![a-z0-9])"
+        return re.search(pattern, text) is not None
+    return keyword in text
+
+
+def labels_have_excluded_hardware_label(
+    labels: Any,
+    keywords: tuple[str, ...] = EXCLUDED_HARDWARE_LABEL_KEYWORDS,
+) -> bool:
     for name in label_names(labels):
         normalized = name.lower()
-        if any(keyword in normalized for keyword in EXCLUDED_HARDWARE_LABEL_KEYWORDS):
+        if any(token_keyword_matches(normalized, keyword) for keyword in keywords):
             return True
     return False
 
 
-def text_has_excluded_hardware_keyword(text: Any) -> bool:
+def text_has_excluded_hardware_keyword(
+    text: Any,
+    keywords: tuple[str, ...] = EXCLUDED_HARDWARE_TITLE_KEYWORDS,
+) -> bool:
     normalized = str(text or "").lower()
-    return any(keyword in normalized for keyword in EXCLUDED_HARDWARE_TITLE_KEYWORDS)
+    return any(token_keyword_matches(normalized, keyword) for keyword in keywords)
 
 
-def issue_has_excluded_hardware_signal(issue: dict[str, Any]) -> bool:
+def issue_has_excluded_hardware_signal(
+    issue: dict[str, Any],
+    repo: str = REPO,
+) -> bool:
+    _reason, label_keywords, title_keywords = excluded_hardware_policy(repo)
     return labels_have_excluded_hardware_label(
-        issue.get("labels")
-    ) or text_has_excluded_hardware_keyword(issue.get("title"))
+        issue.get("labels"), label_keywords
+    ) or text_has_excluded_hardware_keyword(issue.get("title"), title_keywords)
 
 
 def issue_has_assignees(issue: dict[str, Any]) -> bool:
     return bool(assignees_to_text(issue.get("assignees")).strip())
 
 
-def issue_exclusion_reason(issue: dict[str, Any]) -> str | None:
+def issue_exclusion_reason(issue: dict[str, Any], repo: str = REPO) -> str | None:
     if issue_has_assignees(issue):
         return "assigned"
-    if issue_has_excluded_hardware_signal(issue):
-        return "excluded_amd_rocm"
+    hardware_reason, _label_keywords, _title_keywords = excluded_hardware_policy(repo)
+    if issue_has_excluded_hardware_signal(issue, repo):
+        return hardware_reason
     return None
 
 
@@ -430,6 +480,7 @@ def upsert_issue(
                     WHEN archive_reason IN (
                         'removed_topic',
                         'excluded_amd_rocm',
+                        'excluded_unsupported_hardware',
                         'assigned'
                     )
                     THEN ?
@@ -447,6 +498,7 @@ def upsert_issue(
                     WHEN archive_reason IN (
                         'removed_topic',
                         'excluded_amd_rocm',
+                        'excluded_unsupported_hardware',
                         'assigned'
                     )
                     THEN ''
@@ -456,6 +508,7 @@ def upsert_issue(
                     WHEN archive_reason IN (
                         'removed_topic',
                         'excluded_amd_rocm',
+                        'excluded_unsupported_hardware',
                         'assigned'
                     )
                     THEN ''
@@ -465,6 +518,7 @@ def upsert_issue(
                     WHEN archive_reason IN (
                         'removed_topic',
                         'excluded_amd_rocm',
+                        'excluded_unsupported_hardware',
                         'assigned'
                     )
                     THEN 'unlinked'
@@ -474,11 +528,13 @@ def upsert_issue(
                     WHEN archive_reason IN (
                         'removed_topic',
                         'excluded_amd_rocm',
+                        'excluded_unsupported_hardware',
                         'assigned'
                     )
                          AND my_status IN (
                              'archived_removed_topic',
                              'archived_excluded_amd_rocm',
+                             'archived_excluded_unsupported_hardware',
                              'archived_assigned'
                          )
                     THEN 'triage'
@@ -514,6 +570,7 @@ def archive_issue(
         "removed_topic": "archived_removed_topic",
         "not_found": "archived_not_found",
         "excluded_amd_rocm": "archived_excluded_amd_rocm",
+        "excluded_unsupported_hardware": "archived_excluded_unsupported_hardware",
         "assigned": "archived_assigned",
     }
     if reason not in status_by_reason:
@@ -538,7 +595,9 @@ def archive_issue(
 def archive_excluded_issues(
     conn: sqlite3.Connection,
     now: str,
+    repo: str = REPO,
 ) -> None:
+    hardware_reason, label_keywords, title_keywords = excluded_hardware_policy(repo)
     rows = conn.execute(
         """
         SELECT issue_number, title, labels, assignees
@@ -550,16 +609,17 @@ def archive_excluded_issues(
         if assignees_to_text(row["assignees"]):
             archive_issue(conn, int(row["issue_number"]), "assigned", now)
         elif labels_have_excluded_hardware_label(
-            row["labels"]
-        ) or text_has_excluded_hardware_keyword(row["title"]):
-            archive_issue(conn, int(row["issue_number"]), "excluded_amd_rocm", now)
+            row["labels"], label_keywords
+        ) or text_has_excluded_hardware_keyword(row["title"], title_keywords):
+            archive_issue(conn, int(row["issue_number"]), hardware_reason, now)
 
 
 def archive_excluded_hardware_issues(
     conn: sqlite3.Connection,
     now: str,
+    repo: str = REPO,
 ) -> None:
-    archive_excluded_issues(conn, now)
+    archive_excluded_issues(conn, now, repo=repo)
 
 
 def mark_issue_linked_partial(
@@ -920,7 +980,7 @@ def sync_issue_subissues(
             continue
         issue["number"] = issue_number
         upsert_issue(conn, source["topic"], issue, now)
-        exclusion_reason = issue_exclusion_reason(issue)
+        exclusion_reason = issue_exclusion_reason(issue, repo=repo)
         if exclusion_reason is not None:
             archive_issue(conn, issue_number, exclusion_reason, now)
             continue
@@ -965,7 +1025,7 @@ def sync_search_results(
                 if issue_number in seen:
                     continue
                 seen.add(issue_number)
-                if issue_exclusion_reason(issue) is not None:
+                if issue_exclusion_reason(issue, repo=repo) is not None:
                     continue
                 upsert_issue(conn, topic_name, issue, now)
 
@@ -1040,7 +1100,7 @@ def refresh_active_issues(
             archive_issue(conn, issue_number, "closed", now)
             continue
 
-        exclusion_reason = issue_exclusion_reason(issue)
+        exclusion_reason = issue_exclusion_reason(issue, repo=repo)
         if exclusion_reason is not None:
             conn.execute(
                 """
@@ -1292,7 +1352,7 @@ def sync(
     with connect_db(db_path) as conn:
         ensure_schema(conn)
         archive_unconfigured_topic_issues(conn, set(topics), now)
-        archive_excluded_issues(conn, now)
+        archive_excluded_issues(conn, now, repo=repo)
         active_count = len(active_issue_numbers(conn))
         search_request_count = count_topic_queries(topics) + active_count
         minimum_wait = max(0, search_request_count - 1) * search_delay_seconds
@@ -1325,7 +1385,7 @@ def sync(
                 progress=progress,
                 repo=repo,
             )
-        archive_excluded_issues(conn, now)
+        archive_excluded_issues(conn, now, repo=repo)
         refresh_active_issues(
             conn,
             now,

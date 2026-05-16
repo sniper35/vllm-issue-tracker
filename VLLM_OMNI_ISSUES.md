@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-05-15T18:02:34+00:00
+Generated at: 2026-05-16T16:15:16+00:00
 
 ## Action Queue
 
@@ -8,10 +8,10 @@ Generated at: 2026-05-15T18:02:34+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#3632](https://github.com/vllm-project/vllm-omni/issues/3632) | [RFC]: Streaming diffusion video generation output & mid-way prompt update |  | 2026-05-16T15:41:41Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3632 |
 | [#3186](https://github.com/vllm-project/vllm-omni/issues/3186) | [RFC]: Kernel Optimization for Diffusion DiT and MoE LLM | help wanted, good first issue | 2026-05-15T14:44:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3186 |
 | [#3629](https://github.com/vllm-project/vllm-omni/issues/3629) | [RFC]: Continuous Recipe Support for Diffusion Models | help wanted, good first issue, diffusion | 2026-05-15T08:06:20Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3629 |
 | [#3627](https://github.com/vllm-project/vllm-omni/issues/3627) | [Bug]: hunyuan-image default config run failed with _hunyuan_image3_unpack_packed_topk func signature | bug | 2026-05-15T07:42:52Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3627 |
-| [#3632](https://github.com/vllm-project/vllm-omni/issues/3632) | [RFC]: Streaming diffusion video generation output & mid-way prompt update |  | 2026-05-15T04:12:51Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3632 |
 | [#3586](https://github.com/vllm-project/vllm-omni/issues/3586) | [Bug]:  Diffusion X2I(&A&T) · Perf Test · Qwen-Image, OSError: Qwen/Qwen-Image does not appear to have a file named text_encoder/model-00002-of-00004.safetensors. | bug, high priority, ci-failure | 2026-05-14T15:31:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3586 |
 | [#3595](https://github.com/vllm-project/vllm-omni/issues/3595) | [Bug]: HunyuanImage-3.0-Instruct multi-stage deployment triggers multimodal cache miss and KV transfer timeout | bug | 2026-05-14T09:36:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3595 |
 | [#3572](https://github.com/vllm-project/vllm-omni/issues/3572) | [RFC]: Mandatory Base Class for Diffusion Pipelines with Unified Parameter Declaration |  | 2026-05-14T08:52:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3572 |
@@ -117,7 +117,6 @@ Generated at: 2026-05-15T18:02:34+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3635](https://github.com/vllm-project/vllm-omni/issues/3635) | [RFC]: Qwen3-Omni Stage Transfer via Mooncake Transfer Engine |  | 2026-05-15T06:44:21Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3635 |
 | [#3509](https://github.com/vllm-project/vllm-omni/issues/3509) | [RFC]: Async D2H + Stage Pipeline Async Transfer for Qwen3-Omni |  | 2026-05-11T13:28:48Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3509 |
 | [#3449](https://github.com/vllm-project/vllm-omni/issues/3449) | [Feature]: The streaming input for Qwen3-Omni should support system prompts and conversation history |  | 2026-05-11T03:17:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3449 |
 | [#2960](https://github.com/vllm-project/vllm-omni/issues/2960) | [Feature]: [Qwen3-Omni] Validate cross-feature compatibility |  | 2026-04-25T06:52:41Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2960 |
@@ -157,7 +156,6 @@ Generated at: 2026-05-15T18:02:34+00:00
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [#3555](https://github.com/vllm-project/vllm-omni/issues/3555) | [Rebase][Bug] Omni Accuracy Test: SEED-TTS WER (0.534) exceeds threshold (0.5) on dev/vllm-align | bug, high priority, ci-failure | 2026-05-15T01:19:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3555 |
 | [#3432](https://github.com/vllm-project/vllm-omni/issues/3432) | [Bug]: Diffusion X2I(&A&T) · Function Test with L4, tests/e2e/online_serving/test_sd3_expansion.py::test_sd3_medium[omni_server0], stabilityai/stable-diffusion-3.5-medium does not appear to have files | bug, high priority, ci-failure | 2026-05-13T04:15:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3432 |
-| [#3562](https://github.com/vllm-project/vllm-omni/issues/3562) | [Feature]: HunyuanImage3 Test Coverage Proposal |  | 2026-05-13T03:57:51Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3562 |
 | [#3255](https://github.com/vllm-project/vllm-omni/issues/3255) | [Rebase][Bug] Qwen3-Omni Daily-Omni accuracy regresses to 0.6892 < 0.69 threshold on dev/rebase-0.20.0 (Omni · Accuracy Test) | bug, ci-failure | 2026-05-07T01:09:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3255 |
 | [#3254](https://github.com/vllm-project/vllm-omni/issues/3254) | [Rebase][Bug] MiMo-Audio test_audio_to_text_audio_001 fails: text response runs longer than audio, Whisper hallucinates 'you' on trailing silence (Omni Model Test with H100) |  | 2026-05-03T16:03:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3254 |
 
@@ -183,7 +181,7 @@ Generated at: 2026-05-15T18:02:34+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-05-07T19:19:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
+| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-05-16T06:18:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
 | [#3064](https://github.com/vllm-project/vllm-omni/issues/3064) | [RFC]: Cross-process Model Weight Sharing via PyTorch IPC | high priority | 2026-04-28T03:55:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3064 |
 | [#2379](https://github.com/vllm-project/vllm-omni/issues/2379) | [RFC]: Single-Node D2D Transfer - CUDA IPC Connector |  | 2026-04-01T03:15:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2379 |
 
@@ -237,10 +235,10 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#3632](https://github.com/vllm-project/vllm-omni/issues/3632) | [RFC]: Streaming diffusion video generation output & mid-way prompt update |  | 2026-05-16T15:41:41Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3632 |
 | [#3186](https://github.com/vllm-project/vllm-omni/issues/3186) | [RFC]: Kernel Optimization for Diffusion DiT and MoE LLM | help wanted, good first issue | 2026-05-15T14:44:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3186 |
 | [#3629](https://github.com/vllm-project/vllm-omni/issues/3629) | [RFC]: Continuous Recipe Support for Diffusion Models | help wanted, good first issue, diffusion | 2026-05-15T08:06:20Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3629 |
 | [#3627](https://github.com/vllm-project/vllm-omni/issues/3627) | [Bug]: hunyuan-image default config run failed with _hunyuan_image3_unpack_packed_topk func signature | bug | 2026-05-15T07:42:52Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3627 |
-| [#3632](https://github.com/vllm-project/vllm-omni/issues/3632) | [RFC]: Streaming diffusion video generation output & mid-way prompt update |  | 2026-05-15T04:12:51Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3632 |
 | [#3586](https://github.com/vllm-project/vllm-omni/issues/3586) | [Bug]:  Diffusion X2I(&A&T) · Perf Test · Qwen-Image, OSError: Qwen/Qwen-Image does not appear to have a file named text_encoder/model-00002-of-00004.safetensors. | bug, high priority, ci-failure | 2026-05-14T15:31:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3586 |
 | [#3595](https://github.com/vllm-project/vllm-omni/issues/3595) | [Bug]: HunyuanImage-3.0-Instruct multi-stage deployment triggers multimodal cache miss and KV transfer timeout | bug | 2026-05-14T09:36:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3595 |
 | [#3572](https://github.com/vllm-project/vllm-omni/issues/3572) | [RFC]: Mandatory Base Class for Diffusion Pipelines with Unified Parameter Declaration |  | 2026-05-14T08:52:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3572 |
@@ -354,7 +352,6 @@ Qwen3-Omni model-family issues including thinker/talker behavior, multimodal str
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3635](https://github.com/vllm-project/vllm-omni/issues/3635) | [RFC]: Qwen3-Omni Stage Transfer via Mooncake Transfer Engine |  | 2026-05-15T06:44:21Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3635 |
 | [#3509](https://github.com/vllm-project/vllm-omni/issues/3509) | [RFC]: Async D2H + Stage Pipeline Async Transfer for Qwen3-Omni |  | 2026-05-11T13:28:48Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3509 |
 | [#3449](https://github.com/vllm-project/vllm-omni/issues/3449) | [Feature]: The streaming input for Qwen3-Omni should support system prompts and conversation history |  | 2026-05-11T03:17:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3449 |
 | [#2960](https://github.com/vllm-project/vllm-omni/issues/2960) | [Feature]: [Qwen3-Omni] Validate cross-feature compatibility |  | 2026-04-25T06:52:41Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2960 |
@@ -400,7 +397,6 @@ CI failures, accuracy/performance regressions, nightly coverage, Buildkite failu
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [#3555](https://github.com/vllm-project/vllm-omni/issues/3555) | [Rebase][Bug] Omni Accuracy Test: SEED-TTS WER (0.534) exceeds threshold (0.5) on dev/vllm-align | bug, high priority, ci-failure | 2026-05-15T01:19:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3555 |
 | [#3432](https://github.com/vllm-project/vllm-omni/issues/3432) | [Bug]: Diffusion X2I(&A&T) · Function Test with L4, tests/e2e/online_serving/test_sd3_expansion.py::test_sd3_medium[omni_server0], stabilityai/stable-diffusion-3.5-medium does not appear to have files | bug, high priority, ci-failure | 2026-05-13T04:15:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3432 |
-| [#3562](https://github.com/vllm-project/vllm-omni/issues/3562) | [Feature]: HunyuanImage3 Test Coverage Proposal |  | 2026-05-13T03:57:51Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3562 |
 | [#3255](https://github.com/vllm-project/vllm-omni/issues/3255) | [Rebase][Bug] Qwen3-Omni Daily-Omni accuracy regresses to 0.6892 < 0.69 threshold on dev/rebase-0.20.0 (Omni · Accuracy Test) | bug, ci-failure | 2026-05-07T01:09:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3255 |
 | [#3254](https://github.com/vllm-project/vllm-omni/issues/3254) | [Rebase][Bug] MiMo-Audio test_audio_to_text_audio_001 fails: text response runs longer than audio, Whisper hallucinates 'you' on trailing silence (Omni Model Test with H100) |  | 2026-05-03T16:03:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3254 |
 
@@ -432,7 +428,7 @@ Disaggregated serving, transfer engines, Mooncake/Yuanrong connectors, IPC, cros
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-05-07T19:19:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
+| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-05-16T06:18:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
 | [#3064](https://github.com/vllm-project/vllm-omni/issues/3064) | [RFC]: Cross-process Model Weight Sharing via PyTorch IPC | high priority | 2026-04-28T03:55:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3064 |
 | [#2379](https://github.com/vllm-project/vllm-omni/issues/2379) | [RFC]: Single-Node D2D Transfer - CUDA IPC Connector |  | 2026-04-01T03:15:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2379 |
 

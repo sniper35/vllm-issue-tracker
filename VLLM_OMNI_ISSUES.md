@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-05-16T16:15:16+00:00
+Generated at: 2026-05-17T16:15:55+00:00
 
 ## Action Queue
 
@@ -8,8 +8,7 @@ Generated at: 2026-05-16T16:15:16+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3632](https://github.com/vllm-project/vllm-omni/issues/3632) | [RFC]: Streaming diffusion video generation output & mid-way prompt update |  | 2026-05-16T15:41:41Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3632 |
-| [#3186](https://github.com/vllm-project/vllm-omni/issues/3186) | [RFC]: Kernel Optimization for Diffusion DiT and MoE LLM | help wanted, good first issue | 2026-05-15T14:44:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3186 |
+| [#3186](https://github.com/vllm-project/vllm-omni/issues/3186) | [RFC]: Kernel Optimization for Diffusion DiT and MoE LLM | help wanted, good first issue | 2026-05-17T08:59:48Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3186 |
 | [#3629](https://github.com/vllm-project/vllm-omni/issues/3629) | [RFC]: Continuous Recipe Support for Diffusion Models | help wanted, good first issue, diffusion | 2026-05-15T08:06:20Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3629 |
 | [#3627](https://github.com/vllm-project/vllm-omni/issues/3627) | [Bug]: hunyuan-image default config run failed with _hunyuan_image3_unpack_packed_topk func signature | bug | 2026-05-15T07:42:52Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3627 |
 | [#3586](https://github.com/vllm-project/vllm-omni/issues/3586) | [Bug]:  Diffusion X2I(&A&T) · Perf Test · Qwen-Image, OSError: Qwen/Qwen-Image does not appear to have a file named text_encoder/model-00002-of-00004.safetensors. | bug, high priority, ci-failure | 2026-05-14T15:31:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3586 |
@@ -98,8 +97,8 @@ Generated at: 2026-05-16T16:15:16+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#3493](https://github.com/vllm-project/vllm-omni/issues/3493) | [Bug]: ref text will be included in the final audio output | bug | 2026-05-17T11:30:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3493 |
 | [#3527](https://github.com/vllm-project/vllm-omni/issues/3527) | [Feature]: Voice cloning for OmniVoice online serving |  | 2026-05-12T01:15:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3527 |
-| [#3493](https://github.com/vllm-project/vllm-omni/issues/3493) | [Bug]: ref text will be included in the final audio output | bug | 2026-05-11T17:15:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3493 |
 | [#3136](https://github.com/vllm-project/vllm-omni/issues/3136) | [HOW TO Optimize]: the delay of the first frame increases too quickly for Qwen3-TTS with Concurrently | bug | 2026-05-05T03:20:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3136 |
 | [#3073](https://github.com/vllm-project/vllm-omni/issues/3073) | [Feature]: OmniVoice Voice Cloning + Voice Caching in `/v1/audio/speech` |  | 2026-04-30T18:09:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3073 |
 | [#2821](https://github.com/vllm-project/vllm-omni/issues/2821) | [RFC]: Enable Qwen3-Omni on /v1/audio/speech via assistant-prefill |  | 2026-04-16T07:16:28Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2821 |
@@ -205,7 +204,7 @@ Generated at: 2026-05-16T16:15:16+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3545](https://github.com/vllm-project/vllm-omni/issues/3545) | [RFC]: Extend Prometheus with multimodal SLOs, cross-stage transfer, and per-replica labels |  | 2026-05-15T05:09:52Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3545 |
+| [#3545](https://github.com/vllm-project/vllm-omni/issues/3545) | [RFC]: Extend Prometheus with multimodal SLOs, cross-stage transfer, and per-replica labels |  | 2026-05-17T07:29:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3545 |
 | [#1398](https://github.com/vllm-project/vllm-omni/issues/1398) | [Feature]: Expose metrics to support intelligent routing of diffusion model endpoints |  | 2026-03-19T12:09:51Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1398 |
 
 ### attention_cache_kernels
@@ -235,8 +234,7 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3632](https://github.com/vllm-project/vllm-omni/issues/3632) | [RFC]: Streaming diffusion video generation output & mid-way prompt update |  | 2026-05-16T15:41:41Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3632 |
-| [#3186](https://github.com/vllm-project/vllm-omni/issues/3186) | [RFC]: Kernel Optimization for Diffusion DiT and MoE LLM | help wanted, good first issue | 2026-05-15T14:44:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3186 |
+| [#3186](https://github.com/vllm-project/vllm-omni/issues/3186) | [RFC]: Kernel Optimization for Diffusion DiT and MoE LLM | help wanted, good first issue | 2026-05-17T08:59:48Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3186 |
 | [#3629](https://github.com/vllm-project/vllm-omni/issues/3629) | [RFC]: Continuous Recipe Support for Diffusion Models | help wanted, good first issue, diffusion | 2026-05-15T08:06:20Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3629 |
 | [#3627](https://github.com/vllm-project/vllm-omni/issues/3627) | [Bug]: hunyuan-image default config run failed with _hunyuan_image3_unpack_packed_topk func signature | bug | 2026-05-15T07:42:52Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3627 |
 | [#3586](https://github.com/vllm-project/vllm-omni/issues/3586) | [Bug]:  Diffusion X2I(&A&T) · Perf Test · Qwen-Image, OSError: Qwen/Qwen-Image does not appear to have a file named text_encoder/model-00002-of-00004.safetensors. | bug, high priority, ci-failure | 2026-05-14T15:31:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3586 |
@@ -331,8 +329,8 @@ TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#3493](https://github.com/vllm-project/vllm-omni/issues/3493) | [Bug]: ref text will be included in the final audio output | bug | 2026-05-17T11:30:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3493 |
 | [#3527](https://github.com/vllm-project/vllm-omni/issues/3527) | [Feature]: Voice cloning for OmniVoice online serving |  | 2026-05-12T01:15:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3527 |
-| [#3493](https://github.com/vllm-project/vllm-omni/issues/3493) | [Bug]: ref text will be included in the final audio output | bug | 2026-05-11T17:15:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3493 |
 | [#3136](https://github.com/vllm-project/vllm-omni/issues/3136) | [HOW TO Optimize]: the delay of the first frame increases too quickly for Qwen3-TTS with Concurrently | bug | 2026-05-05T03:20:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3136 |
 | [#3073](https://github.com/vllm-project/vllm-omni/issues/3073) | [Feature]: OmniVoice Voice Cloning + Voice Caching in `/v1/audio/speech` |  | 2026-04-30T18:09:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3073 |
 | [#2821](https://github.com/vllm-project/vllm-omni/issues/2821) | [RFC]: Enable Qwen3-Omni on /v1/audio/speech via assistant-prefill |  | 2026-04-16T07:16:28Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2821 |
@@ -458,7 +456,7 @@ Prometheus, metrics UX, multimodal SLOs, observability, logging clarity, and per
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3545](https://github.com/vllm-project/vllm-omni/issues/3545) | [RFC]: Extend Prometheus with multimodal SLOs, cross-stage transfer, and per-replica labels |  | 2026-05-15T05:09:52Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3545 |
+| [#3545](https://github.com/vllm-project/vllm-omni/issues/3545) | [RFC]: Extend Prometheus with multimodal SLOs, cross-stage transfer, and per-replica labels |  | 2026-05-17T07:29:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3545 |
 | [#1398](https://github.com/vllm-project/vllm-omni/issues/1398) | [Feature]: Expose metrics to support intelligent routing of diffusion model endpoints |  | 2026-03-19T12:09:51Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1398 |
 
 ### attention_cache_kernels

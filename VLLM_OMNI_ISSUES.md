@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-05-22T17:27:01+00:00
+Generated at: 2026-05-23T16:19:52+00:00
 
 ## Action Queue
 
@@ -184,7 +184,7 @@ Generated at: 2026-05-22T17:27:01+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-05-16T06:18:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
+| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-05-22T19:46:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
 | [#3064](https://github.com/vllm-project/vllm-omni/issues/3064) | [RFC]: Cross-process Model Weight Sharing via PyTorch IPC | high priority | 2026-04-28T03:55:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3064 |
 | [#2379](https://github.com/vllm-project/vllm-omni/issues/2379) | [RFC]: Single-Node D2D Transfer - CUDA IPC Connector |  | 2026-04-01T03:15:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2379 |
 
@@ -433,7 +433,7 @@ Disaggregated serving, transfer engines, Mooncake/Yuanrong connectors, IPC, cros
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-05-16T06:18:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
+| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-05-22T19:46:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
 | [#3064](https://github.com/vllm-project/vllm-omni/issues/3064) | [RFC]: Cross-process Model Weight Sharing via PyTorch IPC | high priority | 2026-04-28T03:55:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3064 |
 | [#2379](https://github.com/vllm-project/vllm-omni/issues/2379) | [RFC]: Single-Node D2D Transfer - CUDA IPC Connector |  | 2026-04-01T03:15:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2379 |
 

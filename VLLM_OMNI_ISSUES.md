@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-05-23T16:19:52+00:00
+Generated at: 2026-05-24T16:18:32+00:00
 
 ## Action Queue
 
@@ -8,8 +8,8 @@ Generated at: 2026-05-23T16:19:52+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#3832](https://github.com/vllm-project/vllm-omni/issues/3832) | [Bug]: Nightly / CI failed - tests/e2e/online_serving/test_wan22_expansion.py::test_wan22_diffusion_features[cuda_ti2v_cfg_parallel] | bug | 2026-05-24T10:26:07Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3832 |
 | [#3812](https://github.com/vllm-project/vllm-omni/issues/3812) | [Performance]: Qwen-Image on vLLM-Omni 0.18 -> latest performance regression | bug | 2026-05-22T10:11:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3812 |
-| [#3816](https://github.com/vllm-project/vllm-omni/issues/3816) | [Bug]: HunyuanImage3 Failed to detect default deploy yaml. | bug | 2026-05-22T08:47:34Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3816 |
 | [#3810](https://github.com/vllm-project/vllm-omni/issues/3810) | [Rebase][Bug] Diffusion Multi-GPU Qwen-Image: --quantization-config schema mismatch after rebase |  | 2026-05-22T07:11:29Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3810 |
 | [#3747](https://github.com/vllm-project/vllm-omni/issues/3747) | [RFC]: Reinforcement Learning for World Models |  | 2026-05-21T10:43:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3747 |
 | [#3775](https://github.com/vllm-project/vllm-omni/issues/3775) | [Feature]: vllm-omni diffusion step execution supports cache backend |  | 2026-05-21T08:38:03Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3775 |
@@ -166,7 +166,6 @@ Generated at: 2026-05-23T16:19:52+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3808](https://github.com/vllm-project/vllm-omni/issues/3808) | Conversion utils for vllm quant config <> diffusers quant config |  | 2026-05-22T04:05:14Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3808 |
 | [#3505](https://github.com/vllm-project/vllm-omni/issues/3505) | [Feature]: Hybrid attention schedule for quantized attention backends |  | 2026-05-18T07:08:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3505 |
 | [#1325](https://github.com/vllm-project/vllm-omni/issues/1325) | [RFC]: Intel Auto-Round x vLLM-Omni Quantization Support (2026 H1) |  | 2026-05-14T02:47:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1325 |
 | [#2215](https://github.com/vllm-project/vllm-omni/issues/2215) | [RFC]: TurboQuant — Sub-4-bit KV Cache Quantization for Long-Context Omni Models | enhancement | 2026-04-05T01:40:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2215 |
@@ -237,8 +236,8 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#3832](https://github.com/vllm-project/vllm-omni/issues/3832) | [Bug]: Nightly / CI failed - tests/e2e/online_serving/test_wan22_expansion.py::test_wan22_diffusion_features[cuda_ti2v_cfg_parallel] | bug | 2026-05-24T10:26:07Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3832 |
 | [#3812](https://github.com/vllm-project/vllm-omni/issues/3812) | [Performance]: Qwen-Image on vLLM-Omni 0.18 -> latest performance regression | bug | 2026-05-22T10:11:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3812 |
-| [#3816](https://github.com/vllm-project/vllm-omni/issues/3816) | [Bug]: HunyuanImage3 Failed to detect default deploy yaml. | bug | 2026-05-22T08:47:34Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3816 |
 | [#3810](https://github.com/vllm-project/vllm-omni/issues/3810) | [Rebase][Bug] Diffusion Multi-GPU Qwen-Image: --quantization-config schema mismatch after rebase |  | 2026-05-22T07:11:29Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3810 |
 | [#3747](https://github.com/vllm-project/vllm-omni/issues/3747) | [RFC]: Reinforcement Learning for World Models |  | 2026-05-21T10:43:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3747 |
 | [#3775](https://github.com/vllm-project/vllm-omni/issues/3775) | [Feature]: vllm-omni diffusion step execution supports cache backend |  | 2026-05-21T08:38:03Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3775 |
@@ -411,7 +410,6 @@ Quantization, FP8, AutoRound, GGUF, ModelOpt, TurboQuant, quantized attention ba
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#3808](https://github.com/vllm-project/vllm-omni/issues/3808) | Conversion utils for vllm quant config <> diffusers quant config |  | 2026-05-22T04:05:14Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3808 |
 | [#3505](https://github.com/vllm-project/vllm-omni/issues/3505) | [Feature]: Hybrid attention schedule for quantized attention backends |  | 2026-05-18T07:08:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3505 |
 | [#1325](https://github.com/vllm-project/vllm-omni/issues/1325) | [RFC]: Intel Auto-Round x vLLM-Omni Quantization Support (2026 H1) |  | 2026-05-14T02:47:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1325 |
 | [#2215](https://github.com/vllm-project/vllm-omni/issues/2215) | [RFC]: TurboQuant — Sub-4-bit KV Cache Quantization for Long-Context Omni Models | enhancement | 2026-04-05T01:40:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2215 |

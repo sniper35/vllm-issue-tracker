@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-06-05T17:37:11+00:00
+Generated at: 2026-06-06T16:23:17+00:00
 
 ## Action Queue
 
@@ -8,8 +8,11 @@ Generated at: 2026-06-05T17:37:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4194](https://github.com/vllm-project/vllm-omni/issues/4194) | [Bug]: ModelOpt FP8 checkpoint loads but FP8 quantization is never applied — identical memory usage and latency to BF16 (Flux2KleinPipeline, Blackwell/SM100+) | bug | 2026-06-05T17:24:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4194 |
-| [#4193](https://github.com/vllm-project/vllm-omni/issues/4193) | [RFC]: Add JoyAI-Echo (LTX-2.3-derived multi-shot T2V+Audio) |  | 2026-06-05T16:01:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4193 |
+| [#4202](https://github.com/vllm-project/vllm-omni/issues/4202) | [Bug]: ModelOpt FP8 checkpoint loads but FP8 quantization is never applied — identical memory usage and latency to BF16 (Flux2KleinPipeline, Blackwell/SM100+) | bug | 2026-06-06T10:23:00Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4202 |
+| [#4211](https://github.com/vllm-project/vllm-omni/issues/4211) | [Bug]: diffusion dummy run stuck with HunyuanImage3.0 after upgrade to 0.22.0 | bug | 2026-06-06T08:39:52Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4211 |
+| [#4193](https://github.com/vllm-project/vllm-omni/issues/4193) | [RFC]: Add JoyAI-Echo (LTX-2.3-derived multi-shot T2V+Audio) | help wanted, good first issue, new model | 2026-06-06T08:30:23Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4193 |
+| [#4197](https://github.com/vllm-project/vllm-omni/issues/4197) | [RFC]: Framework for Tiny Model Testing |  | 2026-06-06T08:28:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4197 |
+| [#1809](https://github.com/vllm-project/vllm-omni/issues/1809) | [Feature]: Can support the model wan2.2-fun-a14b-inp use the tool vllm-omni? | good first issue, new model | 2026-06-06T05:28:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1809 |
 | [#4166](https://github.com/vllm-project/vllm-omni/issues/4166) | [Bug]: Nightly / CI failed - tests/e2e/accuracy/test_ltx2_3_video_similarity.py::test_ltx2_3_pipeline_matches_diffusers | bug, low priority | 2026-06-05T08:53:41Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4166 |
 | [#4127](https://github.com/vllm-project/vllm-omni/issues/4127) | [RFC]: DreamZero Inference Optimization Roadmap |  | 2026-06-05T08:26:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4127 |
 | [#3115](https://github.com/vllm-project/vllm-omni/issues/3115) | [RFC]: LVSA — Long Video Sparse Attention for vllm-omni |  | 2026-06-04T15:45:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3115 |
@@ -33,7 +36,6 @@ Generated at: 2026-06-05T17:37:11+00:00
 | [#3037](https://github.com/vllm-project/vllm-omni/issues/3037) | [Followup] Diffusion pipeline shape: when to split DiT/VAE, when to graduate to per-model pipeline.py |  | 2026-04-22T16:13:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3037 |
 | [#2093](https://github.com/vllm-project/vllm-omni/issues/2093) | [RFC]: Support Wan2.2-I2V-A14B Model in vllm-omni Multimodal Generation Framework | help wanted | 2026-04-16T14:49:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2093 |
 | [#2189](https://github.com/vllm-project/vllm-omni/issues/2189) | [RFC]: Add Diffusion Pipeline Protocol / Base Class |  | 2026-04-13T14:31:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2189 |
-| [#1809](https://github.com/vllm-project/vllm-omni/issues/1809) | [Feature]: Can support the model wan2.2-fun-a14b-inp use the tool vllm-omni? | good first issue, new model | 2026-04-05T16:32:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1809 |
 | [#2201](https://github.com/vllm-project/vllm-omni/issues/2201) | [RFC] Streaming Video Input for Omni-Modal Real-Time Interaction |  | 2026-04-02T02:45:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2201 |
 | [#2371](https://github.com/vllm-project/vllm-omni/issues/2371) | [RFC]: Support Multi-branch CFG in TeaCache Hook |  | 2026-03-31T10:16:07Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2371 |
 | [#2361](https://github.com/vllm-project/vllm-omni/issues/2361) | [Feature]: Generate the video and then save it to S3 object storage |  | 2026-03-31T07:27:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2361 |
@@ -78,8 +80,6 @@ Generated at: 2026-06-05T17:37:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4170](https://github.com/vllm-project/vllm-omni/issues/4170) | [Feature]: Allow Custom Languages in `serving_speech.py` to Support Fine-Tuned Qwen3-TTS Models |  | 2026-06-05T09:22:40Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4170 |
-| [#4171](https://github.com/vllm-project/vllm-omni/issues/4171) | [Feature]: Allow `non_streaming_mode=True` for Qwen3-TTS Base Models During Online Inference |  | 2026-06-05T09:17:11Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4171 |
 | [#4182](https://github.com/vllm-project/vllm-omni/issues/4182) | [Bug]: Qwen3-TTS gradio demo buffers entire stream response in browser before playback | bug | 2026-06-05T09:02:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4182 |
 | [#3493](https://github.com/vllm-project/vllm-omni/issues/3493) | [Bug]: ref text will be included in the final audio output | bug, low priority | 2026-06-05T08:39:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3493 |
 | [#4065](https://github.com/vllm-project/vllm-omni/issues/4065) | [Installation]: vllm: error: unrecognized arguments: --omni |  | 2026-06-02T20:43:25Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4065 |
@@ -97,7 +97,6 @@ Generated at: 2026-06-05T17:37:11+00:00
 | [#2462](https://github.com/vllm-project/vllm-omni/issues/2462) | [New Model]: LongCat-AudioDiT (Meituan) — Waveform Latent Space Diffusion TTS | help wanted, good first issue, new model, tts | 2026-04-05T16:49:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2462 |
 | [#2461](https://github.com/vllm-project/vllm-omni/issues/2461) | [Feature]: Supports audio stream output using the Ogg container format with Opus encoding. |  | 2026-04-02T18:25:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2461 |
 | [#545](https://github.com/vllm-project/vllm-omni/issues/545) | [RFC]: Does the official team of vllm-omni plan to support the integration of the index-tts model? |  | 2026-02-22T01:17:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/545 |
-| [#1300](https://github.com/vllm-project/vllm-omni/issues/1300) | [Feature]: add vllm bench support for /v1/audio/speech |  | 2026-02-10T08:15:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1300 |
 
 ### docs_devex_release
 
@@ -165,7 +164,7 @@ Generated at: 2026-06-05T17:37:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4135](https://github.com/vllm-project/vllm-omni/issues/4135) | [New Model]: JoyAI-Echo | new model | 2026-06-05T16:46:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4135 |
+| [#4135](https://github.com/vllm-project/vllm-omni/issues/4135) | [New Model]: JoyAI-Echo | new model | 2026-06-06T08:19:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4135 |
 | [#1121](https://github.com/vllm-project/vllm-omni/issues/1121) | [Feature]: dgxspark aarch64 not support |  | 2026-05-08T08:30:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1121 |
 | [#2704](https://github.com/vllm-project/vllm-omni/issues/2704) | [Feature]: support torch 2.11.0 |  | 2026-04-28T14:10:26Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2704 |
 | [#2591](https://github.com/vllm-project/vllm-omni/issues/2591) | [New Model]: happyhorse-1 | new model | 2026-04-08T10:55:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2591 |
@@ -248,8 +247,11 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4194](https://github.com/vllm-project/vllm-omni/issues/4194) | [Bug]: ModelOpt FP8 checkpoint loads but FP8 quantization is never applied — identical memory usage and latency to BF16 (Flux2KleinPipeline, Blackwell/SM100+) | bug | 2026-06-05T17:24:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4194 |
-| [#4193](https://github.com/vllm-project/vllm-omni/issues/4193) | [RFC]: Add JoyAI-Echo (LTX-2.3-derived multi-shot T2V+Audio) |  | 2026-06-05T16:01:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4193 |
+| [#4202](https://github.com/vllm-project/vllm-omni/issues/4202) | [Bug]: ModelOpt FP8 checkpoint loads but FP8 quantization is never applied — identical memory usage and latency to BF16 (Flux2KleinPipeline, Blackwell/SM100+) | bug | 2026-06-06T10:23:00Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4202 |
+| [#4211](https://github.com/vllm-project/vllm-omni/issues/4211) | [Bug]: diffusion dummy run stuck with HunyuanImage3.0 after upgrade to 0.22.0 | bug | 2026-06-06T08:39:52Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4211 |
+| [#4193](https://github.com/vllm-project/vllm-omni/issues/4193) | [RFC]: Add JoyAI-Echo (LTX-2.3-derived multi-shot T2V+Audio) | help wanted, good first issue, new model | 2026-06-06T08:30:23Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4193 |
+| [#4197](https://github.com/vllm-project/vllm-omni/issues/4197) | [RFC]: Framework for Tiny Model Testing |  | 2026-06-06T08:28:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4197 |
+| [#1809](https://github.com/vllm-project/vllm-omni/issues/1809) | [Feature]: Can support the model wan2.2-fun-a14b-inp use the tool vllm-omni? | good first issue, new model | 2026-06-06T05:28:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1809 |
 | [#4166](https://github.com/vllm-project/vllm-omni/issues/4166) | [Bug]: Nightly / CI failed - tests/e2e/accuracy/test_ltx2_3_video_similarity.py::test_ltx2_3_pipeline_matches_diffusers | bug, low priority | 2026-06-05T08:53:41Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4166 |
 | [#4127](https://github.com/vllm-project/vllm-omni/issues/4127) | [RFC]: DreamZero Inference Optimization Roadmap |  | 2026-06-05T08:26:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4127 |
 | [#3115](https://github.com/vllm-project/vllm-omni/issues/3115) | [RFC]: LVSA — Long Video Sparse Attention for vllm-omni |  | 2026-06-04T15:45:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3115 |
@@ -273,7 +275,6 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 | [#3037](https://github.com/vllm-project/vllm-omni/issues/3037) | [Followup] Diffusion pipeline shape: when to split DiT/VAE, when to graduate to per-model pipeline.py |  | 2026-04-22T16:13:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3037 |
 | [#2093](https://github.com/vllm-project/vllm-omni/issues/2093) | [RFC]: Support Wan2.2-I2V-A14B Model in vllm-omni Multimodal Generation Framework | help wanted | 2026-04-16T14:49:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2093 |
 | [#2189](https://github.com/vllm-project/vllm-omni/issues/2189) | [RFC]: Add Diffusion Pipeline Protocol / Base Class |  | 2026-04-13T14:31:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2189 |
-| [#1809](https://github.com/vllm-project/vllm-omni/issues/1809) | [Feature]: Can support the model wan2.2-fun-a14b-inp use the tool vllm-omni? | good first issue, new model | 2026-04-05T16:32:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1809 |
 | [#2201](https://github.com/vllm-project/vllm-omni/issues/2201) | [RFC] Streaming Video Input for Omni-Modal Real-Time Interaction |  | 2026-04-02T02:45:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2201 |
 | [#2371](https://github.com/vllm-project/vllm-omni/issues/2371) | [RFC]: Support Multi-branch CFG in TeaCache Hook |  | 2026-03-31T10:16:07Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2371 |
 | [#2361](https://github.com/vllm-project/vllm-omni/issues/2361) | [Feature]: Generate the video and then save it to S3 object storage |  | 2026-03-31T07:27:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2361 |
@@ -322,8 +323,6 @@ TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4170](https://github.com/vllm-project/vllm-omni/issues/4170) | [Feature]: Allow Custom Languages in `serving_speech.py` to Support Fine-Tuned Qwen3-TTS Models |  | 2026-06-05T09:22:40Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4170 |
-| [#4171](https://github.com/vllm-project/vllm-omni/issues/4171) | [Feature]: Allow `non_streaming_mode=True` for Qwen3-TTS Base Models During Online Inference |  | 2026-06-05T09:17:11Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4171 |
 | [#4182](https://github.com/vllm-project/vllm-omni/issues/4182) | [Bug]: Qwen3-TTS gradio demo buffers entire stream response in browser before playback | bug | 2026-06-05T09:02:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4182 |
 | [#3493](https://github.com/vllm-project/vllm-omni/issues/3493) | [Bug]: ref text will be included in the final audio output | bug, low priority | 2026-06-05T08:39:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3493 |
 | [#4065](https://github.com/vllm-project/vllm-omni/issues/4065) | [Installation]: vllm: error: unrecognized arguments: --omni |  | 2026-06-02T20:43:25Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4065 |
@@ -341,7 +340,6 @@ TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and
 | [#2462](https://github.com/vllm-project/vllm-omni/issues/2462) | [New Model]: LongCat-AudioDiT (Meituan) — Waveform Latent Space Diffusion TTS | help wanted, good first issue, new model, tts | 2026-04-05T16:49:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2462 |
 | [#2461](https://github.com/vllm-project/vllm-omni/issues/2461) | [Feature]: Supports audio stream output using the Ogg container format with Opus encoding. |  | 2026-04-02T18:25:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2461 |
 | [#545](https://github.com/vllm-project/vllm-omni/issues/545) | [RFC]: Does the official team of vllm-omni plan to support the integration of the index-tts model? |  | 2026-02-22T01:17:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/545 |
-| [#1300](https://github.com/vllm-project/vllm-omni/issues/1300) | [Feature]: add vllm bench support for /v1/audio/speech |  | 2026-02-10T08:15:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1300 |
 
 ### docs_devex_release
 
@@ -419,7 +417,7 @@ New model support requests and model-porting tasks that are not already covered 
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4135](https://github.com/vllm-project/vllm-omni/issues/4135) | [New Model]: JoyAI-Echo | new model | 2026-06-05T16:46:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4135 |
+| [#4135](https://github.com/vllm-project/vllm-omni/issues/4135) | [New Model]: JoyAI-Echo | new model | 2026-06-06T08:19:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4135 |
 | [#1121](https://github.com/vllm-project/vllm-omni/issues/1121) | [Feature]: dgxspark aarch64 not support |  | 2026-05-08T08:30:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1121 |
 | [#2704](https://github.com/vllm-project/vllm-omni/issues/2704) | [Feature]: support torch 2.11.0 |  | 2026-04-28T14:10:26Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2704 |
 | [#2591](https://github.com/vllm-project/vllm-omni/issues/2591) | [New Model]: happyhorse-1 | new model | 2026-04-08T10:55:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2591 |

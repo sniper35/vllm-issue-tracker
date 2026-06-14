@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-06-13T16:31:51+00:00
+Generated at: 2026-06-14T16:40:18+00:00
 
 ## Action Queue
 
@@ -8,6 +8,7 @@ Generated at: 2026-06-13T16:31:51+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4412](https://github.com/vllm-project/vllm-omni/issues/4412) | [Doc]: E2E tests for Hunyuan-Image model do not support torch.profiler | documentation | 2026-06-14T10:29:00Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4412 |
 | [#4400](https://github.com/vllm-project/vllm-omni/issues/4400) | [RFC/Bug] Improve diffusion worker/engine control-plane reliability and output contracts | bug, help wanted, high priority | 2026-06-13T03:14:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4400 |
 | [#4378](https://github.com/vllm-project/vllm-omni/issues/4378) | [RFC]: Refactor streaming video handler architecture for multi-model support |  | 2026-06-12T07:56:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4378 |
 | [#4376](https://github.com/vllm-project/vllm-omni/issues/4376) | [Feature]:  Support image URL input for Qwen-Image-Edit in /v1/chat/completions |  | 2026-06-12T06:45:19Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4376 |
@@ -81,7 +82,7 @@ Generated at: 2026-06-13T16:31:51+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4316](https://github.com/vllm-project/vllm-omni/issues/4316) | [RFC]:  MOSS-TTS Stage-1 Multi-Request Batch Codec |  | 2026-06-13T09:11:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4316 |
+| [#4316](https://github.com/vllm-project/vllm-omni/issues/4316) | [RFC]:  MOSS-TTS Stage-1 Multi-Request Batch Codec |  | 2026-06-14T11:16:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4316 |
 | [#3745](https://github.com/vllm-project/vllm-omni/issues/3745) | [RFC] Full-Duplex Session Architecture for vLLM-OMNI | help wanted, high priority | 2026-06-12T09:38:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3745 |
 | [#4382](https://github.com/vllm-project/vllm-omni/issues/4382) | [Feature]: Document per-row prefill/decode phase metadata (_omni_is_prefill, from #3662) as a stable model contract + regression-test the 1-token chunked-prefill tail |  | 2026-06-12T09:37:25Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4382 |
 | [#4295](https://github.com/vllm-project/vllm-omni/issues/4295) | [New Model]: Spark-TTS-0.5B |  | 2026-06-10T17:41:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4295 |
@@ -190,6 +191,7 @@ Generated at: 2026-06-13T16:31:51+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4414](https://github.com/vllm-project/vllm-omni/issues/4414) | [Bug] : Fix SHM Chunk & Sender-State Leaks on Request Abort |  | 2026-06-14T13:02:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4414 |
 | [#2379](https://github.com/vllm-project/vllm-omni/issues/2379) | [RFC]: Single-Node D2D Transfer - CUDA IPC Connector |  | 2026-06-11T13:49:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2379 |
 | [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-06-07T15:39:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
 | [#3064](https://github.com/vllm-project/vllm-omni/issues/3064) | [RFC]: Cross-process Model Weight Sharing via PyTorch IPC | high priority | 2026-04-28T03:55:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3064 |
@@ -229,7 +231,7 @@ Generated at: 2026-06-13T16:31:51+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4411](https://github.com/vllm-project/vllm-omni/issues/4411) | [Bug]: higgs_audio_v3 test_concurrent_pcm_streaming consistently fails HNR threshold (concurrent PCM streaming) | bug | 2026-06-13T16:10:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4411 |
+| [#4411](https://github.com/vllm-project/vllm-omni/issues/4411) | [Bug]: higgs_audio_v3 test_concurrent_pcm_streaming consistently fails HNR threshold (concurrent PCM streaming) | bug | 2026-06-13T17:11:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4411 |
 
 ### config_deployment
 
@@ -252,6 +254,7 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4412](https://github.com/vllm-project/vllm-omni/issues/4412) | [Doc]: E2E tests for Hunyuan-Image model do not support torch.profiler | documentation | 2026-06-14T10:29:00Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4412 |
 | [#4400](https://github.com/vllm-project/vllm-omni/issues/4400) | [RFC/Bug] Improve diffusion worker/engine control-plane reliability and output contracts | bug, help wanted, high priority | 2026-06-13T03:14:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4400 |
 | [#4378](https://github.com/vllm-project/vllm-omni/issues/4378) | [RFC]: Refactor streaming video handler architecture for multi-model support |  | 2026-06-12T07:56:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4378 |
 | [#4376](https://github.com/vllm-project/vllm-omni/issues/4376) | [Feature]:  Support image URL input for Qwen-Image-Edit in /v1/chat/completions |  | 2026-06-12T06:45:19Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4376 |
@@ -329,7 +332,7 @@ TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4316](https://github.com/vllm-project/vllm-omni/issues/4316) | [RFC]:  MOSS-TTS Stage-1 Multi-Request Batch Codec |  | 2026-06-13T09:11:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4316 |
+| [#4316](https://github.com/vllm-project/vllm-omni/issues/4316) | [RFC]:  MOSS-TTS Stage-1 Multi-Request Batch Codec |  | 2026-06-14T11:16:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4316 |
 | [#3745](https://github.com/vllm-project/vllm-omni/issues/3745) | [RFC] Full-Duplex Session Architecture for vLLM-OMNI | help wanted, high priority | 2026-06-12T09:38:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3745 |
 | [#4382](https://github.com/vllm-project/vllm-omni/issues/4382) | [Feature]: Document per-row prefill/decode phase metadata (_omni_is_prefill, from #3662) as a stable model contract + regression-test the 1-token chunked-prefill tail |  | 2026-06-12T09:37:25Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4382 |
 | [#4295](https://github.com/vllm-project/vllm-omni/issues/4295) | [New Model]: Spark-TTS-0.5B |  | 2026-06-10T17:41:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4295 |
@@ -452,6 +455,7 @@ Disaggregated serving, transfer engines, Mooncake/Yuanrong connectors, IPC, cros
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4414](https://github.com/vllm-project/vllm-omni/issues/4414) | [Bug] : Fix SHM Chunk & Sender-State Leaks on Request Abort |  | 2026-06-14T13:02:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4414 |
 | [#2379](https://github.com/vllm-project/vllm-omni/issues/2379) | [RFC]: Single-Node D2D Transfer - CUDA IPC Connector |  | 2026-06-11T13:49:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2379 |
 | [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-06-07T15:39:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
 | [#3064](https://github.com/vllm-project/vllm-omni/issues/3064) | [RFC]: Cross-process Model Weight Sharing via PyTorch IPC | high priority | 2026-04-28T03:55:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3064 |
@@ -501,7 +505,7 @@ CI failures, accuracy/performance regressions, nightly coverage, Buildkite failu
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4411](https://github.com/vllm-project/vllm-omni/issues/4411) | [Bug]: higgs_audio_v3 test_concurrent_pcm_streaming consistently fails HNR threshold (concurrent PCM streaming) | bug | 2026-06-13T16:10:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4411 |
+| [#4411](https://github.com/vllm-project/vllm-omni/issues/4411) | [Bug]: higgs_audio_v3 test_concurrent_pcm_streaming consistently fails HNR threshold (concurrent PCM streaming) | bug | 2026-06-13T17:11:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4411 |
 
 ### config_deployment
 

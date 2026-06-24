@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-06-23T17:35:55+00:00
+Generated at: 2026-06-24T17:22:59+00:00
 
 ## Action Queue
 
@@ -8,8 +8,8 @@ Generated at: 2026-06-23T17:35:55+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4658](https://github.com/vllm-project/vllm-omni/issues/4658) | [RFC]: Upstreaming `runtime_v2`: A Task-Centric Elastic Runtime for DiT Serving | RFC | 2026-06-23T15:45:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4658 |
-| [#4638](https://github.com/vllm-project/vllm-omni/issues/4638) | [Feature]: Support HuggingFace `kernels` package for native diffusion attention backends | enhancement, RL, diffusion | 2026-06-23T04:07:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4638 |
+| [#4658](https://github.com/vllm-project/vllm-omni/issues/4658) | [RFC]: Upstreaming `runtime_v2`: A Task-Centric Elastic Runtime for DiT Serving | high priority, RFC | 2026-06-24T13:55:51Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4658 |
+| [#3747](https://github.com/vllm-project/vllm-omni/issues/3747) | [RFC]: Reinforcement Learning for World Models |  | 2026-06-24T02:02:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3747 |
 | [#4537](https://github.com/vllm-project/vllm-omni/issues/4537) | [Bug]: Ready / CI Failed: tests/diffusion/offloader/test_diffusion_cpu_offload.py::test_cpu_offload_diffusion_model[OmniGen2/OmniGen2] - Failed: Inference failed | bug, ci-failure, low priority | 2026-06-22T13:02:25Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4537 |
 | [#3731](https://github.com/vllm-project/vllm-omni/issues/3731) | [RFC] HunyuanImage Model Bug Tracking |  | 2026-06-22T12:40:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3731 |
 | [#4545](https://github.com/vllm-project/vllm-omni/issues/4545) | [RFC sub-task] Migrate internvla_a1 example to standard task example + model_extras |  | 2026-06-22T09:23:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4545 |
@@ -31,7 +31,6 @@ Generated at: 2026-06-23T17:35:55+00:00
 | [#4126](https://github.com/vllm-project/vllm-omni/issues/4126) | [RFC]: OmniDreams Model Support |  | 2026-06-04T02:08:29Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4126 |
 | [#3699](https://github.com/vllm-project/vllm-omni/issues/3699) | [Feature]: Add VoxCPM2 support in diffusion model registry |  | 2026-06-02T16:19:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3699 |
 | [#2305](https://github.com/vllm-project/vllm-omni/issues/2305) | [RFC]: PagedAttention and KV Cache for Autoregressive Diffusion |  | 2026-05-29T14:45:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2305 |
-| [#3747](https://github.com/vllm-project/vllm-omni/issues/3747) | [RFC]: Reinforcement Learning for World Models |  | 2026-05-21T10:43:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3747 |
 | [#3775](https://github.com/vllm-project/vllm-omni/issues/3775) | [Feature]: vllm-omni diffusion step execution supports cache backend |  | 2026-05-21T08:38:03Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3775 |
 | [#3755](https://github.com/vllm-project/vllm-omni/issues/3755) | [Feature] Enable HunyuanImage3 DiT grouped batching with max_num_seqs > 1 |  | 2026-05-21T01:50:46Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3755 |
 | [#3715](https://github.com/vllm-project/vllm-omni/issues/3715) | [RFC]: Pluggable custom attention backends with first-class per-forward state for diffusion |  | 2026-05-20T13:45:20Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3715 |
@@ -84,8 +83,7 @@ Generated at: 2026-06-23T17:35:55+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4646](https://github.com/vllm-project/vllm-omni/issues/4646) | [Performance]: Clarification on /v1/audio/speech usage.prompt_tokens for Qwen3-TTS Base vs CustomVoice |  | 2026-06-23T07:51:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4646 |
-| [#4612](https://github.com/vllm-project/vllm-omni/issues/4612) | [RFC]: Server-side default behavior for `/v1/audio/speech` streaming format | RFC | 2026-06-22T06:42:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4612 |
+| [#4612](https://github.com/vllm-project/vllm-omni/issues/4612) | [RFC]: Server-side default behavior for `/v1/audio/speech` streaming format | RFC | 2026-06-24T02:29:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4612 |
 | [#4571](https://github.com/vllm-project/vllm-omni/issues/4571) | [RFC]: Shared CUDA Graph runner for model-local audio submodules | high priority, core, RFC | 2026-06-21T10:47:00Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4571 |
 | [#3856](https://github.com/vllm-project/vllm-omni/issues/3856) | [Bug]: qwen3-tts (1.7B-Base) triton backend | bug, medium priority | 2026-06-19T08:50:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3856 |
 | [#4536](https://github.com/vllm-project/vllm-omni/issues/4536) | [Bug]: In versions after 0.19.0, using ref and ref_text to clone audio will result in very long static noise | bug | 2026-06-18T09:20:05Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4536 |
@@ -108,10 +106,10 @@ Generated at: 2026-06-23T17:35:55+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4690](https://github.com/vllm-project/vllm-omni/issues/4690) | [Feature]: Enable Communication-Compute Overlap in USP Scenarios |  | 2026-06-24T14:21:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4690 |
 | [#4642](https://github.com/vllm-project/vllm-omni/issues/4642) | [Bug]: Postprocessing caused a bubble delay between requests | bug | 2026-06-23T06:21:43Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4642 |
 | [#3733](https://github.com/vllm-project/vllm-omni/issues/3733) | [New Model]: HiDream-O1-Image | help wanted, new model | 2026-06-21T21:37:09Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3733 |
 | [#4510](https://github.com/vllm-project/vllm-omni/issues/4510) | [Bug]: fishaudio/s2-pro fails with ModuleNotFoundError: No module named 'fish_speech' in official Docker image vllm/vllm-omni:v0.22.0 | bug, low priority | 2026-06-17T09:52:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4510 |
-| [#4017](https://github.com/vllm-project/vllm-omni/issues/4017) | [Feature]: img2img mode support for HunyuanImage3.0 online servering |  | 2026-06-01T12:41:26Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4017 |
 | [#3522](https://github.com/vllm-project/vllm-omni/issues/3522) | [Feature]: Adopt README internationalisation under docs/i18n/ (zh-CN, fr, ja initial set) |  | 2026-05-14T08:37:48Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3522 |
 | [#3520](https://github.com/vllm-project/vllm-omni/issues/3520) | [Doc]: Placeholder CONTRIBUTING.md leaves new contributors without a checklist before they hit ReadTheDocs |  | 2026-05-11T17:04:40Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3520 |
 | [#3434](https://github.com/vllm-project/vllm-omni/issues/3434) | [Feature]: Could you please provide the Docker image for version v0.20.0? |  | 2026-05-08T06:00:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3434 |
@@ -143,8 +141,8 @@ Generated at: 2026-06-23T17:35:55+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4680](https://github.com/vllm-project/vllm-omni/issues/4680) | [Bug]: Single-process orchestrator head-of-line blocking under multi-replica scaling | bug | 2026-06-24T12:11:03Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4680 |
 | [#4653](https://github.com/vllm-project/vllm-omni/issues/4653) | [Bug]: Stage Initialization Hangs With Partially Overlapping GPU Device Sets | documentation | 2026-06-23T09:33:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4653 |
-| [#4383](https://github.com/vllm-project/vllm-omni/issues/4383) | [Performance]: Per-request Python preprocess loop dominates decode step time at high concurrency (8.5 ms of a 10.9 ms step at 32 requests) — also a frame-cadence blocker for realtime/duplex | help wanted, high priority | 2026-06-23T05:34:15Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4383 |
 | [#4497](https://github.com/vllm-project/vllm-omni/issues/4497) | [RFC]: World Models Memory Semantics (WMMS) layer — proposal + open discussion (under #1987, over #4480 + #4366) | world model | 2026-06-17T12:55:44Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4497 |
 | [#4151](https://github.com/vllm-project/vllm-omni/issues/4151) | [RFC]: Connector Port List Selection for Parallel Worker Endpoints |  | 2026-06-15T06:37:11Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4151 |
 | [#4332](https://github.com/vllm-project/vllm-omni/issues/4332) | [RFC]: Parallel stage launch to reduce cold start time for scaling [single GPU multiple stages] |  | 2026-06-11T11:50:12Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4332 |
@@ -166,7 +164,6 @@ Generated at: 2026-06-23T17:35:55+00:00
 | [#2392](https://github.com/vllm-project/vllm-omni/issues/2392) | [RFC]: Unified failure semantics and request isolation for async generation |  | 2026-05-17T17:00:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2392 |
 | [#3408](https://github.com/vllm-project/vllm-omni/issues/3408) | [RFC]: Entrypoints HTTP Layer Abnormal Input Testing |  | 2026-05-07T07:51:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3408 |
 | [#3251](https://github.com/vllm-project/vllm-omni/issues/3251) | [Feature]: Make CosyVoice3 bi-streaming with text-in streaming support |  | 2026-05-04T14:33:39Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3251 |
-| [#2826](https://github.com/vllm-project/vllm-omni/issues/2826) | [Performance]: seed parameter accepts empty string, empty list, or null values and still returns a normal response |  | 2026-04-22T09:30:17Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2826 |
 | [#988](https://github.com/vllm-project/vllm-omni/issues/988) | [RFC]: Support Scalable Frontend: Implementing --api-server-count for Multimodal Throughput |  | 2026-01-28T02:39:17Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/988 |
 
 ### quantization
@@ -198,14 +195,6 @@ Generated at: 2026-06-23T17:35:55+00:00
 | [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-06-07T15:39:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
 | [#3064](https://github.com/vllm-project/vllm-omni/issues/3064) | [RFC]: Cross-process Model Weight Sharing via PyTorch IPC | high priority | 2026-04-28T03:55:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3064 |
 
-### ci_testing_regressions
-
-| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4663](https://github.com/vllm-project/vllm-omni/issues/4663) | [Bug]: Qwen2.5-Omni AutoRound W4A16 fails to load with KeyError on gate_up_proj.qweight | bug, low priority | 2026-06-23T16:00:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4663 |
-| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | RFC | 2026-06-23T14:08:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
-| [#4506](https://github.com/vllm-project/vllm-omni/issues/4506) | [Bug]: OpenPI robot serving broken with real openpi-client — numpy msgpack wire-format mismatch |  | 2026-06-19T09:10:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4506 |
-
 ### attention_cache_kernels
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
@@ -213,6 +202,13 @@ Generated at: 2026-06-23T17:35:55+00:00
 | [#4342](https://github.com/vllm-project/vllm-omni/issues/4342) | [Bug]: vllm/vllm-omni:v0.22.0 容器在 RTX20 系列显卡启动失败，报 TORCH_SDPA 后端未注册错误 | bug, low priority | 2026-06-18T03:35:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4342 |
 | [#3922](https://github.com/vllm-project/vllm-omni/issues/3922) | Consider using pre-built Flash Attention kernels via `kernels` | help wanted | 2026-05-28T04:01:39Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3922 |
 | [#765](https://github.com/vllm-project/vllm-omni/issues/765) | [RFC]: Add SpargeAttn Sparse Attention Backend |  | 2026-01-26T07:33:31Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/765 |
+
+### ci_testing_regressions
+
+| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | RFC | 2026-06-24T07:25:43Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
+| [#4663](https://github.com/vllm-project/vllm-omni/issues/4663) | [Bug]: Qwen2.5-Omni AutoRound W4A16 fails to load with KeyError on gate_up_proj.qweight | bug, low priority | 2026-06-23T16:00:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4663 |
 
 ### metrics_observability
 
@@ -255,8 +251,8 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4658](https://github.com/vllm-project/vllm-omni/issues/4658) | [RFC]: Upstreaming `runtime_v2`: A Task-Centric Elastic Runtime for DiT Serving | RFC | 2026-06-23T15:45:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4658 |
-| [#4638](https://github.com/vllm-project/vllm-omni/issues/4638) | [Feature]: Support HuggingFace `kernels` package for native diffusion attention backends | enhancement, RL, diffusion | 2026-06-23T04:07:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4638 |
+| [#4658](https://github.com/vllm-project/vllm-omni/issues/4658) | [RFC]: Upstreaming `runtime_v2`: A Task-Centric Elastic Runtime for DiT Serving | high priority, RFC | 2026-06-24T13:55:51Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4658 |
+| [#3747](https://github.com/vllm-project/vllm-omni/issues/3747) | [RFC]: Reinforcement Learning for World Models |  | 2026-06-24T02:02:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3747 |
 | [#4537](https://github.com/vllm-project/vllm-omni/issues/4537) | [Bug]: Ready / CI Failed: tests/diffusion/offloader/test_diffusion_cpu_offload.py::test_cpu_offload_diffusion_model[OmniGen2/OmniGen2] - Failed: Inference failed | bug, ci-failure, low priority | 2026-06-22T13:02:25Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4537 |
 | [#3731](https://github.com/vllm-project/vllm-omni/issues/3731) | [RFC] HunyuanImage Model Bug Tracking |  | 2026-06-22T12:40:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3731 |
 | [#4545](https://github.com/vllm-project/vllm-omni/issues/4545) | [RFC sub-task] Migrate internvla_a1 example to standard task example + model_extras |  | 2026-06-22T09:23:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4545 |
@@ -278,7 +274,6 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 | [#4126](https://github.com/vllm-project/vllm-omni/issues/4126) | [RFC]: OmniDreams Model Support |  | 2026-06-04T02:08:29Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4126 |
 | [#3699](https://github.com/vllm-project/vllm-omni/issues/3699) | [Feature]: Add VoxCPM2 support in diffusion model registry |  | 2026-06-02T16:19:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3699 |
 | [#2305](https://github.com/vllm-project/vllm-omni/issues/2305) | [RFC]: PagedAttention and KV Cache for Autoregressive Diffusion |  | 2026-05-29T14:45:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2305 |
-| [#3747](https://github.com/vllm-project/vllm-omni/issues/3747) | [RFC]: Reinforcement Learning for World Models |  | 2026-05-21T10:43:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3747 |
 | [#3775](https://github.com/vllm-project/vllm-omni/issues/3775) | [Feature]: vllm-omni diffusion step execution supports cache backend |  | 2026-05-21T08:38:03Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3775 |
 | [#3755](https://github.com/vllm-project/vllm-omni/issues/3755) | [Feature] Enable HunyuanImage3 DiT grouped batching with max_num_seqs > 1 |  | 2026-05-21T01:50:46Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3755 |
 | [#3715](https://github.com/vllm-project/vllm-omni/issues/3715) | [RFC]: Pluggable custom attention backends with first-class per-forward state for diffusion |  | 2026-05-20T13:45:20Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3715 |
@@ -335,8 +330,7 @@ TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4646](https://github.com/vllm-project/vllm-omni/issues/4646) | [Performance]: Clarification on /v1/audio/speech usage.prompt_tokens for Qwen3-TTS Base vs CustomVoice |  | 2026-06-23T07:51:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4646 |
-| [#4612](https://github.com/vllm-project/vllm-omni/issues/4612) | [RFC]: Server-side default behavior for `/v1/audio/speech` streaming format | RFC | 2026-06-22T06:42:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4612 |
+| [#4612](https://github.com/vllm-project/vllm-omni/issues/4612) | [RFC]: Server-side default behavior for `/v1/audio/speech` streaming format | RFC | 2026-06-24T02:29:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4612 |
 | [#4571](https://github.com/vllm-project/vllm-omni/issues/4571) | [RFC]: Shared CUDA Graph runner for model-local audio submodules | high priority, core, RFC | 2026-06-21T10:47:00Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4571 |
 | [#3856](https://github.com/vllm-project/vllm-omni/issues/3856) | [Bug]: qwen3-tts (1.7B-Base) triton backend | bug, medium priority | 2026-06-19T08:50:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3856 |
 | [#4536](https://github.com/vllm-project/vllm-omni/issues/4536) | [Bug]: In versions after 0.19.0, using ref and ref_text to clone audio will result in very long static noise | bug | 2026-06-18T09:20:05Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4536 |
@@ -361,10 +355,10 @@ Documentation, examples, Docker/release requests, contributor workflow, pre-comm
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4690](https://github.com/vllm-project/vllm-omni/issues/4690) | [Feature]: Enable Communication-Compute Overlap in USP Scenarios |  | 2026-06-24T14:21:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4690 |
 | [#4642](https://github.com/vllm-project/vllm-omni/issues/4642) | [Bug]: Postprocessing caused a bubble delay between requests | bug | 2026-06-23T06:21:43Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4642 |
 | [#3733](https://github.com/vllm-project/vllm-omni/issues/3733) | [New Model]: HiDream-O1-Image | help wanted, new model | 2026-06-21T21:37:09Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3733 |
 | [#4510](https://github.com/vllm-project/vllm-omni/issues/4510) | [Bug]: fishaudio/s2-pro fails with ModuleNotFoundError: No module named 'fish_speech' in official Docker image vllm/vllm-omni:v0.22.0 | bug, low priority | 2026-06-17T09:52:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4510 |
-| [#4017](https://github.com/vllm-project/vllm-omni/issues/4017) | [Feature]: img2img mode support for HunyuanImage3.0 online servering |  | 2026-06-01T12:41:26Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4017 |
 | [#3522](https://github.com/vllm-project/vllm-omni/issues/3522) | [Feature]: Adopt README internationalisation under docs/i18n/ (zh-CN, fr, ja initial set) |  | 2026-05-14T08:37:48Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3522 |
 | [#3520](https://github.com/vllm-project/vllm-omni/issues/3520) | [Doc]: Placeholder CONTRIBUTING.md leaves new contributors without a checklist before they hit ReadTheDocs |  | 2026-05-11T17:04:40Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3520 |
 | [#3434](https://github.com/vllm-project/vllm-omni/issues/3434) | [Feature]: Could you please provide the Docker image for version v0.20.0? |  | 2026-05-08T06:00:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3434 |
@@ -400,8 +394,8 @@ Orchestrator, engine layer, model runner, multi-stage pipeline, stage overrides,
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4680](https://github.com/vllm-project/vllm-omni/issues/4680) | [Bug]: Single-process orchestrator head-of-line blocking under multi-replica scaling | bug | 2026-06-24T12:11:03Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4680 |
 | [#4653](https://github.com/vllm-project/vllm-omni/issues/4653) | [Bug]: Stage Initialization Hangs With Partially Overlapping GPU Device Sets | documentation | 2026-06-23T09:33:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4653 |
-| [#4383](https://github.com/vllm-project/vllm-omni/issues/4383) | [Performance]: Per-request Python preprocess loop dominates decode step time at high concurrency (8.5 ms of a 10.9 ms step at 32 requests) — also a frame-cadence blocker for realtime/duplex | help wanted, high priority | 2026-06-23T05:34:15Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4383 |
 | [#4497](https://github.com/vllm-project/vllm-omni/issues/4497) | [RFC]: World Models Memory Semantics (WMMS) layer — proposal + open discussion (under #1987, over #4480 + #4366) | world model | 2026-06-17T12:55:44Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4497 |
 | [#4151](https://github.com/vllm-project/vllm-omni/issues/4151) | [RFC]: Connector Port List Selection for Parallel Worker Endpoints |  | 2026-06-15T06:37:11Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4151 |
 | [#4332](https://github.com/vllm-project/vllm-omni/issues/4332) | [RFC]: Parallel stage launch to reduce cold start time for scaling [single GPU multiple stages] |  | 2026-06-11T11:50:12Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4332 |
@@ -425,7 +419,6 @@ Online serving, OpenAI-compatible endpoints, websocket/streaming APIs, entrypoin
 | [#2392](https://github.com/vllm-project/vllm-omni/issues/2392) | [RFC]: Unified failure semantics and request isolation for async generation |  | 2026-05-17T17:00:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2392 |
 | [#3408](https://github.com/vllm-project/vllm-omni/issues/3408) | [RFC]: Entrypoints HTTP Layer Abnormal Input Testing |  | 2026-05-07T07:51:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3408 |
 | [#3251](https://github.com/vllm-project/vllm-omni/issues/3251) | [Feature]: Make CosyVoice3 bi-streaming with text-in streaming support |  | 2026-05-04T14:33:39Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3251 |
-| [#2826](https://github.com/vllm-project/vllm-omni/issues/2826) | [Performance]: seed parameter accepts empty string, empty list, or null values and still returns a normal response |  | 2026-04-22T09:30:17Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2826 |
 | [#988](https://github.com/vllm-project/vllm-omni/issues/988) | [RFC]: Support Scalable Frontend: Implementing --api-server-count for Multimodal Throughput |  | 2026-01-28T02:39:17Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/988 |
 
 ### quantization
@@ -463,16 +456,6 @@ Disaggregated serving, transfer engines, Mooncake/Yuanrong connectors, IPC, cros
 | [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-06-07T15:39:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
 | [#3064](https://github.com/vllm-project/vllm-omni/issues/3064) | [RFC]: Cross-process Model Weight Sharing via PyTorch IPC | high priority | 2026-04-28T03:55:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3064 |
 
-### ci_testing_regressions
-
-CI failures, accuracy/performance regressions, nightly coverage, Buildkite failures, and flaky test failures.
-
-| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4663](https://github.com/vllm-project/vllm-omni/issues/4663) | [Bug]: Qwen2.5-Omni AutoRound W4A16 fails to load with KeyError on gate_up_proj.qweight | bug, low priority | 2026-06-23T16:00:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4663 |
-| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | RFC | 2026-06-23T14:08:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
-| [#4506](https://github.com/vllm-project/vllm-omni/issues/4506) | [Bug]: OpenPI robot serving broken with real openpi-client — numpy msgpack wire-format mismatch |  | 2026-06-19T09:10:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4506 |
-
 ### attention_cache_kernels
 
 Attention kernels, KV cache, prefix caching, sparse/ring attention, FlashAttention, CUDNN attention, and hidden-state cache I/O.
@@ -482,6 +465,15 @@ Attention kernels, KV cache, prefix caching, sparse/ring attention, FlashAttenti
 | [#4342](https://github.com/vllm-project/vllm-omni/issues/4342) | [Bug]: vllm/vllm-omni:v0.22.0 容器在 RTX20 系列显卡启动失败，报 TORCH_SDPA 后端未注册错误 | bug, low priority | 2026-06-18T03:35:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4342 |
 | [#3922](https://github.com/vllm-project/vllm-omni/issues/3922) | Consider using pre-built Flash Attention kernels via `kernels` | help wanted | 2026-05-28T04:01:39Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3922 |
 | [#765](https://github.com/vllm-project/vllm-omni/issues/765) | [RFC]: Add SpargeAttn Sparse Attention Backend |  | 2026-01-26T07:33:31Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/765 |
+
+### ci_testing_regressions
+
+CI failures, accuracy/performance regressions, nightly coverage, Buildkite failures, and flaky test failures.
+
+| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | RFC | 2026-06-24T07:25:43Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
+| [#4663](https://github.com/vllm-project/vllm-omni/issues/4663) | [Bug]: Qwen2.5-Omni AutoRound W4A16 fails to load with KeyError on gate_up_proj.qweight | bug, low priority | 2026-06-23T16:00:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4663 |
 
 ### metrics_observability
 

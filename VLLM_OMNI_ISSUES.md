@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-06-27T16:22:55+00:00
+Generated at: 2026-06-28T16:28:58+00:00
 
 ## Action Queue
 
@@ -8,15 +8,13 @@ Generated at: 2026-06-27T16:22:55+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#3747](https://github.com/vllm-project/vllm-omni/issues/3747) | [RFC]: Reinforcement Learning for World Models |  | 2026-06-28T02:55:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3747 |
 | [#4526](https://github.com/vllm-project/vllm-omni/issues/4526) | [Bug]: instance remains 10min after SIGTERM worker process for HunyuanImage-3.0-Instruct model with load | bug, low priority | 2026-06-26T16:17:14Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4526 |
 | [#4658](https://github.com/vllm-project/vllm-omni/issues/4658) | [RFC]: Upstreaming `runtime_v2`: A Task-Centric Elastic Runtime for DiT Serving | high priority, RFC | 2026-06-24T13:55:51Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4658 |
-| [#3747](https://github.com/vllm-project/vllm-omni/issues/3747) | [RFC]: Reinforcement Learning for World Models |  | 2026-06-24T02:02:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3747 |
 | [#3731](https://github.com/vllm-project/vllm-omni/issues/3731) | [RFC] HunyuanImage Model Bug Tracking |  | 2026-06-22T12:40:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3731 |
 | [#4545](https://github.com/vllm-project/vllm-omni/issues/4545) | [RFC sub-task] Migrate internvla_a1 example to standard task example + model_extras |  | 2026-06-22T09:23:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4545 |
-| [#4546](https://github.com/vllm-project/vllm-omni/issues/4546) | [RFC sub-task] Migrate lance example to standard task example + model_extras |  | 2026-06-20T22:26:48Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4546 |
 | [#4127](https://github.com/vllm-project/vllm-omni/issues/4127) | [RFC]: DreamZero Inference Optimization Roadmap |  | 2026-06-20T11:30:44Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4127 |
 | [#4376](https://github.com/vllm-project/vllm-omni/issues/4376) | [Feature]:  Support image URL input for Qwen-Image-Edit in /v1/chat/completions | frontend | 2026-06-19T15:34:12Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4376 |
-| [#4544](https://github.com/vllm-project/vllm-omni/issues/4544) | [RFC sub-task] Migrate hunyuan_image3 example to standard task example + model_extras |  | 2026-06-18T23:36:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4544 |
 | [#4533](https://github.com/vllm-project/vllm-omni/issues/4533) | [Performance][HunyuanImage3] Unable to reproduce #4041 E2E speedup for DiT grouped step batching on 8xA100 |  | 2026-06-18T19:16:14Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4533 |
 | [#4400](https://github.com/vllm-project/vllm-omni/issues/4400) | [RFC/Bug] Improve diffusion worker/engine control-plane reliability and output contracts | bug, help wanted, high priority | 2026-06-18T02:35:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4400 |
 | [#4356](https://github.com/vllm-project/vllm-omni/issues/4356) | [Feature]: Disaggregated Serving for WAN2.2-I2V |  | 2026-06-11T14:17:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4356 |
@@ -245,15 +243,13 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#3747](https://github.com/vllm-project/vllm-omni/issues/3747) | [RFC]: Reinforcement Learning for World Models |  | 2026-06-28T02:55:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3747 |
 | [#4526](https://github.com/vllm-project/vllm-omni/issues/4526) | [Bug]: instance remains 10min after SIGTERM worker process for HunyuanImage-3.0-Instruct model with load | bug, low priority | 2026-06-26T16:17:14Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4526 |
 | [#4658](https://github.com/vllm-project/vllm-omni/issues/4658) | [RFC]: Upstreaming `runtime_v2`: A Task-Centric Elastic Runtime for DiT Serving | high priority, RFC | 2026-06-24T13:55:51Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4658 |
-| [#3747](https://github.com/vllm-project/vllm-omni/issues/3747) | [RFC]: Reinforcement Learning for World Models |  | 2026-06-24T02:02:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3747 |
 | [#3731](https://github.com/vllm-project/vllm-omni/issues/3731) | [RFC] HunyuanImage Model Bug Tracking |  | 2026-06-22T12:40:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3731 |
 | [#4545](https://github.com/vllm-project/vllm-omni/issues/4545) | [RFC sub-task] Migrate internvla_a1 example to standard task example + model_extras |  | 2026-06-22T09:23:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4545 |
-| [#4546](https://github.com/vllm-project/vllm-omni/issues/4546) | [RFC sub-task] Migrate lance example to standard task example + model_extras |  | 2026-06-20T22:26:48Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4546 |
 | [#4127](https://github.com/vllm-project/vllm-omni/issues/4127) | [RFC]: DreamZero Inference Optimization Roadmap |  | 2026-06-20T11:30:44Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4127 |
 | [#4376](https://github.com/vllm-project/vllm-omni/issues/4376) | [Feature]:  Support image URL input for Qwen-Image-Edit in /v1/chat/completions | frontend | 2026-06-19T15:34:12Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4376 |
-| [#4544](https://github.com/vllm-project/vllm-omni/issues/4544) | [RFC sub-task] Migrate hunyuan_image3 example to standard task example + model_extras |  | 2026-06-18T23:36:47Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4544 |
 | [#4533](https://github.com/vllm-project/vllm-omni/issues/4533) | [Performance][HunyuanImage3] Unable to reproduce #4041 E2E speedup for DiT grouped step batching on 8xA100 |  | 2026-06-18T19:16:14Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4533 |
 | [#4400](https://github.com/vllm-project/vllm-omni/issues/4400) | [RFC/Bug] Improve diffusion worker/engine control-plane reliability and output contracts | bug, help wanted, high priority | 2026-06-18T02:35:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4400 |
 | [#4356](https://github.com/vllm-project/vllm-omni/issues/4356) | [Feature]: Disaggregated Serving for WAN2.2-I2V |  | 2026-06-11T14:17:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4356 |

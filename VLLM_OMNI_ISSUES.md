@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-06-29T17:55:16+00:00
+Generated at: 2026-06-30T17:24:18+00:00
 
 ## Action Queue
 
@@ -78,6 +78,7 @@ Generated at: 2026-06-29T17:55:16+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4802](https://github.com/vllm-project/vllm-omni/issues/4802) | [RFC]: vLLM-Omni KV Cache Efficiency and Attribution Metrics | critical, core, RFC | 2026-06-30T13:02:19Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4802 |
 | [#4780](https://github.com/vllm-project/vllm-omni/issues/4780) | [Bug]: Nightly / CI failed - tests/e2e/online_serving/test_voxtral_tts.py::TestVoxtralTTSFixedVoice::test_speech_speed[omni_server0] | bug, ci-failure | 2026-06-29T03:05:23Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4780 |
 | [#4536](https://github.com/vllm-project/vllm-omni/issues/4536) | [Bug]: In versions after 0.19.0, using ref and ref_text to clone audio will result in very long static noise | bug | 2026-06-26T16:16:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4536 |
 | [#4612](https://github.com/vllm-project/vllm-omni/issues/4612) | [RFC]: Server-side default behavior for `/v1/audio/speech` streaming format | RFC | 2026-06-24T02:29:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4612 |
@@ -171,8 +172,8 @@ Generated at: 2026-06-29T17:55:16+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#1325](https://github.com/vllm-project/vllm-omni/issues/1325) | [RFC]: Intel Auto-Round x vLLM-Omni Quantization Support (2026 H1) |  | 2026-06-30T08:41:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1325 |
 | [#4018](https://github.com/vllm-project/vllm-omni/issues/4018) | [Tracking] FLUX series quantization status |  | 2026-06-01T16:50:20Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4018 |
-| [#1325](https://github.com/vllm-project/vllm-omni/issues/1325) | [RFC]: Intel Auto-Round x vLLM-Omni Quantization Support (2026 H1) |  | 2026-05-29T00:47:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1325 |
 | [#3505](https://github.com/vllm-project/vllm-omni/issues/3505) | [Feature]: Hybrid attention schedule for quantized attention backends |  | 2026-05-18T07:08:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3505 |
 | [#2215](https://github.com/vllm-project/vllm-omni/issues/2215) | [RFC]: TurboQuant — Sub-4-bit KV Cache Quantization for Long-Context Omni Models | enhancement | 2026-04-05T01:40:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2215 |
 | [#2146](https://github.com/vllm-project/vllm-omni/issues/2146) | [RFC]: Weight key remapping interface for quantization backends with non-standard checkpoint naming |  | 2026-03-24T17:56:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2146 |
@@ -194,6 +195,13 @@ Generated at: 2026-06-29T17:55:16+00:00
 | [#3922](https://github.com/vllm-project/vllm-omni/issues/3922) | Consider using pre-built Flash Attention kernels via `kernels` | help wanted | 2026-05-28T04:01:39Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3922 |
 | [#765](https://github.com/vllm-project/vllm-omni/issues/765) | [RFC]: Add SpargeAttn Sparse Attention Backend |  | 2026-01-26T07:33:31Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/765 |
 
+### ci_testing_regressions
+
+| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4775](https://github.com/vllm-project/vllm-omni/issues/4775) | [Bug]: Weekly CI, Reliability Test - voxcpm2, AssertionError: [kill_serve_root_with_load_sigkill] residual server-tree processes remain alive: [3333, 3334] | bug, ci-failure, medium priority | 2026-06-29T22:24:46Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4775 |
+| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | diffusion, core, RFC | 2026-06-26T13:00:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
+
 ### metrics_observability
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
@@ -214,12 +222,6 @@ Generated at: 2026-06-29T17:55:16+00:00
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [#4742](https://github.com/vllm-project/vllm-omni/issues/4742) | [RFC]: Add InvokeAI-vLLM-Omni Bridge as a Reference App Integration | RFC | 2026-06-29T13:01:44Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4742 |
 | [#3366](https://github.com/vllm-project/vllm-omni/issues/3366) | [RFC]: Replace Sentinel Default Handling for Configs With Tracking Parser |  | 2026-05-19T15:39:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3366 |
-
-### ci_testing_regressions
-
-| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | diffusion, core, RFC | 2026-06-26T13:00:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
 
 ### robotics_world_models
 
@@ -316,6 +318,7 @@ TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4802](https://github.com/vllm-project/vllm-omni/issues/4802) | [RFC]: vLLM-Omni KV Cache Efficiency and Attribution Metrics | critical, core, RFC | 2026-06-30T13:02:19Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4802 |
 | [#4780](https://github.com/vllm-project/vllm-omni/issues/4780) | [Bug]: Nightly / CI failed - tests/e2e/online_serving/test_voxtral_tts.py::TestVoxtralTTSFixedVoice::test_speech_speed[omni_server0] | bug, ci-failure | 2026-06-29T03:05:23Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4780 |
 | [#4536](https://github.com/vllm-project/vllm-omni/issues/4536) | [Bug]: In versions after 0.19.0, using ref and ref_text to clone audio will result in very long static noise | bug | 2026-06-26T16:16:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4536 |
 | [#4612](https://github.com/vllm-project/vllm-omni/issues/4612) | [RFC]: Server-side default behavior for `/v1/audio/speech` streaming format | RFC | 2026-06-24T02:29:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4612 |
@@ -421,8 +424,8 @@ Quantization, FP8, AutoRound, GGUF, ModelOpt, TurboQuant, quantized attention ba
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#1325](https://github.com/vllm-project/vllm-omni/issues/1325) | [RFC]: Intel Auto-Round x vLLM-Omni Quantization Support (2026 H1) |  | 2026-06-30T08:41:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1325 |
 | [#4018](https://github.com/vllm-project/vllm-omni/issues/4018) | [Tracking] FLUX series quantization status |  | 2026-06-01T16:50:20Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4018 |
-| [#1325](https://github.com/vllm-project/vllm-omni/issues/1325) | [RFC]: Intel Auto-Round x vLLM-Omni Quantization Support (2026 H1) |  | 2026-05-29T00:47:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1325 |
 | [#3505](https://github.com/vllm-project/vllm-omni/issues/3505) | [Feature]: Hybrid attention schedule for quantized attention backends |  | 2026-05-18T07:08:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3505 |
 | [#2215](https://github.com/vllm-project/vllm-omni/issues/2215) | [RFC]: TurboQuant — Sub-4-bit KV Cache Quantization for Long-Context Omni Models | enhancement | 2026-04-05T01:40:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2215 |
 | [#2146](https://github.com/vllm-project/vllm-omni/issues/2146) | [RFC]: Weight key remapping interface for quantization backends with non-standard checkpoint naming |  | 2026-03-24T17:56:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2146 |
@@ -447,6 +450,15 @@ Attention kernels, KV cache, prefix caching, sparse/ring attention, FlashAttenti
 | [#4342](https://github.com/vllm-project/vllm-omni/issues/4342) | [Bug]: vllm/vllm-omni:v0.22.0 容器在 RTX20 系列显卡启动失败，报 TORCH_SDPA 后端未注册错误 | bug, low priority | 2026-06-18T03:35:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4342 |
 | [#3922](https://github.com/vllm-project/vllm-omni/issues/3922) | Consider using pre-built Flash Attention kernels via `kernels` | help wanted | 2026-05-28T04:01:39Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3922 |
 | [#765](https://github.com/vllm-project/vllm-omni/issues/765) | [RFC]: Add SpargeAttn Sparse Attention Backend |  | 2026-01-26T07:33:31Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/765 |
+
+### ci_testing_regressions
+
+CI failures, accuracy/performance regressions, nightly coverage, Buildkite failures, and flaky test failures.
+
+| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#4775](https://github.com/vllm-project/vllm-omni/issues/4775) | [Bug]: Weekly CI, Reliability Test - voxcpm2, AssertionError: [kill_serve_root_with_load_sigkill] residual server-tree processes remain alive: [3333, 3334] | bug, ci-failure, medium priority | 2026-06-29T22:24:46Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4775 |
+| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | diffusion, core, RFC | 2026-06-26T13:00:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
 
 ### metrics_observability
 
@@ -474,14 +486,6 @@ Deployment config, YAML ownership, parser/default handling, Helm, deployment top
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [#4742](https://github.com/vllm-project/vllm-omni/issues/4742) | [RFC]: Add InvokeAI-vLLM-Omni Bridge as a Reference App Integration | RFC | 2026-06-29T13:01:44Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4742 |
 | [#3366](https://github.com/vllm-project/vllm-omni/issues/3366) | [RFC]: Replace Sentinel Default Handling for Configs With Tracking Parser |  | 2026-05-19T15:39:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3366 |
-
-### ci_testing_regressions
-
-CI failures, accuracy/performance regressions, nightly coverage, Buildkite failures, and flaky test failures.
-
-| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | diffusion, core, RFC | 2026-06-26T13:00:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
 
 ### robotics_world_models
 

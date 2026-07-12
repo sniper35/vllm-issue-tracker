@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-07-11T16:15:46+00:00
+Generated at: 2026-07-12T16:19:03+00:00
 
 ## Action Queue
 
@@ -8,6 +8,9 @@ Generated at: 2026-07-11T16:15:46+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#5055](https://github.com/vllm-project/vllm-omni/issues/5055) | [CI][v0.25 Rebase] HunyuanImage3-DIT Accuracy golden is kernel/hardware-specific — deterministic SSIM 0.9641 on 0.25; re-baseline from H100 CI artifact after #5042 | bug, high priority, ci-failure | 2026-07-12T16:01:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5055 |
+| [#5054](https://github.com/vllm-project/vllm-omni/issues/5054) | [RFC]: extract the customized logic out of the vllm_omni/diffusion/data.py | RFC | 2026-07-12T09:42:01Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5054 |
+| [#5049](https://github.com/vllm-project/vllm-omni/issues/5049) | [Bug]: Qwen3-TTS ref_audio artifact cache is shared across x-vector and ICL modes, killing the engine | bug, medium priority | 2026-07-12T09:04:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5049 |
 | [#4126](https://github.com/vllm-project/vllm-omni/issues/4126) | [RFC]: OmniDreams Model Support |  | 2026-07-09T12:48:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4126 |
 | [#4901](https://github.com/vllm-project/vllm-omni/issues/4901) | [draft] vLLM-Omni Q3 Roadmap | roadmap, RFC | 2026-07-09T07:32:00Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4901 |
 | [#4526](https://github.com/vllm-project/vllm-omni/issues/4526) | [Bug]: instance remains 10min after SIGTERM worker process for HunyuanImage-3.0-Instruct model with load | bug, low priority | 2026-07-08T01:37:23Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4526 |
@@ -77,7 +80,8 @@ Generated at: 2026-07-11T16:15:46+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#2408](https://github.com/vllm-project/vllm-omni/issues/2408) | [Bug]: vLLM model crashes when using runai_streamer (qwen-tts) | bug, medium priority | 2026-07-11T08:19:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2408 |
+| [#3745](https://github.com/vllm-project/vllm-omni/issues/3745) | [RFC] Full-Duplex Session Architecture for vLLM-OMNI | help wanted, high priority | 2026-07-12T12:16:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3745 |
+| [#5045](https://github.com/vllm-project/vllm-omni/issues/5045) | [Bug]: weekly CI, TestHiggsAudioV2OnlineHappyPath.test_plain_text_pcm_streaming[higgs_audio_v2_plain_text], AssertionError: Audio distortion detected: HNR=-1.03 dB < 1.0 dB. Voice clone decoder may be losing ref_code speaker context on later chunks. | bug, ci-failure, low priority | 2026-07-12T09:06:11Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5045 |
 | [#4913](https://github.com/vllm-project/vllm-omni/issues/4913) | [Performance]: Streaming chunk gap with Qwen3-TTS Base |  | 2026-07-07T08:59:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4913 |
 | [#4924](https://github.com/vllm-project/vllm-omni/issues/4924) | [RFC]: Runner-Owned CUDA Graphs for TTS Vocoder and Code2Wav Stages | RFC | 2026-07-07T03:40:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4924 |
 | [#2779](https://github.com/vllm-project/vllm-omni/issues/2779) | [RFC]: Benchmark Layout Reorganization | help wanted, high priority, diffusion, tts | 2026-07-06T18:28:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2779 |
@@ -85,7 +89,6 @@ Generated at: 2026-07-11T16:15:46+00:00
 | [#4612](https://github.com/vllm-project/vllm-omni/issues/4612) | [RFC]: Server-side default behavior for `/v1/audio/speech` streaming format | RFC | 2026-07-02T06:48:14Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4612 |
 | [#4536](https://github.com/vllm-project/vllm-omni/issues/4536) | [Bug]: In versions after 0.19.0, using ref and ref_text to clone audio will result in very long static noise | bug | 2026-06-26T16:16:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4536 |
 | [#4316](https://github.com/vllm-project/vllm-omni/issues/4316) | [RFC]:  MOSS-TTS Stage-1 Multi-Request Batch Codec |  | 2026-06-14T11:16:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4316 |
-| [#3745](https://github.com/vllm-project/vllm-omni/issues/3745) | [RFC] Full-Duplex Session Architecture for vLLM-OMNI | help wanted, high priority | 2026-06-12T09:38:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3745 |
 | [#4295](https://github.com/vllm-project/vllm-omni/issues/4295) | [New Model]: Spark-TTS-0.5B |  | 2026-06-10T17:41:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4295 |
 | [#3527](https://github.com/vllm-project/vllm-omni/issues/3527) | [Feature]: Voice cloning for OmniVoice online serving |  | 2026-05-12T01:15:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3527 |
 | [#3073](https://github.com/vllm-project/vllm-omni/issues/3073) | [Feature]: OmniVoice Voice Cloning + Voice Caching in `/v1/audio/speech` |  | 2026-04-30T18:09:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3073 |
@@ -97,8 +100,8 @@ Generated at: 2026-07-11T16:15:46+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#5057](https://github.com/vllm-project/vllm-omni/issues/5057) | [Bug]: CI failure about L4 tests of Qwen3-Omni accuracy | bug, high priority, ci-failure | 2026-07-12T15:37:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5057 |
 | [#4965](https://github.com/vllm-project/vllm-omni/issues/4965) | [Bug]: Nightly CI, Qwen3-Omni-30B-A3B-Instruct, performance metrics regressed by more than 10% compared to the baseline in some scenarios | bug, high priority, ci-failure | 2026-07-11T14:11:08Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4965 |
-| [#5034](https://github.com/vllm-project/vllm-omni/issues/5034) | [Bug]: Qwen3-Omni realtime WebSocket PCM streaming test fails on H100 | bug, high priority, ci-failure | 2026-07-11T11:15:00Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5034 |
 | [#4084](https://github.com/vllm-project/vllm-omni/issues/4084) | [RFC]: Composable Parallel Strategies for vLLM-Omni | high priority, diffusion | 2026-07-10T16:07:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4084 |
 | [#4280](https://github.com/vllm-project/vllm-omni/issues/4280) | [New Model]: Add support for meituan-longcat/LongCat-Next (omni model) | new model | 2026-06-25T11:09:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4280 |
 | [#1951](https://github.com/vllm-project/vllm-omni/issues/1951) | [RFC]: Qwen3-Omni supports streaming input |  | 2026-06-18T02:10:28Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1951 |
@@ -201,6 +204,13 @@ Generated at: 2026-07-11T16:15:46+00:00
 | [#3874](https://github.com/vllm-project/vllm-omni/issues/3874) | [Performance]: VoxCPM2 throughput degrades at higher concurrency |  | 2026-05-30T05:00:11Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3874 |
 | [#2468](https://github.com/vllm-project/vllm-omni/issues/2468) | [RFC]: Optimize the HY-Video1.5 performance |  | 2026-04-27T11:32:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2468 |
 
+### lora_adapters
+
+| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#5053](https://github.com/vllm-project/vllm-omni/issues/5053) | [Performance]: Diffusion LoRA apply() is memory-bandwidth-bound (+20–30% per forward); proposal: single-adapter merge-on-load fast path |  | 2026-07-12T09:20:48Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5053 |
+| [#2543](https://github.com/vllm-project/vllm-omni/issues/2543) | [Feature]: Support LoRA-based inference acceleration for CosyVoice3 in vLLM-Omni |  | 2026-04-07T07:46:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2543 |
+
 ### ci_testing_regressions
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
@@ -219,12 +229,6 @@ Generated at: 2026-07-11T16:15:46+00:00
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [#4742](https://github.com/vllm-project/vllm-omni/issues/4742) | [RFC]: Add InvokeAI-vLLM-Omni Bridge as a Reference App Integration | RFC | 2026-06-29T13:01:44Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4742 |
 
-### lora_adapters
-
-| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#2543](https://github.com/vllm-project/vllm-omni/issues/2543) | [Feature]: Support LoRA-based inference acceleration for CosyVoice3 in vLLM-Omni |  | 2026-04-07T07:46:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2543 |
-
 
 ## Topics
 
@@ -234,6 +238,9 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#5055](https://github.com/vllm-project/vllm-omni/issues/5055) | [CI][v0.25 Rebase] HunyuanImage3-DIT Accuracy golden is kernel/hardware-specific — deterministic SSIM 0.9641 on 0.25; re-baseline from H100 CI artifact after #5042 | bug, high priority, ci-failure | 2026-07-12T16:01:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5055 |
+| [#5054](https://github.com/vllm-project/vllm-omni/issues/5054) | [RFC]: extract the customized logic out of the vllm_omni/diffusion/data.py | RFC | 2026-07-12T09:42:01Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5054 |
+| [#5049](https://github.com/vllm-project/vllm-omni/issues/5049) | [Bug]: Qwen3-TTS ref_audio artifact cache is shared across x-vector and ICL modes, killing the engine | bug, medium priority | 2026-07-12T09:04:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5049 |
 | [#4126](https://github.com/vllm-project/vllm-omni/issues/4126) | [RFC]: OmniDreams Model Support |  | 2026-07-09T12:48:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4126 |
 | [#4901](https://github.com/vllm-project/vllm-omni/issues/4901) | [draft] vLLM-Omni Q3 Roadmap | roadmap, RFC | 2026-07-09T07:32:00Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4901 |
 | [#4526](https://github.com/vllm-project/vllm-omni/issues/4526) | [Bug]: instance remains 10min after SIGTERM worker process for HunyuanImage-3.0-Instruct model with load | bug, low priority | 2026-07-08T01:37:23Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4526 |
@@ -307,7 +314,8 @@ TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#2408](https://github.com/vllm-project/vllm-omni/issues/2408) | [Bug]: vLLM model crashes when using runai_streamer (qwen-tts) | bug, medium priority | 2026-07-11T08:19:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2408 |
+| [#3745](https://github.com/vllm-project/vllm-omni/issues/3745) | [RFC] Full-Duplex Session Architecture for vLLM-OMNI | help wanted, high priority | 2026-07-12T12:16:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3745 |
+| [#5045](https://github.com/vllm-project/vllm-omni/issues/5045) | [Bug]: weekly CI, TestHiggsAudioV2OnlineHappyPath.test_plain_text_pcm_streaming[higgs_audio_v2_plain_text], AssertionError: Audio distortion detected: HNR=-1.03 dB < 1.0 dB. Voice clone decoder may be losing ref_code speaker context on later chunks. | bug, ci-failure, low priority | 2026-07-12T09:06:11Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5045 |
 | [#4913](https://github.com/vllm-project/vllm-omni/issues/4913) | [Performance]: Streaming chunk gap with Qwen3-TTS Base |  | 2026-07-07T08:59:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4913 |
 | [#4924](https://github.com/vllm-project/vllm-omni/issues/4924) | [RFC]: Runner-Owned CUDA Graphs for TTS Vocoder and Code2Wav Stages | RFC | 2026-07-07T03:40:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4924 |
 | [#2779](https://github.com/vllm-project/vllm-omni/issues/2779) | [RFC]: Benchmark Layout Reorganization | help wanted, high priority, diffusion, tts | 2026-07-06T18:28:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2779 |
@@ -315,7 +323,6 @@ TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and
 | [#4612](https://github.com/vllm-project/vllm-omni/issues/4612) | [RFC]: Server-side default behavior for `/v1/audio/speech` streaming format | RFC | 2026-07-02T06:48:14Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4612 |
 | [#4536](https://github.com/vllm-project/vllm-omni/issues/4536) | [Bug]: In versions after 0.19.0, using ref and ref_text to clone audio will result in very long static noise | bug | 2026-06-26T16:16:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4536 |
 | [#4316](https://github.com/vllm-project/vllm-omni/issues/4316) | [RFC]:  MOSS-TTS Stage-1 Multi-Request Batch Codec |  | 2026-06-14T11:16:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4316 |
-| [#3745](https://github.com/vllm-project/vllm-omni/issues/3745) | [RFC] Full-Duplex Session Architecture for vLLM-OMNI | help wanted, high priority | 2026-06-12T09:38:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3745 |
 | [#4295](https://github.com/vllm-project/vllm-omni/issues/4295) | [New Model]: Spark-TTS-0.5B |  | 2026-06-10T17:41:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4295 |
 | [#3527](https://github.com/vllm-project/vllm-omni/issues/3527) | [Feature]: Voice cloning for OmniVoice online serving |  | 2026-05-12T01:15:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3527 |
 | [#3073](https://github.com/vllm-project/vllm-omni/issues/3073) | [Feature]: OmniVoice Voice Cloning + Voice Caching in `/v1/audio/speech` |  | 2026-04-30T18:09:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3073 |
@@ -329,8 +336,8 @@ Qwen3-Omni model-family issues including thinker/talker behavior, multimodal str
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#5057](https://github.com/vllm-project/vllm-omni/issues/5057) | [Bug]: CI failure about L4 tests of Qwen3-Omni accuracy | bug, high priority, ci-failure | 2026-07-12T15:37:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5057 |
 | [#4965](https://github.com/vllm-project/vllm-omni/issues/4965) | [Bug]: Nightly CI, Qwen3-Omni-30B-A3B-Instruct, performance metrics regressed by more than 10% compared to the baseline in some scenarios | bug, high priority, ci-failure | 2026-07-11T14:11:08Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4965 |
-| [#5034](https://github.com/vllm-project/vllm-omni/issues/5034) | [Bug]: Qwen3-Omni realtime WebSocket PCM streaming test fails on H100 | bug, high priority, ci-failure | 2026-07-11T11:15:00Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5034 |
 | [#4084](https://github.com/vllm-project/vllm-omni/issues/4084) | [RFC]: Composable Parallel Strategies for vLLM-Omni | high priority, diffusion | 2026-07-10T16:07:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4084 |
 | [#4280](https://github.com/vllm-project/vllm-omni/issues/4280) | [New Model]: Add support for meituan-longcat/LongCat-Next (omni model) | new model | 2026-06-25T11:09:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4280 |
 | [#1951](https://github.com/vllm-project/vllm-omni/issues/1951) | [RFC]: Qwen3-Omni supports streaming input |  | 2026-06-18T02:10:28Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1951 |
@@ -451,6 +458,15 @@ Performance, latency, throughput, concurrency, benchmark, first-token/first-fram
 | [#3874](https://github.com/vllm-project/vllm-omni/issues/3874) | [Performance]: VoxCPM2 throughput degrades at higher concurrency |  | 2026-05-30T05:00:11Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3874 |
 | [#2468](https://github.com/vllm-project/vllm-omni/issues/2468) | [RFC]: Optimize the HY-Video1.5 performance |  | 2026-04-27T11:32:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2468 |
 
+### lora_adapters
+
+LoRA, adapter loading, LyCORIS, LoKr, LoHa, and diffusion/TTS adapter support.
+
+| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#5053](https://github.com/vllm-project/vllm-omni/issues/5053) | [Performance]: Diffusion LoRA apply() is memory-bandwidth-bound (+20–30% per forward); proposal: single-adapter merge-on-load fast path |  | 2026-07-12T09:20:48Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5053 |
+| [#2543](https://github.com/vllm-project/vllm-omni/issues/2543) | [Feature]: Support LoRA-based inference acceleration for CosyVoice3 in vLLM-Omni |  | 2026-04-07T07:46:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2543 |
+
 ### ci_testing_regressions
 
 CI failures, accuracy/performance regressions, nightly coverage, Buildkite failures, and flaky test failures.
@@ -474,14 +490,6 @@ Deployment config, YAML ownership, parser/default handling, Helm, deployment top
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [#4742](https://github.com/vllm-project/vllm-omni/issues/4742) | [RFC]: Add InvokeAI-vLLM-Omni Bridge as a Reference App Integration | RFC | 2026-06-29T13:01:44Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4742 |
-
-### lora_adapters
-
-LoRA, adapter loading, LyCORIS, LoKr, LoHa, and diffusion/TTS adapter support.
-
-| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#2543](https://github.com/vllm-project/vllm-omni/issues/2543) | [Feature]: Support LoRA-based inference acceleration for CosyVoice3 in vLLM-Omni |  | 2026-04-07T07:46:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2543 |
 
 ### rl_training_rollout
 

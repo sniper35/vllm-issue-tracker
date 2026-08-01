@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-07-31T17:05:25+00:00
+Generated at: 2026-08-01T16:19:52+00:00
 
 ## Action Queue
 
@@ -8,7 +8,6 @@ Generated at: 2026-07-31T17:05:25+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#5649](https://github.com/vllm-project/vllm-omni/issues/5649) | [Feature]: Support request-level batching for Wan2.2 pipelines | enhancement, help wanted, diffusion | 2026-07-31T12:01:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5649 |
 | [#5631](https://github.com/vllm-project/vllm-omni/issues/5631) | [RFC]: Production-grade NVIDIA Blackwell support in vLLM-Omni | RFC | 2026-07-31T06:18:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5631 |
 | [#5574](https://github.com/vllm-project/vllm-omni/issues/5574) | [RFC]: Async Diffusion Output | help wanted, good first issue, RFC | 2026-07-30T14:49:15Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5574 |
 | [#5266](https://github.com/vllm-project/vllm-omni/issues/5266) | [RFC]: Remove the legacy stage_args YAML loader | high priority | 2026-07-30T10:13:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5266 |
@@ -127,7 +126,7 @@ Generated at: 2026-07-31T17:05:25+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#5652](https://github.com/vllm-project/vllm-omni/issues/5652) | [Bug]: AutoRound W4A16 E2E load fails for Qwen2.5/Qwen3-Omni: qweight vs RowParallelLinear.weight | bug, quantization, low priority | 2026-07-31T09:40:12Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5652 |
+| [#5652](https://github.com/vllm-project/vllm-omni/issues/5652) | [Bug]: AutoRound W4A16 E2E load fails for Qwen2.5/Qwen3-Omni: qweight vs RowParallelLinear.weight | bug, quantization, low priority | 2026-08-01T03:51:21Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5652 |
 | [#5211](https://github.com/vllm-project/vllm-omni/issues/5211) | [RFC]: Placement-aware inter-stage transport — stop bouncing through host when stages share a GPU (status of #2379/#2507/#4147/#4476; prior art in sglang-omni & mstar) |  | 2026-07-20T03:30:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5211 |
 | [#5179](https://github.com/vllm-project/vllm-omni/issues/5179) | [RFC]: Full Duplex /v1/realtime for Omni Models | RFC | 2026-07-17T20:57:05Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5179 |
 | [#4084](https://github.com/vllm-project/vllm-omni/issues/4084) | [RFC]: Composable Parallel Strategies for vLLM-Omni | high priority, diffusion | 2026-07-10T16:07:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4084 |
@@ -169,7 +168,6 @@ Generated at: 2026-07-31T17:05:25+00:00
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [#5212](https://github.com/vllm-project/vllm-omni/issues/5212) | [RFC]: Engine-managed state for cache-aware streaming ASR | RFC | 2026-07-31T10:37:46Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5212 |
-| [#5591](https://github.com/vllm-project/vllm-omni/issues/5591) | [Bug][CI Failure] merge CI, Omni · MiniCPM-o 4.5 Test - RuntimeError: GET was unable to find an engine to execute this computation (conv_transpose1d in HiFi-GAN) | bug, high priority, ci-failure | 2026-07-31T07:06:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5591 |
 | [#5407](https://github.com/vllm-project/vllm-omni/issues/5407) | [RFC]: Publish and aggregate test coverage reports from CI | CI/CD, RFC | 2026-07-29T05:28:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5407 |
 | [#5450](https://github.com/vllm-project/vllm-omni/issues/5450) | [RFC]: Worker/ModelRunner correctness fixes (ModelRunner Refactor 2/N) | RFC | 2026-07-27T09:00:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5450 |
 | [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | diffusion, core, RFC | 2026-06-26T13:00:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
@@ -178,6 +176,7 @@ Generated at: 2026-07-31T17:05:25+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#2159](https://github.com/vllm-project/vllm-omni/issues/2159) | [Bug] FP8 quantization and HSDP cannot be enabled simultaneously for Diffusion models (dynamic_scaled_fp8_quant called on CPU tensor) | bug, help wanted, medium priority | 2026-08-01T03:43:19Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2159 |
 | [#3505](https://github.com/vllm-project/vllm-omni/issues/3505) | [Feature]: Hybrid attention schedule for quantized attention backends |  | 2026-05-18T07:08:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3505 |
 | [#2215](https://github.com/vllm-project/vllm-omni/issues/2215) | [RFC]: TurboQuant — Sub-4-bit KV Cache Quantization for Long-Context Omni Models | enhancement | 2026-04-05T01:40:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2215 |
 | [#2146](https://github.com/vllm-project/vllm-omni/issues/2146) | [RFC]: Weight key remapping interface for quantization backends with non-standard checkpoint naming |  | 2026-03-24T17:56:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2146 |
@@ -244,7 +243,6 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#5649](https://github.com/vllm-project/vllm-omni/issues/5649) | [Feature]: Support request-level batching for Wan2.2 pipelines | enhancement, help wanted, diffusion | 2026-07-31T12:01:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5649 |
 | [#5631](https://github.com/vllm-project/vllm-omni/issues/5631) | [RFC]: Production-grade NVIDIA Blackwell support in vLLM-Omni | RFC | 2026-07-31T06:18:38Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5631 |
 | [#5574](https://github.com/vllm-project/vllm-omni/issues/5574) | [RFC]: Async Diffusion Output | help wanted, good first issue, RFC | 2026-07-30T14:49:15Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5574 |
 | [#5266](https://github.com/vllm-project/vllm-omni/issues/5266) | [RFC]: Remove the legacy stage_args YAML loader | high priority | 2026-07-30T10:13:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5266 |
@@ -371,7 +369,7 @@ Qwen3-Omni model-family issues including thinker/talker behavior, multimodal str
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#5652](https://github.com/vllm-project/vllm-omni/issues/5652) | [Bug]: AutoRound W4A16 E2E load fails for Qwen2.5/Qwen3-Omni: qweight vs RowParallelLinear.weight | bug, quantization, low priority | 2026-07-31T09:40:12Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5652 |
+| [#5652](https://github.com/vllm-project/vllm-omni/issues/5652) | [Bug]: AutoRound W4A16 E2E load fails for Qwen2.5/Qwen3-Omni: qweight vs RowParallelLinear.weight | bug, quantization, low priority | 2026-08-01T03:51:21Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5652 |
 | [#5211](https://github.com/vllm-project/vllm-omni/issues/5211) | [RFC]: Placement-aware inter-stage transport — stop bouncing through host when stages share a GPU (status of #2379/#2507/#4147/#4476; prior art in sglang-omni & mstar) |  | 2026-07-20T03:30:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5211 |
 | [#5179](https://github.com/vllm-project/vllm-omni/issues/5179) | [RFC]: Full Duplex /v1/realtime for Omni Models | RFC | 2026-07-17T20:57:05Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5179 |
 | [#4084](https://github.com/vllm-project/vllm-omni/issues/4084) | [RFC]: Composable Parallel Strategies for vLLM-Omni | high priority, diffusion | 2026-07-10T16:07:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4084 |
@@ -419,7 +417,6 @@ CI failures, accuracy/performance regressions, nightly coverage, Buildkite failu
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [#5212](https://github.com/vllm-project/vllm-omni/issues/5212) | [RFC]: Engine-managed state for cache-aware streaming ASR | RFC | 2026-07-31T10:37:46Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5212 |
-| [#5591](https://github.com/vllm-project/vllm-omni/issues/5591) | [Bug][CI Failure] merge CI, Omni · MiniCPM-o 4.5 Test - RuntimeError: GET was unable to find an engine to execute this computation (conv_transpose1d in HiFi-GAN) | bug, high priority, ci-failure | 2026-07-31T07:06:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5591 |
 | [#5407](https://github.com/vllm-project/vllm-omni/issues/5407) | [RFC]: Publish and aggregate test coverage reports from CI | CI/CD, RFC | 2026-07-29T05:28:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5407 |
 | [#5450](https://github.com/vllm-project/vllm-omni/issues/5450) | [RFC]: Worker/ModelRunner correctness fixes (ModelRunner Refactor 2/N) | RFC | 2026-07-27T09:00:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5450 |
 | [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | diffusion, core, RFC | 2026-06-26T13:00:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
@@ -430,6 +427,7 @@ Quantization, FP8, AutoRound, GGUF, ModelOpt, TurboQuant, quantized attention ba
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#2159](https://github.com/vllm-project/vllm-omni/issues/2159) | [Bug] FP8 quantization and HSDP cannot be enabled simultaneously for Diffusion models (dynamic_scaled_fp8_quant called on CPU tensor) | bug, help wanted, medium priority | 2026-08-01T03:43:19Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2159 |
 | [#3505](https://github.com/vllm-project/vllm-omni/issues/3505) | [Feature]: Hybrid attention schedule for quantized attention backends |  | 2026-05-18T07:08:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3505 |
 | [#2215](https://github.com/vllm-project/vllm-omni/issues/2215) | [RFC]: TurboQuant — Sub-4-bit KV Cache Quantization for Long-Context Omni Models | enhancement | 2026-04-05T01:40:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2215 |
 | [#2146](https://github.com/vllm-project/vllm-omni/issues/2146) | [RFC]: Weight key remapping interface for quantization backends with non-standard checkpoint naming |  | 2026-03-24T17:56:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2146 |

@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-08-20T15:53:11+00:00
+Generated at: 2026-08-21T15:53:34+00:00
 
 ## Action Queue
 
@@ -8,9 +8,8 @@ Generated at: 2026-08-20T15:53:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6400](https://github.com/vllm-project/vllm-omni/issues/6400) | [Bug]: 910B4 continus quest will oom error | bug | 2026-08-20T14:33:21Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6400 |
+| [#6389](https://github.com/vllm-project/vllm-omni/issues/6389) | [RFC]: Standalone Stage Mode for vllm-omni | enhancement, RFC | 2026-08-20T21:15:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6389 |
 | [#6411](https://github.com/vllm-project/vllm-omni/issues/6411) | [Bug]: HunyuanImage-3 DiT LoRA lookup misses model.layers and mishandles fused QKV layout |  | 2026-08-20T13:01:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6411 |
-| [#6389](https://github.com/vllm-project/vllm-omni/issues/6389) | [RFC]: Standalone Stage Mode for vllm-omni | enhancement, RFC | 2026-08-20T00:14:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6389 |
 | [#4400](https://github.com/vllm-project/vllm-omni/issues/4400) | [RFC] Improve diffusion worker/engine control-plane reliability and output contracts | help wanted, high priority | 2026-08-19T22:23:05Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4400 |
 | [#6305](https://github.com/vllm-project/vllm-omni/issues/6305) | [RFC]: Diffusion Operator Boundary | RFC | 2026-08-19T02:47:29Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6305 |
 | [#6324](https://github.com/vllm-project/vllm-omni/issues/6324) | [RFC]: Immutable, Cached Solver Plans for Diffusion Schedulers |  | 2026-08-18T14:11:39Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6324 |
@@ -76,8 +75,6 @@ Generated at: 2026-08-20T15:53:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6416](https://github.com/vllm-project/vllm-omni/issues/6416) | [Bug]: CosyVoice3 /v1/audio/speech kills EngineCore: multinomial probability tensor contains inf/nan (test_cosyvoice3_tts_expansion) | bug, low priority | 2026-08-20T15:41:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6416 |
-| [#6352](https://github.com/vllm-project/vllm-omni/issues/6352) | [Bug]: Host memory leak — sender-side per-request state never freed for aborted requests (chunk_transfer_adapter) | bug | 2026-08-19T07:41:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6352 |
 | [#6158](https://github.com/vllm-project/vllm-omni/issues/6158) | [Feature][Qwen3-TTS] Add runtime safeguards for rare codec repetition and missing EOS |  | 2026-08-17T09:37:04Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6158 |
 | [#6176](https://github.com/vllm-project/vllm-omni/issues/6176) | [RFC]: Audit and clean up bundled deploy YAML arguments and documentation |  | 2026-08-13T22:29:14Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6176 |
 | [#6116](https://github.com/vllm-project/vllm-omni/issues/6116) | [RFC]: Task-Oriented Examples Information Architecture | RFC | 2026-08-12T15:14:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6116 |
@@ -105,7 +102,7 @@ Generated at: 2026-08-20T15:53:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6227](https://github.com/vllm-project/vllm-omni/issues/6227) | [RFC] Real-Time Stateful Video Generation Serving Runtime |  | 2026-08-20T15:05:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6227 |
+| [#6227](https://github.com/vllm-project/vllm-omni/issues/6227) | [RFC] Real-Time Stateful Video Generation Serving Runtime |  | 2026-08-21T10:42:15Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6227 |
 | [#6370](https://github.com/vllm-project/vllm-omni/issues/6370) | [Bug]: An OOM issue occurs during the weight creation phase when deploying HunyuanImage-3.0. | bug | 2026-08-20T00:53:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6370 |
 | [#6271](https://github.com/vllm-project/vllm-omni/issues/6271) | [RFC]: Serve OpenVLA-7B as an autoregressive robot policy | RFC | 2026-08-17T16:35:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6271 |
 | [#6238](https://github.com/vllm-project/vllm-omni/issues/6238) | [RFC]: Dependency-Aware State Reuse for Diffusion and Multi-Stage Omni Pipelines | RFC | 2026-08-16T14:10:46Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6238 |
@@ -162,14 +159,27 @@ Generated at: 2026-08-20T15:53:11+00:00
 | [#2699](https://github.com/vllm-project/vllm-omni/issues/2699) | [Feature]: qwen3-omni lora serve |  | 2026-04-11T18:37:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2699 |
 | [#1016](https://github.com/vllm-project/vllm-omni/issues/1016) | [RFC]: Add async chunk processing test cases for Qwen3-Omni-30B-A3B-Instruct |  | 2026-01-29T02:42:26Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1016 |
 | [#696](https://github.com/vllm-project/vllm-omni/issues/696) | [RFC]: Qwen3-omni performance analyze |  | 2026-01-12T01:26:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/696 |
-| [#6090](https://github.com/vllm-project/vllm-omni/issues/6090) | [Bug]: Nightly / CI failed - tests/e2e/online_serving/test_qwen3_omni_expansion.py audio-vs-text checks failing and worsening (1 case on first attempt, 4 on retry) - AssertionError: The audio content is not same as the text | bug, help wanted, high priority, ci-failure | 2026-08-20T14:21:39Z | triage |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6090 |
+
+### ci_testing_regressions
+
+| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#6245](https://github.com/vllm-project/vllm-omni/issues/6245) | [Bug]: Nightly / CI failed - tests/diffusion/quantization/test_quantization_quality.py::test_quantization_quality[fp8_ltx2] - AssertionError: LPIPS 0.1648 exceeds threshold 0.1 for fp8 on Lightricks/LTX-2 | bug, ci-failure, low priority | 2026-08-21T03:06:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6245 |
+| [#6426](https://github.com/vllm-project/vllm-omni/issues/6426) | [Bug]: Nightly / CI failed - tests/e2e/online_serving/test_minicpmo_4_5_expansion.py::test_chinese_text_to_audio[default] - OOM (Out-of-Memory) issues occurred during continuous request sending. | bug, high priority, ci-failure | 2026-08-21T02:30:25Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6426 |
+| [#5996](https://github.com/vllm-project/vllm-omni/issues/5996) | [RFC]: Trim low-value models from CI based on HF / discussion / freshness scoring | RFC | 2026-08-19T04:24:12Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5996 |
+| [#6326](https://github.com/vllm-project/vllm-omni/issues/6326) | [RFC]: Stage-Level Numerical Parity and Calibrated Quality Gates for Diffusion Optimizations |  | 2026-08-18T14:54:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6326 |
+| [#6028](https://github.com/vllm-project/vllm-omni/issues/6028) | [RFC]: Moving MiniCPM-o 4.5 and PersonaPlex out of Experimental | high priority, RFC | 2026-08-17T02:37:04Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6028 |
+| [#5212](https://github.com/vllm-project/vllm-omni/issues/5212) | [RFC]: Engine-managed state for cache-aware streaming ASR | tts, RFC | 2026-08-14T13:03:17Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5212 |
+| [#5992](https://github.com/vllm-project/vllm-omni/issues/5992) | [RFC]: Static quality gates — pre-commit hardening, CodeQL, and SonarQube Cloud | CI/CD, RFC | 2026-08-11T12:31:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5992 |
+| [#5407](https://github.com/vllm-project/vllm-omni/issues/5407) | [RFC]: Publish and aggregate test coverage reports from CI | CI/CD, RFC | 2026-07-29T05:28:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5407 |
+| [#5450](https://github.com/vllm-project/vllm-omni/issues/5450) | [RFC]: Worker/ModelRunner correctness fixes (ModelRunner Refactor 2/N) | RFC | 2026-07-27T09:00:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5450 |
+| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | diffusion, core, RFC | 2026-06-26T13:00:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
 
 ### serving_api_entrypoints
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [#5799](https://github.com/vllm-project/vllm-omni/issues/5799) | The parameter dlo-resident-layer is not supported. |  | 2026-08-08T13:46:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5799 |
-| [#5776](https://github.com/vllm-project/vllm-omni/issues/5776) | [Bug]: L3 test failed about entrypoint tests due to PR 4958 | bug, high priority, ci-failure | 2026-08-04T14:25:01Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5776 |
 | [#3251](https://github.com/vllm-project/vllm-omni/issues/3251) | [Feature]: Make CosyVoice3 bi-streaming with text-in streaming support |  | 2026-07-24T03:52:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3251 |
 | [#5316](https://github.com/vllm-project/vllm-omni/issues/5316) | [Doc]: WebSocket streaming: Is inference only triggered at sentence boundaries? | documentation | 2026-07-22T09:25:31Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5316 |
 | [#4305](https://github.com/vllm-project/vllm-omni/issues/4305) | [RFC]: Add Rust Frontend support like upstream and even for extended entrypoints |  | 2026-06-10T03:09:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4305 |
@@ -179,20 +189,6 @@ Generated at: 2026-08-20T15:53:11+00:00
 | [#2392](https://github.com/vllm-project/vllm-omni/issues/2392) | [RFC]: Unified failure semantics and request isolation for async generation |  | 2026-05-17T17:00:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2392 |
 | [#3408](https://github.com/vllm-project/vllm-omni/issues/3408) | [RFC]: Entrypoints HTTP Layer Abnormal Input Testing |  | 2026-05-07T07:51:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3408 |
 | [#988](https://github.com/vllm-project/vllm-omni/issues/988) | [RFC]: Support Scalable Frontend: Implementing --api-server-count for Multimodal Throughput |  | 2026-01-28T02:39:17Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/988 |
-
-### ci_testing_regressions
-
-| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6245](https://github.com/vllm-project/vllm-omni/issues/6245) | [Bug]: Nightly / CI failed - tests/diffusion/quantization/test_quantization_quality.py::test_quantization_quality[fp8_ltx2] - AssertionError: LPIPS 0.1648 exceeds threshold 0.1 for fp8 on Lightricks/LTX-2 | bug, high priority, ci-failure | 2026-08-20T15:06:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6245 |
-| [#5996](https://github.com/vllm-project/vllm-omni/issues/5996) | [RFC]: Trim low-value models from CI based on HF / discussion / freshness scoring | RFC | 2026-08-19T04:24:12Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5996 |
-| [#6326](https://github.com/vllm-project/vllm-omni/issues/6326) | [RFC]: Stage-Level Numerical Parity and Calibrated Quality Gates for Diffusion Optimizations |  | 2026-08-18T14:54:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6326 |
-| [#6028](https://github.com/vllm-project/vllm-omni/issues/6028) | [RFC]: Moving MiniCPM-o 4.5 and PersonaPlex out of Experimental | high priority, RFC | 2026-08-17T02:37:04Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6028 |
-| [#5212](https://github.com/vllm-project/vllm-omni/issues/5212) | [RFC]: Engine-managed state for cache-aware streaming ASR | tts, RFC | 2026-08-14T13:03:17Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5212 |
-| [#5992](https://github.com/vllm-project/vllm-omni/issues/5992) | [RFC]: Static quality gates — pre-commit hardening, CodeQL, and SonarQube Cloud | CI/CD, RFC | 2026-08-11T12:31:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5992 |
-| [#5407](https://github.com/vllm-project/vllm-omni/issues/5407) | [RFC]: Publish and aggregate test coverage reports from CI | CI/CD, RFC | 2026-07-29T05:28:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5407 |
-| [#5450](https://github.com/vllm-project/vllm-omni/issues/5450) | [RFC]: Worker/ModelRunner correctness fixes (ModelRunner Refactor 2/N) | RFC | 2026-07-27T09:00:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5450 |
-| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | diffusion, core, RFC | 2026-06-26T13:00:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
 
 ### docs_devex_release
 
@@ -206,6 +202,16 @@ Generated at: 2026-08-20T15:53:11+00:00
 | [#1056](https://github.com/vllm-project/vllm-omni/issues/1056) | [RFC-Doc]: Add Quantization Documentation for Diffusion Models |  | 2026-03-17T16:49:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1056 |
 | [#1013](https://github.com/vllm-project/vllm-omni/issues/1013) | [Installation]: LGPL license in dependencies |  | 2026-03-16T09:30:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1013 |
 
+### disaggregated_transfer_memory
+
+| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#6462](https://github.com/vllm-project/vllm-omni/issues/6462) | [Bug]: Host-memory leak in api_server frontend on aborted /v1/images/generations (diffusion) requests |  | 2026-08-21T15:45:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6462 |
+| [#6231](https://github.com/vllm-project/vllm-omni/issues/6231) | [RFC]: Define DLO runtime-cache compatibility across parallelism dimensions | RFC | 2026-08-19T04:40:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6231 |
+| [#6195](https://github.com/vllm-project/vllm-omni/issues/6195) | [RFC]: Decouple DLO host-weight storage from DP request scheduling | RFC | 2026-08-16T03:08:34Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6195 |
+| [#6160](https://github.com/vllm-project/vllm-omni/issues/6160) | [RFC]: NIXL-backed omni connector for cross-node disaggregated stage transfer |  | 2026-08-13T09:53:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6160 |
+| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-06-07T15:39:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
+
 ### quantization
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
@@ -216,20 +222,11 @@ Generated at: 2026-08-20T15:53:11+00:00
 | [#2215](https://github.com/vllm-project/vllm-omni/issues/2215) | [RFC]: TurboQuant — Sub-4-bit KV Cache Quantization for Long-Context Omni Models | enhancement | 2026-04-05T01:40:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2215 |
 | [#2146](https://github.com/vllm-project/vllm-omni/issues/2146) | [RFC]: Weight key remapping interface for quantization backends with non-standard checkpoint naming |  | 2026-03-24T17:56:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2146 |
 
-### disaggregated_transfer_memory
-
-| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6231](https://github.com/vllm-project/vllm-omni/issues/6231) | [RFC]: Define DLO runtime-cache compatibility across parallelism dimensions | RFC | 2026-08-19T04:40:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6231 |
-| [#6195](https://github.com/vllm-project/vllm-omni/issues/6195) | [RFC]: Decouple DLO host-weight storage from DP request scheduling | RFC | 2026-08-16T03:08:34Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6195 |
-| [#6160](https://github.com/vllm-project/vllm-omni/issues/6160) | [RFC]: NIXL-backed omni connector for cross-node disaggregated stage transfer |  | 2026-08-13T09:53:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6160 |
-| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-06-07T15:39:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
-
 ### metrics_observability
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6414](https://github.com/vllm-project/vllm-omni/issues/6414) | [RFC] Introduce a Host Weight Runtime for reusable runtime-ready artifacts | RFC | 2026-08-20T15:28:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6414 |
+| [#6414](https://github.com/vllm-project/vllm-omni/issues/6414) | [RFC] Introduce a Host Weight Runtime for reusable runtime-ready artifacts | enhancement, high priority, RFC | 2026-08-21T06:52:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6414 |
 | [#6328](https://github.com/vllm-project/vllm-omni/issues/6328) | [RFC]:  vLLM-Omni KV hash & prefix cache | RFC | 2026-08-18T15:13:25Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6328 |
 | [#5932](https://github.com/vllm-project/vllm-omni/issues/5932) | [RFC]: Dynamic Task-DiT Residency for Unified MiniMax-H3 Serving | RFC | 2026-08-09T01:20:07Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5932 |
 | [#3921](https://github.com/vllm-project/vllm-omni/issues/3921) | [Feature]: Kanban chart: Add all history, version filter, and custom date range |  | 2026-05-28T06:25:44Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3921 |
@@ -288,9 +285,8 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6400](https://github.com/vllm-project/vllm-omni/issues/6400) | [Bug]: 910B4 continus quest will oom error | bug | 2026-08-20T14:33:21Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6400 |
+| [#6389](https://github.com/vllm-project/vllm-omni/issues/6389) | [RFC]: Standalone Stage Mode for vllm-omni | enhancement, RFC | 2026-08-20T21:15:53Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6389 |
 | [#6411](https://github.com/vllm-project/vllm-omni/issues/6411) | [Bug]: HunyuanImage-3 DiT LoRA lookup misses model.layers and mishandles fused QKV layout |  | 2026-08-20T13:01:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6411 |
-| [#6389](https://github.com/vllm-project/vllm-omni/issues/6389) | [RFC]: Standalone Stage Mode for vllm-omni | enhancement, RFC | 2026-08-20T00:14:10Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6389 |
 | [#4400](https://github.com/vllm-project/vllm-omni/issues/4400) | [RFC] Improve diffusion worker/engine control-plane reliability and output contracts | help wanted, high priority | 2026-08-19T22:23:05Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4400 |
 | [#6305](https://github.com/vllm-project/vllm-omni/issues/6305) | [RFC]: Diffusion Operator Boundary | RFC | 2026-08-19T02:47:29Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6305 |
 | [#6324](https://github.com/vllm-project/vllm-omni/issues/6324) | [RFC]: Immutable, Cached Solver Plans for Diffusion Schedulers |  | 2026-08-18T14:11:39Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6324 |
@@ -358,8 +354,6 @@ TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6416](https://github.com/vllm-project/vllm-omni/issues/6416) | [Bug]: CosyVoice3 /v1/audio/speech kills EngineCore: multinomial probability tensor contains inf/nan (test_cosyvoice3_tts_expansion) | bug, low priority | 2026-08-20T15:41:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6416 |
-| [#6352](https://github.com/vllm-project/vllm-omni/issues/6352) | [Bug]: Host memory leak — sender-side per-request state never freed for aborted requests (chunk_transfer_adapter) | bug | 2026-08-19T07:41:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6352 |
 | [#6158](https://github.com/vllm-project/vllm-omni/issues/6158) | [Feature][Qwen3-TTS] Add runtime safeguards for rare codec repetition and missing EOS |  | 2026-08-17T09:37:04Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6158 |
 | [#6176](https://github.com/vllm-project/vllm-omni/issues/6176) | [RFC]: Audit and clean up bundled deploy YAML arguments and documentation |  | 2026-08-13T22:29:14Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6176 |
 | [#6116](https://github.com/vllm-project/vllm-omni/issues/6116) | [RFC]: Task-Oriented Examples Information Architecture | RFC | 2026-08-12T15:14:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6116 |
@@ -389,7 +383,7 @@ Orchestrator, engine layer, model runner, multi-stage pipeline, stage overrides,
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6227](https://github.com/vllm-project/vllm-omni/issues/6227) | [RFC] Real-Time Stateful Video Generation Serving Runtime |  | 2026-08-20T15:05:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6227 |
+| [#6227](https://github.com/vllm-project/vllm-omni/issues/6227) | [RFC] Real-Time Stateful Video Generation Serving Runtime |  | 2026-08-21T10:42:15Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6227 |
 | [#6370](https://github.com/vllm-project/vllm-omni/issues/6370) | [Bug]: An OOM issue occurs during the weight creation phase when deploying HunyuanImage-3.0. | bug | 2026-08-20T00:53:50Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6370 |
 | [#6271](https://github.com/vllm-project/vllm-omni/issues/6271) | [RFC]: Serve OpenVLA-7B as an autoregressive robot policy | RFC | 2026-08-17T16:35:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6271 |
 | [#6238](https://github.com/vllm-project/vllm-omni/issues/6238) | [RFC]: Dependency-Aware State Reuse for Diffusion and Multi-Stage Omni Pipelines | RFC | 2026-08-16T14:10:46Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6238 |
@@ -439,7 +433,6 @@ Qwen3-Omni model-family issues including thinker/talker behavior, multimodal str
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6090](https://github.com/vllm-project/vllm-omni/issues/6090) | [Bug]: Nightly / CI failed - tests/e2e/online_serving/test_qwen3_omni_expansion.py audio-vs-text checks failing and worsening (1 case on first attempt, 4 on retry) - AssertionError: The audio content is not same as the text | bug, help wanted, high priority, ci-failure | 2026-08-20T14:21:39Z | triage |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6090 |
 | [#6142](https://github.com/vllm-project/vllm-omni/issues/6142) | [Doc]: Reorganize and complete the CLI reference | documentation | 2026-08-15T07:24:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6142 |
 | [#5767](https://github.com/vllm-project/vllm-omni/issues/5767) | [New Model]: nvidia/NVIDIA-NemotronLabs-VoiceChat-11B |  | 2026-08-06T06:10:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5767 |
 | [#5652](https://github.com/vllm-project/vllm-omni/issues/5652) | [Bug]: AutoRound W4A16 E2E load fails for Qwen2.5/Qwen3-Omni: qweight vs RowParallelLinear.weight | bug, quantization, low priority | 2026-08-02T23:54:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5652 |
@@ -452,6 +445,23 @@ Qwen3-Omni model-family issues including thinker/talker behavior, multimodal str
 | [#1016](https://github.com/vllm-project/vllm-omni/issues/1016) | [RFC]: Add async chunk processing test cases for Qwen3-Omni-30B-A3B-Instruct |  | 2026-01-29T02:42:26Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1016 |
 | [#696](https://github.com/vllm-project/vllm-omni/issues/696) | [RFC]: Qwen3-omni performance analyze |  | 2026-01-12T01:26:57Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/696 |
 
+### ci_testing_regressions
+
+CI failures, accuracy/performance regressions, nightly coverage, Buildkite failures, and flaky test failures.
+
+| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#6245](https://github.com/vllm-project/vllm-omni/issues/6245) | [Bug]: Nightly / CI failed - tests/diffusion/quantization/test_quantization_quality.py::test_quantization_quality[fp8_ltx2] - AssertionError: LPIPS 0.1648 exceeds threshold 0.1 for fp8 on Lightricks/LTX-2 | bug, ci-failure, low priority | 2026-08-21T03:06:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6245 |
+| [#6426](https://github.com/vllm-project/vllm-omni/issues/6426) | [Bug]: Nightly / CI failed - tests/e2e/online_serving/test_minicpmo_4_5_expansion.py::test_chinese_text_to_audio[default] - OOM (Out-of-Memory) issues occurred during continuous request sending. | bug, high priority, ci-failure | 2026-08-21T02:30:25Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6426 |
+| [#5996](https://github.com/vllm-project/vllm-omni/issues/5996) | [RFC]: Trim low-value models from CI based on HF / discussion / freshness scoring | RFC | 2026-08-19T04:24:12Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5996 |
+| [#6326](https://github.com/vllm-project/vllm-omni/issues/6326) | [RFC]: Stage-Level Numerical Parity and Calibrated Quality Gates for Diffusion Optimizations |  | 2026-08-18T14:54:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6326 |
+| [#6028](https://github.com/vllm-project/vllm-omni/issues/6028) | [RFC]: Moving MiniCPM-o 4.5 and PersonaPlex out of Experimental | high priority, RFC | 2026-08-17T02:37:04Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6028 |
+| [#5212](https://github.com/vllm-project/vllm-omni/issues/5212) | [RFC]: Engine-managed state for cache-aware streaming ASR | tts, RFC | 2026-08-14T13:03:17Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5212 |
+| [#5992](https://github.com/vllm-project/vllm-omni/issues/5992) | [RFC]: Static quality gates — pre-commit hardening, CodeQL, and SonarQube Cloud | CI/CD, RFC | 2026-08-11T12:31:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5992 |
+| [#5407](https://github.com/vllm-project/vllm-omni/issues/5407) | [RFC]: Publish and aggregate test coverage reports from CI | CI/CD, RFC | 2026-07-29T05:28:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5407 |
+| [#5450](https://github.com/vllm-project/vllm-omni/issues/5450) | [RFC]: Worker/ModelRunner correctness fixes (ModelRunner Refactor 2/N) | RFC | 2026-07-27T09:00:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5450 |
+| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | diffusion, core, RFC | 2026-06-26T13:00:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
+
 ### serving_api_entrypoints
 
 Online serving, OpenAI-compatible endpoints, websocket/streaming APIs, entrypoints, request/response semantics, and abnormal input behavior.
@@ -459,7 +469,6 @@ Online serving, OpenAI-compatible endpoints, websocket/streaming APIs, entrypoin
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [#5799](https://github.com/vllm-project/vllm-omni/issues/5799) | The parameter dlo-resident-layer is not supported. |  | 2026-08-08T13:46:13Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5799 |
-| [#5776](https://github.com/vllm-project/vllm-omni/issues/5776) | [Bug]: L3 test failed about entrypoint tests due to PR 4958 | bug, high priority, ci-failure | 2026-08-04T14:25:01Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5776 |
 | [#3251](https://github.com/vllm-project/vllm-omni/issues/3251) | [Feature]: Make CosyVoice3 bi-streaming with text-in streaming support |  | 2026-07-24T03:52:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3251 |
 | [#5316](https://github.com/vllm-project/vllm-omni/issues/5316) | [Doc]: WebSocket streaming: Is inference only triggered at sentence boundaries? | documentation | 2026-07-22T09:25:31Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5316 |
 | [#4305](https://github.com/vllm-project/vllm-omni/issues/4305) | [RFC]: Add Rust Frontend support like upstream and even for extended entrypoints |  | 2026-06-10T03:09:45Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4305 |
@@ -469,22 +478,6 @@ Online serving, OpenAI-compatible endpoints, websocket/streaming APIs, entrypoin
 | [#2392](https://github.com/vllm-project/vllm-omni/issues/2392) | [RFC]: Unified failure semantics and request isolation for async generation |  | 2026-05-17T17:00:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2392 |
 | [#3408](https://github.com/vllm-project/vllm-omni/issues/3408) | [RFC]: Entrypoints HTTP Layer Abnormal Input Testing |  | 2026-05-07T07:51:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3408 |
 | [#988](https://github.com/vllm-project/vllm-omni/issues/988) | [RFC]: Support Scalable Frontend: Implementing --api-server-count for Multimodal Throughput |  | 2026-01-28T02:39:17Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/988 |
-
-### ci_testing_regressions
-
-CI failures, accuracy/performance regressions, nightly coverage, Buildkite failures, and flaky test failures.
-
-| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6245](https://github.com/vllm-project/vllm-omni/issues/6245) | [Bug]: Nightly / CI failed - tests/diffusion/quantization/test_quantization_quality.py::test_quantization_quality[fp8_ltx2] - AssertionError: LPIPS 0.1648 exceeds threshold 0.1 for fp8 on Lightricks/LTX-2 | bug, high priority, ci-failure | 2026-08-20T15:06:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6245 |
-| [#5996](https://github.com/vllm-project/vllm-omni/issues/5996) | [RFC]: Trim low-value models from CI based on HF / discussion / freshness scoring | RFC | 2026-08-19T04:24:12Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5996 |
-| [#6326](https://github.com/vllm-project/vllm-omni/issues/6326) | [RFC]: Stage-Level Numerical Parity and Calibrated Quality Gates for Diffusion Optimizations |  | 2026-08-18T14:54:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6326 |
-| [#6028](https://github.com/vllm-project/vllm-omni/issues/6028) | [RFC]: Moving MiniCPM-o 4.5 and PersonaPlex out of Experimental | high priority, RFC | 2026-08-17T02:37:04Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6028 |
-| [#5212](https://github.com/vllm-project/vllm-omni/issues/5212) | [RFC]: Engine-managed state for cache-aware streaming ASR | tts, RFC | 2026-08-14T13:03:17Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5212 |
-| [#5992](https://github.com/vllm-project/vllm-omni/issues/5992) | [RFC]: Static quality gates — pre-commit hardening, CodeQL, and SonarQube Cloud | CI/CD, RFC | 2026-08-11T12:31:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5992 |
-| [#5407](https://github.com/vllm-project/vllm-omni/issues/5407) | [RFC]: Publish and aggregate test coverage reports from CI | CI/CD, RFC | 2026-07-29T05:28:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5407 |
-| [#5450](https://github.com/vllm-project/vllm-omni/issues/5450) | [RFC]: Worker/ModelRunner correctness fixes (ModelRunner Refactor 2/N) | RFC | 2026-07-27T09:00:24Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5450 |
-| [#4661](https://github.com/vllm-project/vllm-omni/issues/4661) | [RFC]: Third-party Sparse Attention Backends Support | diffusion, core, RFC | 2026-06-26T13:00:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4661 |
 
 ### docs_devex_release
 
@@ -500,6 +493,18 @@ Documentation, examples, Docker/release requests, contributor workflow, pre-comm
 | [#1056](https://github.com/vllm-project/vllm-omni/issues/1056) | [RFC-Doc]: Add Quantization Documentation for Diffusion Models |  | 2026-03-17T16:49:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1056 |
 | [#1013](https://github.com/vllm-project/vllm-omni/issues/1013) | [Installation]: LGPL license in dependencies |  | 2026-03-16T09:30:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/1013 |
 
+### disaggregated_transfer_memory
+
+Disaggregated serving, transfer engines, Mooncake/Yuanrong connectors, IPC, cross-process weight sharing, and encoder embedding data sharing.
+
+| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#6462](https://github.com/vllm-project/vllm-omni/issues/6462) | [Bug]: Host-memory leak in api_server frontend on aborted /v1/images/generations (diffusion) requests |  | 2026-08-21T15:45:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6462 |
+| [#6231](https://github.com/vllm-project/vllm-omni/issues/6231) | [RFC]: Define DLO runtime-cache compatibility across parallelism dimensions | RFC | 2026-08-19T04:40:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6231 |
+| [#6195](https://github.com/vllm-project/vllm-omni/issues/6195) | [RFC]: Decouple DLO host-weight storage from DP request scheduling | RFC | 2026-08-16T03:08:34Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6195 |
+| [#6160](https://github.com/vllm-project/vllm-omni/issues/6160) | [RFC]: NIXL-backed omni connector for cross-node disaggregated stage transfer |  | 2026-08-13T09:53:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6160 |
+| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-06-07T15:39:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
+
 ### quantization
 
 Quantization, FP8, AutoRound, GGUF, ModelOpt, TurboQuant, quantized attention backends, and non-standard checkpoint naming.
@@ -512,24 +517,13 @@ Quantization, FP8, AutoRound, GGUF, ModelOpt, TurboQuant, quantized attention ba
 | [#2215](https://github.com/vllm-project/vllm-omni/issues/2215) | [RFC]: TurboQuant — Sub-4-bit KV Cache Quantization for Long-Context Omni Models | enhancement | 2026-04-05T01:40:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2215 |
 | [#2146](https://github.com/vllm-project/vllm-omni/issues/2146) | [RFC]: Weight key remapping interface for quantization backends with non-standard checkpoint naming |  | 2026-03-24T17:56:54Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/2146 |
 
-### disaggregated_transfer_memory
-
-Disaggregated serving, transfer engines, Mooncake/Yuanrong connectors, IPC, cross-process weight sharing, and encoder embedding data sharing.
-
-| issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6231](https://github.com/vllm-project/vllm-omni/issues/6231) | [RFC]: Define DLO runtime-cache compatibility across parallelism dimensions | RFC | 2026-08-19T04:40:06Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6231 |
-| [#6195](https://github.com/vllm-project/vllm-omni/issues/6195) | [RFC]: Decouple DLO host-weight storage from DP request scheduling | RFC | 2026-08-16T03:08:34Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6195 |
-| [#6160](https://github.com/vllm-project/vllm-omni/issues/6160) | [RFC]: NIXL-backed omni connector for cross-node disaggregated stage transfer |  | 2026-08-13T09:53:56Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6160 |
-| [#3426](https://github.com/vllm-project/vllm-omni/issues/3426) | [RFC]: Mooncake Transfer Engine Connector : Performance Profiling & Optimization |  | 2026-06-07T15:39:49Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3426 |
-
 ### metrics_observability
 
 Prometheus, metrics UX, multimodal SLOs, observability, logging clarity, and per-stage/replica labels.
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#6414](https://github.com/vllm-project/vllm-omni/issues/6414) | [RFC] Introduce a Host Weight Runtime for reusable runtime-ready artifacts | RFC | 2026-08-20T15:28:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6414 |
+| [#6414](https://github.com/vllm-project/vllm-omni/issues/6414) | [RFC] Introduce a Host Weight Runtime for reusable runtime-ready artifacts | enhancement, high priority, RFC | 2026-08-21T06:52:35Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6414 |
 | [#6328](https://github.com/vllm-project/vllm-omni/issues/6328) | [RFC]:  vLLM-Omni KV hash & prefix cache | RFC | 2026-08-18T15:13:25Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6328 |
 | [#5932](https://github.com/vllm-project/vllm-omni/issues/5932) | [RFC]: Dynamic Task-DiT Residency for Unified MiniMax-H3 Serving | RFC | 2026-08-09T01:20:07Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5932 |
 | [#3921](https://github.com/vllm-project/vllm-omni/issues/3921) | [Feature]: Kanban chart: Add all history, version filter, and custom date range |  | 2026-05-28T06:25:44Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/3921 |

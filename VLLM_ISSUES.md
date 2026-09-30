@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-09-29T19:48:11+00:00
+Generated at: 2026-09-30T19:51:42+00:00
 
 ## Action Queue
 
@@ -8,8 +8,8 @@ Generated at: 2026-09-29T19:48:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#49545](https://github.com/vllm-project/vllm/issues/49545) | [RFC]: Speculative recompute fallback for slow remote KV cache loads | RFC | 2026-09-29T21:27:25Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49545 |
 | [#57445](https://github.com/vllm-project/vllm/issues/57445) | [RFC]: Layer-Wise Mixed-Precision KV Cache | quantization | 2026-09-29T18:27:22Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57445 |
-| [#59122](https://github.com/vllm-project/vllm/issues/59122) | [Bug] ExampleHiddenStatesConnector does not support Hybrid KV Cache Manager | bug, kv-cache-manager | 2026-09-29T13:54:17Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59122 |
 | [#45036](https://github.com/vllm-project/vllm/issues/45036) | [RFC]: [Roadmap] Mooncake Store Connector Feature Enrichment Roadmap | RFC | 2026-09-29T08:57:24Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/45036 |
 | [#59141](https://github.com/vllm-project/vllm/issues/59141) | [RFC][KV Connector] NIXL support for shared in-flight prefix loads | kv-connector | 2026-09-29T06:20:47Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59141 |
 | [#57103](https://github.com/vllm-project/vllm/issues/57103) | [RFC]: Programmable KV Cache: Composable Policies for Agentic Serving | RFC, kimi | 2026-09-29T01:32:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57103 |
@@ -61,7 +61,6 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#39389](https://github.com/vllm-project/vllm/issues/39389) | [Bug]: V1 engine prefix caching was causing non-deterministic outputs during greedy decoding T=0 | bug, unstale | 2026-08-06T02:17:27Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/39389 |
 | [#42058](https://github.com/vllm-project/vllm/issues/42058) | [Performance]: Quantized KV Cache Throughput/TTFT/TPOT slower? | performance | 2026-08-04T12:21:58Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/42058 |
 | [#48203](https://github.com/vllm-project/vllm/issues/48203) | [RFC]: Layerwise and Sparse KV cache offloading to support longer sequence length | RFC | 2026-08-03T00:16:14Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48203 |
-| [#49545](https://github.com/vllm-project/vllm/issues/49545) | [RFC]: Speculative recompute fallback for slow remote KV cache loads | RFC | 2026-07-29T02:39:49Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49545 |
 | [#49360](https://github.com/vllm-project/vllm/issues/49360) | [Bug]: `MooncakeStoreConnector` KV Offload hangs the vLLM engine on a GDN model (`Qwen3.6-35B-A3B`) | bug | 2026-07-29T02:34:27Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49360 |
 | [#50031](https://github.com/vllm-project/vllm/issues/50031) | [RFC]: Back-pressure detection for KV cache offloading tiers | RFC | 2026-07-29T01:59:44Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/50031 |
 | [#48504](https://github.com/vllm-project/vllm/issues/48504) | [RFC]: GDS support for filesystem KV-cache offloading |  | 2026-07-28T07:51:15Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48504 |
@@ -77,12 +76,14 @@ Generated at: 2026-09-29T19:48:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#59466](https://github.com/vllm-project/vllm/issues/59466) | [Feature]: Support configuring Triton unified-attention launch parameters | feature request | 2026-09-30T17:17:29Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59466 |
+| [#55526](https://github.com/vllm-project/vllm/issues/55526) | [Bug]: DeepSeek-V4-Flash TP=16 on SM120 (RTX 5090 x16, ray multi-node) fails: DSV4 sparse MLA decode specialization error for (num_q_heads=8, top_k=128) despite FlashInfer dispatch table containing that config | deepseek, DSv4 | 2026-09-30T11:13:18Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55526 |
+| [#59065](https://github.com/vllm-project/vllm/issues/59065) | [Bug]: FlashInfer MLA with DCP>1 crashes in kernel warmup on ragged spec/non-spec decode batch (`causal_seqlens_kv_global must have shape (9,), got (2,)`) | kimi, k3 | 2026-09-30T09:24:27Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59065 |
+| [#56892](https://github.com/vllm-project/vllm/issues/56892) | [Bug/Perf] DeepSeek-V4.1-Flash on SM120 (RTX PRO 6000 Blackwell, 8xTP): extremely low decode throughput with --enforce-eager; CUDA graphs unusable — please prioritize SM120 graph capture fix | deepseek, DSv4.1 | 2026-09-30T04:41:29Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56892 |
 | [#54059](https://github.com/vllm-project/vllm/issues/54059) | [Model]: GLM-5.3-Flash (glm5_next): no sparse-MLA attention path on Ada (sm_89, RTX 4090) | glm | 2026-09-29T08:32:26Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/54059 |
-| [#59065](https://github.com/vllm-project/vllm/issues/59065) | [Bug]: FlashInfer MLA with DCP>1 crashes in kernel warmup on ragged spec/non-spec decode batch (`causal_seqlens_kv_global must have shape (9,), got (2,)`) | kimi, k3 | 2026-09-29T07:55:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59065 |
 | [#45604](https://github.com/vllm-project/vllm/issues/45604) | [Bug]: CUDA invalid argument in FlashInfer AllReduce norm fusion on MiniMax-M3 MXFP8, 4x H200 | bug, unstale | 2026-09-29T01:56:44Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/45604 |
 | [#48374](https://github.com/vllm-project/vllm/issues/48374) | [RFC]: fp8 KV cache for the Ampere sparse-MLA path (TRITON_MLA_SPARSE) via software dequant |  | 2026-09-28T11:21:23Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48374 |
 | [#57895](https://github.com/vllm-project/vllm/issues/57895) | [RFC]: Stable runtime tensor lifecycle for sleep and live weight reload | RFC, quantization, kimi | 2026-09-28T09:02:01Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57895 |
-| [#56892](https://github.com/vllm-project/vllm/issues/56892) | [Bug/Perf] DeepSeek-V4.1-Flash on SM120 (RTX PRO 6000 Blackwell, 8xTP): extremely low decode throughput with --enforce-eager; CUDA graphs unusable — please prioritize SM120 graph capture fix | deepseek, DSv4.1 | 2026-09-27T22:36:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56892 |
 | [#58909](https://github.com/vllm-project/vllm/issues/58909) | [Feature]: [RFC] Dynamic Latent-Trajectory Consensus Governor for Reasoning Models (DeepSeek-R1 / QwQ) to Free KV-Cache 4.5x Faster | feature request, tool-calling, deepseek | 2026-09-27T15:13:09Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58909 |
 | [#58910](https://github.com/vllm-project/vllm/issues/58910) | [Bug]: DeepSeek-V4.1-Flash on SM120 (RTX PRO 6000): Xid 31 illegal memory access during long prefill — deterministic with CUDA graphs enabled, flaky in eager mode (v0.30.0 + FlashInfer 0.7.0) | ci-failure, deepseek, DSv4.1 | 2026-09-27T14:54:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58910 |
 | [#58850](https://github.com/vllm-project/vllm/issues/58850) | [Bug]: Intermittent Xid 31 MMU fault in pynccl all_reduce during CUDA graph | bug | 2026-09-27T08:57:20Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58850 |
@@ -100,7 +101,6 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#52938](https://github.com/vllm-project/vllm/issues/52938) | [Bug]: DeepSeek-V4-Flash on RTX PRO 6000 Blackwell (SM120) emits degenerate output — identical argmax token + identical logprob at every decode position, TP and DP+EP alike, confirmed independent of environment/install history (FLASHINFER_MLA_SPARSE_DSV4) |  | 2026-09-09T01:24:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52938 |
 | [#54225](https://github.com/vllm-project/vllm/issues/54225) | [Bug]: FlashInfer attention backend causes CUDA illegal memory access on sm_120 with NVFP4 + fp8 KV cache; crashes on a 16-token request; TRITON_ATTN unaffected | quantization | 2026-09-08T13:58:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/54225 |
 | [#55571](https://github.com/vllm-project/vllm/issues/55571) | [Bug]: Xid 13 "Out Of Range Address" / CUDA illegal memory access on RTX PRO 5000 (SM120) with FP8 model under sustained load — gone with VLLM_DISABLED_KERNELS=FlashInferFP8ScaledMMLinearKernel or --enforce-eager | bug, quantization | 2026-09-07T06:18:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55571 |
-| [#55526](https://github.com/vllm-project/vllm/issues/55526) | [Bug]: DeepSeek-V4-Flash TP=16 on SM120 (RTX 5090 x16, ray multi-node) fails: DSV4 sparse MLA decode specialization error for (num_q_heads=8, top_k=128) despite FlashInfer dispatch table containing that config | deepseek, DSv4 | 2026-09-07T01:26:28Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55526 |
 | [#55406](https://github.com/vllm-project/vllm/issues/55406) | [Bug]: Nemotron-3.5-Lightning-30B-A3B-NVFP4 dies with CUDA illegal memory access in cudagraph replay on SM110 (Jetson Thor); deterministic 5-request repro; --enforce-eager works around it |  | 2026-09-05T10:25:08Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55406 |
 | [#50331](https://github.com/vllm-project/vllm/issues/50331) | [Bug]: FlashInfer BatchPrefillWithPagedKVCache fails with "invalid resource handle" on SM121 (GB10) with head_dim 256 + FP8 KV cache |  | 2026-09-02T00:27:06Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/50331 |
 | [#40544](https://github.com/vllm-project/vllm/issues/40544) | [Feature]: Integrate fused `kMoEFinalizeARResidualRMSNorm` from FlashInfer | help wanted, feature request | 2026-09-01T10:11:52Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/40544 |
@@ -131,19 +131,18 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#47919](https://github.com/vllm-project/vllm/issues/47919) | [RFC]   guard-gated sparse MLA topology index policy |  | 2026-07-08T01:57:00Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47919 |
 | [#40260](https://github.com/vllm-project/vllm/issues/40260) | [Bug]: Incompatible dimension when using Mistral Small 4 | bug | 2026-07-06T23:17:26Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/40260 |
 | [#46625](https://github.com/vllm-project/vllm/issues/46625) | Qwen3-VL-8B-FP8 on RTX 5080 (Blackwell SM120) - engine init OK but generate() hangs silently |  | 2026-07-03T14:06:11Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/46625 |
-| [#47351](https://github.com/vllm-project/vllm/issues/47351) | [RFC]: Sparse-attention-based self-speculative decoding (StreamingLLM, then Vegas) | RFC | 2026-07-02T00:54:42Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47351 |
-| [#47275](https://github.com/vllm-project/vllm/issues/47275) | [Bug]: Gemma4 MoE (26B-A4B) aborts with "nanobind::builtin_exception: Expected an MLIR object (got OpResultList)" during CUDA graph capture on H200 (SM90) with FA4 |  | 2026-07-01T08:59:31Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47275 |
 | [#37995](https://github.com/vllm-project/vllm/issues/37995) | [RFC]: Prefill Context Parallel for Qwen3.5 Hybrid Attention | feature request, keep-open | 2026-06-29T03:12:16Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/37995 |
 
 ### scheduler_batching
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#53277](https://github.com/vllm-project/vllm/issues/53277) | [Feature]: Cache-aware waiting QoS with optional cooperative prefill preemption |  | 2026-09-30T07:07:04Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53277 |
+| [#59354](https://github.com/vllm-project/vllm/issues/59354) | [Feature]: shechduling using predicted decode output length | feature request | 2026-09-30T03:02:47Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59354 |
 | [#45221](https://github.com/vllm-project/vllm/issues/45221) | [RFC]: AuxOutput Connector — block-keyed outputs and storage roadmap | RFC | 2026-09-28T04:01:52Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/45221 |
 | [#54317](https://github.com/vllm-project/vllm/issues/54317) | [Bug]: GLM-5.3-Flash (glm5next) — recurring CUDA illegal memory access on 4xB200, surfacing in three unrelated kernels (KDA linear-attention, MHC TileLang, TRT-LLM fused MoE) | kimi, glm | 2026-09-19T22:13:12Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/54317 |
 | [#57530](https://github.com/vllm-project/vllm/issues/57530) | [RFC]: A failure spine for the Mooncake connectors |  | 2026-09-19T05:43:14Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57530 |
 | [#57580](https://github.com/vllm-project/vllm/issues/57580) | [Bug][Scheduler][Mamba] Track uncomputed align checkpoint visibility after same-step priority preemption | scheduler | 2026-09-18T15:39:20Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57580 |
-| [#56771](https://github.com/vllm-project/vllm/issues/56771) | [Bug]: DeepSeek-V4.1-Flash + DSpark speculative decoding — illegal memory access in SM120 sparse-MLA prefill on long prompts | speculative-decoding, deepseek, DSv4.1 | 2026-09-17T09:14:03Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56771 |
 | [#54229](https://github.com/vllm-project/vllm/issues/54229) | [RFC]: Privacy-safe runtime incident snapshots for fatal EngineCore failures | RFC, quantization | 2026-09-16T04:42:41Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/54229 |
 | [#51212](https://github.com/vllm-project/vllm/issues/51212) | [RFC]: Model Runner V2 Pluggable Design | RFC | 2026-09-16T03:00:31Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51212 |
 | [#53480](https://github.com/vllm-project/vllm/issues/53480) | [Bug][XPU]: Silent persistent output corruption (endless "!" / token 0) under sustained concurrent decode on Arc Pro B70, W4A16 27B head_dim 256 | intel-gpu | 2026-09-15T15:53:28Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53480 |
@@ -167,7 +166,6 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#39737](https://github.com/vllm-project/vllm/issues/39737) | [Bug]: max-num-partial-prefills failes on V1 engine start | bug | 2026-08-28T07:52:18Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/39737 |
 | [#53928](https://github.com/vllm-project/vllm/issues/53928) | [Bug]:  [XPU] RuntimeError: causal_conv1d does not support spec-decode and non-spec tokens in the same invocation (MTP + chunked prefill) | bug, intel-gpu, quantization | 2026-08-28T00:59:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53928 |
 | [#53703](https://github.com/vllm-project/vllm/issues/53703) | [RFC]: Progressive block handoff for NIXL Push | RFC, kv-connector | 2026-08-25T09:54:21Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53703 |
-| [#53277](https://github.com/vllm-project/vllm/issues/53277) | [Feature]: Cache-aware waiting QoS with optional cooperative prefill preemption |  | 2026-08-21T16:47:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53277 |
 | [#51788](https://github.com/vllm-project/vllm/issues/51788) | [RFC]: Suffix decoding on GPU (`suffix_gpu`) — GPU-resident suffix decoding compatible with async scheduling | RFC | 2026-08-20T03:34:38Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51788 |
 | [#52959](https://github.com/vllm-project/vllm/issues/52959) | [RFC]: Internal State Checkpoints for Mamba Align Mode | RFC, kimi | 2026-08-19T17:37:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52959 |
 | [#52617](https://github.com/vllm-project/vllm/issues/52617) | [Bug]: vLLM 0.26.0 LMCache P/D receiver reports a full KV-cache hit but decoding diverges from the monolithic baseline at token 0 | bug | 2026-08-19T15:12:00Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52617 |
@@ -186,7 +184,6 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#42770](https://github.com/vllm-project/vllm/issues/42770) | [RFC]: Changes in vLLM Model Development | RFC | 2026-07-18T10:06:45Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/42770 |
 | [#40094](https://github.com/vllm-project/vllm/issues/40094) | [Bug]: Turbo Quant keep failing TRITON_ATTN 'kv_cache_dtype not supported' | bug | 2026-07-18T07:51:26Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/40094 |
 | [#48147](https://github.com/vllm-project/vllm/issues/48147) | [RFC]: Optimizing Asynchronous Stream Serialization in OpenAI API Entrypoint | RFC | 2026-07-09T17:19:48Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48147 |
-| [#47280](https://github.com/vllm-project/vllm/issues/47280) | [RFC]: Implement return indexer topk for sparse attention. | RFC | 2026-07-01T09:45:53Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47280 |
 | [#18037](https://github.com/vllm-project/vllm/issues/18037) | [RFC]: Enabling Suffix Decoding, LSTM Speculator, Sequence Parallelism from Arctic Inference | RFC, speculative-decoding, keep-open | 2025-10-07T08:25:54Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/18037 |
 | [#8779](https://github.com/vllm-project/vllm/issues/8779) | vLLM's V1 Engine Architecture | RFC, keep-open | 2025-07-09T02:50:56Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/8779 |
 
@@ -194,8 +191,8 @@ Generated at: 2026-09-29T19:48:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#56868](https://github.com/vllm-project/vllm/issues/56868) | [Bug]: GLM-5.3-Flash long-decode degeneration after accumulated reasoning decode | bug, tool-calling, quantization, glm | 2026-09-30T19:58:05Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56868 |
 | [#59189](https://github.com/vllm-project/vllm/issues/59189) | [Bug]: GB200 DP4+EP serving crashes in NCCL symmetric reduce-scatter after #48247 | quantization, kimi | 2026-09-29T10:09:22Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59189 |
-| [#56868](https://github.com/vllm-project/vllm/issues/56868) | [Bug]: GLM-5.3-Flash long-decode degeneration after accumulated reasoning decode | bug, tool-calling, quantization, glm | 2026-09-29T09:21:14Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56868 |
 | [#58638](https://github.com/vllm-project/vllm/issues/58638) | [RFC]: KV cache grouping for hybrid models with speculative drafters | RFC, kimi | 2026-09-27T21:51:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58638 |
 | [#51494](https://github.com/vllm-project/vllm/issues/51494) | [Performance] MiniMax-M3-NVFP4 on 8x B200, first numbers after the #48929 correctness fix: 1M real-prose envelope, EAGLE3 2.1-2.3x decode |  | 2026-09-27T18:54:39Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51494 |
 | [#58031](https://github.com/vllm-project/vllm/issues/58031) | FlashInfer autotune for trtllm_fp4_block_scale_moe wedges forever on SM103 (GB300): trtllm_gemm cubin is sm_100a-only, no PTX, and the autotuner has no timeout |  | 2026-09-23T18:47:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58031 |
@@ -273,16 +270,14 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#42109](https://github.com/vllm-project/vllm/issues/42109) | [RFC]: Disaggregated Speculative Decoding with Standalone Parallel Draft Model | RFC | 2026-07-20T15:47:00Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/42109 |
 | [#49090](https://github.com/vllm-project/vllm/issues/49090) | [RFC][SpecDecode] Move MTP completeness validation to the weight-update transaction boundary |  | 2026-07-20T09:10:59Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49090 |
 | [#45531](https://github.com/vllm-project/vllm/issues/45531) | [Bug]: minimax M3MXFP8 with mtp can not start success | bug | 2026-07-03T02:24:31Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/45531 |
-| [#46707](https://github.com/vllm-project/vllm/issues/46707) | [RFC]: Support for Domino speculative decoding in vLLM | RFC, speculative-decoding | 2026-07-01T13:40:17Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/46707 |
-| [#46977](https://github.com/vllm-project/vllm/issues/46977) | [Feature]: Support combining multiple speculative decoding methods (e.g. MTP + ngram) | feature request | 2026-07-01T03:39:20Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/46977 |
 
 ### distributed_pd
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#59394](https://github.com/vllm-project/vllm/issues/59394) | [Bug] DeepSeek-V4.1-Flash cannot use TP > 8: Engram hash-head sharding assertion rejects tp_size=16 across 2 nodes | deepseek, DSv4.1 | 2026-09-30T11:13:27Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59394 |
+| [#59382](https://github.com/vllm-project/vllm/issues/59382) | [RFC]: MoRIIO WRITE failure handling and safe KV block reclamation | RFC | 2026-09-30T06:07:12Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59382 |
 | [#42515](https://github.com/vllm-project/vllm/issues/42515) | [RFC]: External Elastic EP Scaling | RFC | 2026-09-29T19:00:12Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/42515 |
-| [#59268](https://github.com/vllm-project/vllm/issues/59268) | [Bug]: vllm.utils.system_utils.suppress_stdout crashes when sys.stdout has no file descriptor | bug | 2026-09-29T18:30:14Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59268 |
-| [#59055](https://github.com/vllm-project/vllm/issues/59055) | [RFC]: Release all releasable GPU memory in sleep mode (tracking) | feature request | 2026-09-29T16:55:17Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59055 |
 | [#52777](https://github.com/vllm-project/vllm/issues/52777) | [RFC]: Rank-Skew-Aware Collective Attribution for Tensor-Parallel Serving |  | 2026-09-28T07:40:48Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52777 |
 | [#56828](https://github.com/vllm-project/vllm/issues/56828) | [Bug][KV Offload][P2P] Peer-down on one rank does not fail loads or block new loads to sibling ranks of the same source |  | 2026-09-27T15:52:56Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56828 |
 | [#57373](https://github.com/vllm-project/vllm/issues/57373) | [RFC]: Share KV transfer planning primitives across KV connectors | kv-connector | 2026-09-24T07:22:01Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57373 |
@@ -314,18 +309,17 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#47918](https://github.com/vllm-project/vllm/issues/47918) | [Bug]: V1 + Ray distributed executor + LoRA — execute_model returns NoneType on NVIDIA GPU |  | 2026-07-07T20:36:21Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47918 |
 | [#47768](https://github.com/vllm-project/vllm/issues/47768) | [RFC]: vLLM gRPC server API for downstream integrations | RFC | 2026-07-06T18:36:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47768 |
 | [#46679](https://github.com/vllm-project/vllm/issues/46679) | [Bug]: GLM5.2 RuntimeError: The expanded size of the tensor (10210) must match the existing size (16384) at non-singleton dimension 1.  Target sizes: [12, 10210].  Tensor sizes: [12, 16384] | bug | 2026-07-03T03:23:13Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/46679 |
-| [#47326](https://github.com/vllm-project/vllm/issues/47326) | [Bug]: Incoherent output depending on tensor-parallel-size during inference on Leanstral (Mistral Small 4 family) | bug | 2026-07-01T19:23:54Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47326 |
 
 ### structured_output_tooling
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#47161](https://github.com/vllm-project/vllm/issues/47161) | [RFC]: Streaming Derender for Disaggregated Serving | RFC, tool-calling, kv-connector | 2026-09-29T15:48:55Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47161 |
+| [#47161](https://github.com/vllm-project/vllm/issues/47161) | [RFC]: Streaming Derender for Disaggregated Serving | RFC, tool-calling, kv-connector | 2026-09-30T18:18:28Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47161 |
+| [#58147](https://github.com/vllm-project/vllm/issues/58147) | [Bug]: Qwen3 parser turns tool-call markup the model quotes into real tool calls (names outside request.tools, and duplicates of offered ones) | tool-calling | 2026-09-30T09:03:40Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58147 |
 | [#55313](https://github.com/vllm-project/vllm/issues/55313) | [Bug]: Qwen3.8 + DSpark + streaming json_schema can desync XGrammar and emit 250k trailing spaces with HTTP 200 | bug, structured-output | 2026-09-27T16:57:25Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55313 |
 | [#58697](https://github.com/vllm-project/vllm/issues/58697) | [RFC]: Shared JSON Schema structure for structured-output checks and transformations | structured-output | 2026-09-25T10:05:39Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58697 |
 | [#53181](https://github.com/vllm-project/vllm/issues/53181) | [Bug] Xgrammar "Failed to advance FSM" still fires after #52805 (0.27.2rc1.dev256+geac636a7f) — follow-up to #52852 | structured-output | 2026-09-23T22:51:43Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53181 |
 | [#57499](https://github.com/vllm-project/vllm/issues/57499) | [RFC]: Stateless Responses API in the Rust frontend | rust | 2026-09-23T17:26:16Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57499 |
-| [#58147](https://github.com/vllm-project/vllm/issues/58147) | [Bug]: Qwen3 parser turns tool-call markup the model quotes into real tool calls (names outside request.tools, and duplicates of offered ones) | tool-calling | 2026-09-23T05:27:31Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58147 |
 | [#56605](https://github.com/vllm-project/vllm/issues/56605) | [Bug]: GLM-5.3-Flash degenerates into repeated-token "word salad" in multi-turn agentic use | bug, glm | 2026-09-22T13:16:57Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56605 |
 | [#43116](https://github.com/vllm-project/vllm/issues/43116) | [Bug]: Granite 3.3 / 4.0 H-Small Python-style tool calls not converted to OpenAI tool_calls format | unstale, tool-calling | 2026-09-01T01:49:54Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/43116 |
 | [#37558](https://github.com/vllm-project/vllm/issues/37558) | “vLLM-deployed Qwen3.5 with Reasoning Parser Shows Empty reasoningContent in Spring AI OpenAI Model” | bug, tool-calling | 2026-08-31T23:45:22Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/37558 |
@@ -380,7 +374,6 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#48602](https://github.com/vllm-project/vllm/issues/48602) | [Bug]: DeepSeekv4 flash on RTXpro6000 vllm benchmark input 8192 output 1024 encounter a err | bug | 2026-07-15T00:35:36Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48602 |
 | [#48465](https://github.com/vllm-project/vllm/issues/48465) | [Bug]: deepseek-v4-pro-dspark --max-num-batched-tokens 16384 no use | bug | 2026-07-13T06:05:41Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48465 |
 | [#48077](https://github.com/vllm-project/vllm/issues/48077) | [Usage]: Does it support the deployment of P node TEP and D node DEP modes | usage | 2026-07-09T05:38:08Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48077 |
-| [#46796](https://github.com/vllm-project/vllm/issues/46796) | [Bug]: DeepSeek-V4-Flash fails to start on B300 (SM100) — DeepGEMM sm100_tf32_hc_prenorm_gemm kernel launch fails (invalid argument on CUDA 13, invalid configuration argument on CUDA 12.9) |  | 2026-07-01T01:58:29Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/46796 |
 | [#41331](https://github.com/vllm-project/vllm/issues/41331) | [Bug]: Garbled Output in DeepSeek-V4 with CUDA Graph Enabled Under Concurrent Identical Input Requests | bug | 2026-08-14T04:58:43Z | triage | high | medium | Compare cudagraph modes and sparse MLA metadata replay | https://github.com/vllm-project/vllm/issues/41331 |
 | [#40802](https://github.com/vllm-project/vllm/issues/40802) | [Feature]: Deepseek V4 cannot run ,Please support SM120 GPU,example rtx5090  rtxpro6000 | feature request, DSv4 | 2026-07-19T02:47:45Z | triage |  |  |  | https://github.com/vllm-project/vllm/issues/40802 |
 
@@ -388,7 +381,7 @@ Generated at: 2026-09-29T19:48:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#59248](https://github.com/vllm-project/vllm/issues/59248) | [Bug]: Qwen3-Coder-Next AutoRound routed MoE gate ignores checkpoint quantization | quantization | 2026-09-29T16:06:57Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59248 |
+| [#59248](https://github.com/vllm-project/vllm/issues/59248) | [Bug]: Qwen3-Coder-Next AutoRound routed MoE gate ignores checkpoint quantization | quantization | 2026-09-30T08:18:30Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59248 |
 | [#48305](https://github.com/vllm-project/vllm/issues/48305) | [RFC] Training-Inference Consistency for RL | RFC, rl | 2026-09-29T02:30:16Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48305 |
 | [#57794](https://github.com/vllm-project/vllm/issues/57794) | [RFC]: Expert-granular MoE residency — drive UVA offload from EPLB's per-expert load statistics |  | 2026-09-27T17:25:39Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57794 |
 | [#50772](https://github.com/vllm-project/vllm/issues/50772) | [Bug]: --load_format fastsafetensors produces corrupted/incoherent generation for DeepSeek-V4-Flash-0731 with TP+EP (works with default loader) | quantization | 2026-09-26T22:25:06Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/50772 |
@@ -412,17 +405,17 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#49638](https://github.com/vllm-project/vllm/issues/49638) | NVFP4 fused-expert scales dropped in Qwen3_5_VL_MoE weight_loader (qwen3_5_vl_moe) | quantization | 2026-07-29T02:56:21Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49638 |
 | [#44806](https://github.com/vllm-project/vllm/issues/44806) | [Bug]: Qwen3.5 397B NVFP4 DEP8 mixed prefill-decode step 6x times longer than decode-only step | bug | 2026-07-04T11:47:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/44806 |
 | [#47334](https://github.com/vllm-project/vllm/issues/47334) | [RFC]: Port vLLM-built Hopper and Blackwell C++ CUDA kernels to CuTeDSL | RFC | 2026-07-02T15:16:56Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47334 |
-| [#43750](https://github.com/vllm-project/vllm/issues/43750) | [Bug]: [XPU] compressed-tensors WNA16 MoE selector ignores XPU platform, crashes on Marlin path | bug, intel-gpu | 2026-07-01T07:56:46Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/43750 |
 | [#20323](https://github.com/vllm-project/vllm/issues/20323) | [RFC]: Elastic Expert Parallelism | RFC, keep-open | 2026-06-09T10:09:28Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/20323 |
 
 ### openai_server
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#59433](https://github.com/vllm-project/vllm/issues/59433) | [Startup UX]: Serial per-process Python imports across the API server → EngineCore → worker tree add significant startup time |  | 2026-09-30T15:09:59Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59433 |
+| [#56851](https://github.com/vllm-project/vllm/issues/56851) | [RFC]: Request level text and derender output on `/inference/v1/generate` | RFC | 2026-09-30T12:59:01Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56851 |
 | [#59210](https://github.com/vllm-project/vllm/issues/59210) | [Feature]: Helm chart: add an optional ServiceMonitor with a configurable regex filter to reduce the number of exported metrics | feature request | 2026-09-29T11:57:59Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59210 |
 | [#59087](https://github.com/vllm-project/vllm/issues/59087) | [Bug]: `--tool-call-parser mistral` on a non-Mistral tokenizer can start but then answers EVERY chat request with 500 | bug, tool-calling, mistral | 2026-09-28T23:13:27Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59087 |
 | [#58253](https://github.com/vllm-project/vllm/issues/58253) | [RFC]: Increase vLLM Review Capacity with a Reviewer Role | RFC | 2026-09-28T22:45:51Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58253 |
-| [#56851](https://github.com/vllm-project/vllm/issues/56851) | [RFC]: Request level text and derender output on `/inference/v1/generate` | RFC | 2026-09-28T20:01:28Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56851 |
 | [#42729](https://github.com/vllm-project/vllm/issues/42729) | [RFC]: Derender Endpoints to Provide Detokenization for Disaggregated Serving | RFC, kv-connector | 2026-09-28T14:41:43Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/42729 |
 | [#58227](https://github.com/vllm-project/vllm/issues/58227) | [Bug]: an unclosed <tool_call> opener written in prose holds the Qwen3 parser in tool state and swallows a later genuine tool call | tool-calling | 2026-09-27T01:11:59Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58227 |
 | [#58657](https://github.com/vllm-project/vllm/issues/58657) | Use-case proposal: payment-gated self-hosted vLLM for agents (HTTP 402 + Nano) |  | 2026-09-25T02:56:17Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58657 |
@@ -446,11 +439,9 @@ Generated at: 2026-09-29T19:48:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#59271](https://github.com/vllm-project/vllm/issues/59271) | [Bug]: DeepSeek-V4 VL dummy image is not the worst case for multimodal profiling | bug, multi-modality, deepseek, DSv4 | 2026-09-29T19:21:24Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59271 |
-| [#59267](https://github.com/vllm-project/vllm/issues/59267) | [Bug]: AudioSpec(target_channels=1) does not produce 1D mono output for single-channel 2D audio | bug | 2026-09-29T18:28:46Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59267 |
+| [#51948](https://github.com/vllm-project/vllm/issues/51948) | [RFC]: Bounded-memory video sessions — KV retention for long-running streaming-input requests | RFC | 2026-09-30T11:24:48Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51948 |
 | [#58943](https://github.com/vllm-project/vllm/issues/58943) | [Bug]: Official MiniCPM-V-4.6 GPTQ/AWQ checkpoints fail to load (vision tower built quantized) | bug, quantization | 2026-09-27T21:18:51Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58943 |
 | [#56916](https://github.com/vllm-project/vllm/issues/56916) | [RFC]: Windowed Hidden-State Collection for vLLM Rollouts | RFC | 2026-09-20T02:47:24Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56916 |
-| [#51948](https://github.com/vllm-project/vllm/issues/51948) | [RFC]: Bounded-memory video sessions — KV retention for long-running streaming-input requests | RFC | 2026-09-16T09:37:08Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51948 |
 | [#49546](https://github.com/vllm-project/vllm/issues/49546) | [Bug]: VLLM_MARLIN_INPUT_DTYPE=fp8 (Marlin W4A8-FP8) silently corrupts output on GB10/sm_121a — WNA16 INT4 MoE emits repeated </think> loop at temp 0 (kernel runs ~2.5% faster) | tool-calling, quantization | 2026-09-12T04:47:38Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49546 |
 | [#55639](https://github.com/vllm-project/vllm/issues/55639) | [RFC][EPD] Avoid redundant encoder work when Prefill can reuse KV or embeddings | multi-modality | 2026-09-11T11:36:35Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55639 |
 | [#56172](https://github.com/vllm-project/vllm/issues/56172) | [Feature]: Lightweight vLLM Render API: Offload Heavy Multimodal Preprocessing from CPU Sidecars | feature request, multi-modality | 2026-09-10T00:04:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56172 |
@@ -477,7 +468,6 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#57712](https://github.com/vllm-project/vllm/issues/57712) | [Feature]: OutOfResources: shared memory (98304 > 65536) on Turing (SM75) — global attention layers with head_dim=512 | feature request | 2026-09-23T21:42:31Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57712 |
 | [#56712](https://github.com/vllm-project/vllm/issues/56712) | [Bug]: DiffusionGemma image input crashes the EngineCore — borrowed Gemma4 methods read `_enable_mm_lora`, which DiffusionGemma never sets | multi-modality | 2026-09-13T22:47:45Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56712 |
 | [#55649](https://github.com/vllm-project/vllm/issues/55649) | [Bug]: NVFP4 gated-MoE end-padding silently corrupts Gemma-4-26B at TP2 on B200 (SM100) |  | 2026-09-10T11:34:13Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55649 |
-| [#50889](https://github.com/vllm-project/vllm/issues/50889) | [Bug]: Gemma4 tool parser (non-streaming): finish_reason=tool_calls with empty tool_calls array — model's move silently lost under concurrent load | tool-calling | 2026-08-31T23:37:37Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/50889 |
 | [#49878](https://github.com/vllm-project/vllm/issues/49878) | [Bug]: Dramatic KV cache size increase (~40%) for Gemma4 from v0.25.1 to v0.26 | bug, quantization | 2026-08-31T13:49:46Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49878 |
 | [#51744](https://github.com/vllm-project/vllm/issues/51744) | [Bug]: vllm/vllm-openai:latest fails to start Gemma4 with Transformers 5.15.0 | bug | 2026-08-28T08:54:26Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51744 |
 | [#53836](https://github.com/vllm-project/vllm/issues/53836) | [Bug]: NVIDIA DGX Spark vllms and gemma 4 26B won't work | bug, nvidia | 2026-08-27T04:51:32Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53836 |
@@ -492,6 +482,7 @@ Generated at: 2026-09-29T19:48:11+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#59415](https://github.com/vllm-project/vllm/issues/59415) | [Bug]: Qwen3.6-35B-A3B-FP8 model with TP 4 gives gibberish output !!!!!!!!!!!! on Intel B70 cards | bug, intel-gpu | 2026-09-30T12:08:56Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59415 |
 | [#58647](https://github.com/vllm-project/vllm/issues/58647) | [RFC]: Hardening /v1/messages (Anthropic API) for Claude Code across model families | RFC, frontend, kimi, k3 | 2026-09-29T10:09:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58647 |
 | [#58233](https://github.com/vllm-project/vllm/issues/58233) | [Performance]: 【求助】8卡H200跑DeepSeek-V4.1-Flash，并发才8就慢成狗，首字等好几分钟，有没有大佬遇到过？ | performance, deepseek, DSv4.1 | 2026-09-24T06:53:32Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58233 |
 | [#56700](https://github.com/vllm-project/vllm/issues/56700) | [SM120] Field report: running DeepSeek-V4.1-Flash end-to-end on 8x RTX PRO 6000 — pitfall map + working configuration (1M context verified) | deepseek, DSv4.1 | 2026-09-23T08:08:41Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56700 |
@@ -501,12 +492,12 @@ Generated at: 2026-09-29T19:48:11+00:00
 | [#52029](https://github.com/vllm-project/vllm/issues/52029) | [Usage]: RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {} | usage, quantization | 2026-08-12T17:38:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52029 |
 | [#49411](https://github.com/vllm-project/vllm/issues/49411) | [RFC] [Feature] [Experimental] Support GigaToken Accelerated Tokenizer Mode | RFC | 2026-07-29T02:36:14Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49411 |
 | [#48707](https://github.com/vllm-project/vllm/issues/48707) | [Bug]:  vLLM 0.25.0 crashed | usage | 2026-07-16T16:26:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48707 |
-| [#47236](https://github.com/vllm-project/vllm/issues/47236) | [Bug]: 较高版本 Transformers 与已知 Mindformers YAML 配置冲突，导致 AISBench 测试报错 TypeError: Can't instantiate abstract class MindformersTokenizer | bug | 2026-07-01T02:23:22Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47236 |
 
 ### model_family_gpt_oss
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#59457](https://github.com/vllm-project/vllm/issues/59457) | [Bug]: [gpt-oss-20b-bf16] W4A8 quantized model produces garbled output on ARM CPU | bug, cpu, gpt-oss, quantization | 2026-09-30T15:51:53Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59457 |
 | [#57099](https://github.com/vllm-project/vllm/issues/57099) | [Bug]: Encountered `openai_harmony.HarmonyError` when using GPT-OSS-120B. | bug, gpt-oss | 2026-09-16T07:19:17Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57099 |
 | [#52051](https://github.com/vllm-project/vllm/issues/52051) | [Bug]: gpt-oss-120b MXFP4 + --enable-expert-parallel crashes at startup: modular MoE finalize allocates padded (3072) output for an unpadded (2880) expert result | quantization | 2026-08-12T21:33:59Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52051 |
 | [#38976](https://github.com/vllm-project/vllm/issues/38976) | [Bug]:TimeoutError: RPC call to sample_tokens timed out. when pp is on under xpu env | bug, intel-gpu, unstale | 2026-08-11T05:38:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/38976 |
@@ -524,8 +515,8 @@ KV cache allocation, block management, eviction, offload, prefix reuse, KV dtype
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#49545](https://github.com/vllm-project/vllm/issues/49545) | [RFC]: Speculative recompute fallback for slow remote KV cache loads | RFC | 2026-09-29T21:27:25Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49545 |
 | [#57445](https://github.com/vllm-project/vllm/issues/57445) | [RFC]: Layer-Wise Mixed-Precision KV Cache | quantization | 2026-09-29T18:27:22Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57445 |
-| [#59122](https://github.com/vllm-project/vllm/issues/59122) | [Bug] ExampleHiddenStatesConnector does not support Hybrid KV Cache Manager | bug, kv-cache-manager | 2026-09-29T13:54:17Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59122 |
 | [#45036](https://github.com/vllm-project/vllm/issues/45036) | [RFC]: [Roadmap] Mooncake Store Connector Feature Enrichment Roadmap | RFC | 2026-09-29T08:57:24Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/45036 |
 | [#59141](https://github.com/vllm-project/vllm/issues/59141) | [RFC][KV Connector] NIXL support for shared in-flight prefix loads | kv-connector | 2026-09-29T06:20:47Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59141 |
 | [#57103](https://github.com/vllm-project/vllm/issues/57103) | [RFC]: Programmable KV Cache: Composable Policies for Agentic Serving | RFC, kimi | 2026-09-29T01:32:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57103 |
@@ -577,7 +568,6 @@ KV cache allocation, block management, eviction, offload, prefix reuse, KV dtype
 | [#39389](https://github.com/vllm-project/vllm/issues/39389) | [Bug]: V1 engine prefix caching was causing non-deterministic outputs during greedy decoding T=0 | bug, unstale | 2026-08-06T02:17:27Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/39389 |
 | [#42058](https://github.com/vllm-project/vllm/issues/42058) | [Performance]: Quantized KV Cache Throughput/TTFT/TPOT slower? | performance | 2026-08-04T12:21:58Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/42058 |
 | [#48203](https://github.com/vllm-project/vllm/issues/48203) | [RFC]: Layerwise and Sparse KV cache offloading to support longer sequence length | RFC | 2026-08-03T00:16:14Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48203 |
-| [#49545](https://github.com/vllm-project/vllm/issues/49545) | [RFC]: Speculative recompute fallback for slow remote KV cache loads | RFC | 2026-07-29T02:39:49Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49545 |
 | [#49360](https://github.com/vllm-project/vllm/issues/49360) | [Bug]: `MooncakeStoreConnector` KV Offload hangs the vLLM engine on a GDN model (`Qwen3.6-35B-A3B`) | bug | 2026-07-29T02:34:27Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49360 |
 | [#50031](https://github.com/vllm-project/vllm/issues/50031) | [RFC]: Back-pressure detection for KV cache offloading tiers | RFC | 2026-07-29T01:59:44Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/50031 |
 | [#48504](https://github.com/vllm-project/vllm/issues/48504) | [RFC]: GDS support for filesystem KV-cache offloading |  | 2026-07-28T07:51:15Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48504 |
@@ -595,12 +585,14 @@ PagedAttention, FlashAttention, FlashInfer, MLA, CUDA graphs, CPU attention kern
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#59466](https://github.com/vllm-project/vllm/issues/59466) | [Feature]: Support configuring Triton unified-attention launch parameters | feature request | 2026-09-30T17:17:29Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59466 |
+| [#55526](https://github.com/vllm-project/vllm/issues/55526) | [Bug]: DeepSeek-V4-Flash TP=16 on SM120 (RTX 5090 x16, ray multi-node) fails: DSV4 sparse MLA decode specialization error for (num_q_heads=8, top_k=128) despite FlashInfer dispatch table containing that config | deepseek, DSv4 | 2026-09-30T11:13:18Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55526 |
+| [#59065](https://github.com/vllm-project/vllm/issues/59065) | [Bug]: FlashInfer MLA with DCP>1 crashes in kernel warmup on ragged spec/non-spec decode batch (`causal_seqlens_kv_global must have shape (9,), got (2,)`) | kimi, k3 | 2026-09-30T09:24:27Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59065 |
+| [#56892](https://github.com/vllm-project/vllm/issues/56892) | [Bug/Perf] DeepSeek-V4.1-Flash on SM120 (RTX PRO 6000 Blackwell, 8xTP): extremely low decode throughput with --enforce-eager; CUDA graphs unusable — please prioritize SM120 graph capture fix | deepseek, DSv4.1 | 2026-09-30T04:41:29Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56892 |
 | [#54059](https://github.com/vllm-project/vllm/issues/54059) | [Model]: GLM-5.3-Flash (glm5_next): no sparse-MLA attention path on Ada (sm_89, RTX 4090) | glm | 2026-09-29T08:32:26Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/54059 |
-| [#59065](https://github.com/vllm-project/vllm/issues/59065) | [Bug]: FlashInfer MLA with DCP>1 crashes in kernel warmup on ragged spec/non-spec decode batch (`causal_seqlens_kv_global must have shape (9,), got (2,)`) | kimi, k3 | 2026-09-29T07:55:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59065 |
 | [#45604](https://github.com/vllm-project/vllm/issues/45604) | [Bug]: CUDA invalid argument in FlashInfer AllReduce norm fusion on MiniMax-M3 MXFP8, 4x H200 | bug, unstale | 2026-09-29T01:56:44Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/45604 |
 | [#48374](https://github.com/vllm-project/vllm/issues/48374) | [RFC]: fp8 KV cache for the Ampere sparse-MLA path (TRITON_MLA_SPARSE) via software dequant |  | 2026-09-28T11:21:23Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48374 |
 | [#57895](https://github.com/vllm-project/vllm/issues/57895) | [RFC]: Stable runtime tensor lifecycle for sleep and live weight reload | RFC, quantization, kimi | 2026-09-28T09:02:01Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57895 |
-| [#56892](https://github.com/vllm-project/vllm/issues/56892) | [Bug/Perf] DeepSeek-V4.1-Flash on SM120 (RTX PRO 6000 Blackwell, 8xTP): extremely low decode throughput with --enforce-eager; CUDA graphs unusable — please prioritize SM120 graph capture fix | deepseek, DSv4.1 | 2026-09-27T22:36:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56892 |
 | [#58909](https://github.com/vllm-project/vllm/issues/58909) | [Feature]: [RFC] Dynamic Latent-Trajectory Consensus Governor for Reasoning Models (DeepSeek-R1 / QwQ) to Free KV-Cache 4.5x Faster | feature request, tool-calling, deepseek | 2026-09-27T15:13:09Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58909 |
 | [#58910](https://github.com/vllm-project/vllm/issues/58910) | [Bug]: DeepSeek-V4.1-Flash on SM120 (RTX PRO 6000): Xid 31 illegal memory access during long prefill — deterministic with CUDA graphs enabled, flaky in eager mode (v0.30.0 + FlashInfer 0.7.0) | ci-failure, deepseek, DSv4.1 | 2026-09-27T14:54:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58910 |
 | [#58850](https://github.com/vllm-project/vllm/issues/58850) | [Bug]: Intermittent Xid 31 MMU fault in pynccl all_reduce during CUDA graph | bug | 2026-09-27T08:57:20Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58850 |
@@ -618,7 +610,6 @@ PagedAttention, FlashAttention, FlashInfer, MLA, CUDA graphs, CPU attention kern
 | [#52938](https://github.com/vllm-project/vllm/issues/52938) | [Bug]: DeepSeek-V4-Flash on RTX PRO 6000 Blackwell (SM120) emits degenerate output — identical argmax token + identical logprob at every decode position, TP and DP+EP alike, confirmed independent of environment/install history (FLASHINFER_MLA_SPARSE_DSV4) |  | 2026-09-09T01:24:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52938 |
 | [#54225](https://github.com/vllm-project/vllm/issues/54225) | [Bug]: FlashInfer attention backend causes CUDA illegal memory access on sm_120 with NVFP4 + fp8 KV cache; crashes on a 16-token request; TRITON_ATTN unaffected | quantization | 2026-09-08T13:58:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/54225 |
 | [#55571](https://github.com/vllm-project/vllm/issues/55571) | [Bug]: Xid 13 "Out Of Range Address" / CUDA illegal memory access on RTX PRO 5000 (SM120) with FP8 model under sustained load — gone with VLLM_DISABLED_KERNELS=FlashInferFP8ScaledMMLinearKernel or --enforce-eager | bug, quantization | 2026-09-07T06:18:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55571 |
-| [#55526](https://github.com/vllm-project/vllm/issues/55526) | [Bug]: DeepSeek-V4-Flash TP=16 on SM120 (RTX 5090 x16, ray multi-node) fails: DSV4 sparse MLA decode specialization error for (num_q_heads=8, top_k=128) despite FlashInfer dispatch table containing that config | deepseek, DSv4 | 2026-09-07T01:26:28Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55526 |
 | [#55406](https://github.com/vllm-project/vllm/issues/55406) | [Bug]: Nemotron-3.5-Lightning-30B-A3B-NVFP4 dies with CUDA illegal memory access in cudagraph replay on SM110 (Jetson Thor); deterministic 5-request repro; --enforce-eager works around it |  | 2026-09-05T10:25:08Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55406 |
 | [#50331](https://github.com/vllm-project/vllm/issues/50331) | [Bug]: FlashInfer BatchPrefillWithPagedKVCache fails with "invalid resource handle" on SM121 (GB10) with head_dim 256 + FP8 KV cache |  | 2026-09-02T00:27:06Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/50331 |
 | [#40544](https://github.com/vllm-project/vllm/issues/40544) | [Feature]: Integrate fused `kMoEFinalizeARResidualRMSNorm` from FlashInfer | help wanted, feature request | 2026-09-01T10:11:52Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/40544 |
@@ -649,8 +640,6 @@ PagedAttention, FlashAttention, FlashInfer, MLA, CUDA graphs, CPU attention kern
 | [#47919](https://github.com/vllm-project/vllm/issues/47919) | [RFC]   guard-gated sparse MLA topology index policy |  | 2026-07-08T01:57:00Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47919 |
 | [#40260](https://github.com/vllm-project/vllm/issues/40260) | [Bug]: Incompatible dimension when using Mistral Small 4 | bug | 2026-07-06T23:17:26Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/40260 |
 | [#46625](https://github.com/vllm-project/vllm/issues/46625) | Qwen3-VL-8B-FP8 on RTX 5080 (Blackwell SM120) - engine init OK but generate() hangs silently |  | 2026-07-03T14:06:11Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/46625 |
-| [#47351](https://github.com/vllm-project/vllm/issues/47351) | [RFC]: Sparse-attention-based self-speculative decoding (StreamingLLM, then Vegas) | RFC | 2026-07-02T00:54:42Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47351 |
-| [#47275](https://github.com/vllm-project/vllm/issues/47275) | [Bug]: Gemma4 MoE (26B-A4B) aborts with "nanobind::builtin_exception: Expected an MLIR object (got OpResultList)" during CUDA graph capture on H200 (SM90) with FA4 |  | 2026-07-01T08:59:31Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47275 |
 | [#37995](https://github.com/vllm-project/vllm/issues/37995) | [RFC]: Prefill Context Parallel for Qwen3.5 Hybrid Attention | feature request, keep-open | 2026-06-29T03:12:16Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/37995 |
 
 ### scheduler_batching
@@ -659,11 +648,12 @@ V1 scheduler, continuous batching, preemption, chunked prefill, partial prefill,
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#53277](https://github.com/vllm-project/vllm/issues/53277) | [Feature]: Cache-aware waiting QoS with optional cooperative prefill preemption |  | 2026-09-30T07:07:04Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53277 |
+| [#59354](https://github.com/vllm-project/vllm/issues/59354) | [Feature]: shechduling using predicted decode output length | feature request | 2026-09-30T03:02:47Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59354 |
 | [#45221](https://github.com/vllm-project/vllm/issues/45221) | [RFC]: AuxOutput Connector — block-keyed outputs and storage roadmap | RFC | 2026-09-28T04:01:52Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/45221 |
 | [#54317](https://github.com/vllm-project/vllm/issues/54317) | [Bug]: GLM-5.3-Flash (glm5next) — recurring CUDA illegal memory access on 4xB200, surfacing in three unrelated kernels (KDA linear-attention, MHC TileLang, TRT-LLM fused MoE) | kimi, glm | 2026-09-19T22:13:12Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/54317 |
 | [#57530](https://github.com/vllm-project/vllm/issues/57530) | [RFC]: A failure spine for the Mooncake connectors |  | 2026-09-19T05:43:14Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57530 |
 | [#57580](https://github.com/vllm-project/vllm/issues/57580) | [Bug][Scheduler][Mamba] Track uncomputed align checkpoint visibility after same-step priority preemption | scheduler | 2026-09-18T15:39:20Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57580 |
-| [#56771](https://github.com/vllm-project/vllm/issues/56771) | [Bug]: DeepSeek-V4.1-Flash + DSpark speculative decoding — illegal memory access in SM120 sparse-MLA prefill on long prompts | speculative-decoding, deepseek, DSv4.1 | 2026-09-17T09:14:03Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56771 |
 | [#54229](https://github.com/vllm-project/vllm/issues/54229) | [RFC]: Privacy-safe runtime incident snapshots for fatal EngineCore failures | RFC, quantization | 2026-09-16T04:42:41Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/54229 |
 | [#51212](https://github.com/vllm-project/vllm/issues/51212) | [RFC]: Model Runner V2 Pluggable Design | RFC | 2026-09-16T03:00:31Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51212 |
 | [#53480](https://github.com/vllm-project/vllm/issues/53480) | [Bug][XPU]: Silent persistent output corruption (endless "!" / token 0) under sustained concurrent decode on Arc Pro B70, W4A16 27B head_dim 256 | intel-gpu | 2026-09-15T15:53:28Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53480 |
@@ -687,7 +677,6 @@ V1 scheduler, continuous batching, preemption, chunked prefill, partial prefill,
 | [#39737](https://github.com/vllm-project/vllm/issues/39737) | [Bug]: max-num-partial-prefills failes on V1 engine start | bug | 2026-08-28T07:52:18Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/39737 |
 | [#53928](https://github.com/vllm-project/vllm/issues/53928) | [Bug]:  [XPU] RuntimeError: causal_conv1d does not support spec-decode and non-spec tokens in the same invocation (MTP + chunked prefill) | bug, intel-gpu, quantization | 2026-08-28T00:59:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53928 |
 | [#53703](https://github.com/vllm-project/vllm/issues/53703) | [RFC]: Progressive block handoff for NIXL Push | RFC, kv-connector | 2026-08-25T09:54:21Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53703 |
-| [#53277](https://github.com/vllm-project/vllm/issues/53277) | [Feature]: Cache-aware waiting QoS with optional cooperative prefill preemption |  | 2026-08-21T16:47:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53277 |
 | [#51788](https://github.com/vllm-project/vllm/issues/51788) | [RFC]: Suffix decoding on GPU (`suffix_gpu`) — GPU-resident suffix decoding compatible with async scheduling | RFC | 2026-08-20T03:34:38Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51788 |
 | [#52959](https://github.com/vllm-project/vllm/issues/52959) | [RFC]: Internal State Checkpoints for Mamba Align Mode | RFC, kimi | 2026-08-19T17:37:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52959 |
 | [#52617](https://github.com/vllm-project/vllm/issues/52617) | [Bug]: vLLM 0.26.0 LMCache P/D receiver reports a full KV-cache hit but decoding diverges from the monolithic baseline at token 0 | bug | 2026-08-19T15:12:00Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52617 |
@@ -706,7 +695,6 @@ V1 scheduler, continuous batching, preemption, chunked prefill, partial prefill,
 | [#42770](https://github.com/vllm-project/vllm/issues/42770) | [RFC]: Changes in vLLM Model Development | RFC | 2026-07-18T10:06:45Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/42770 |
 | [#40094](https://github.com/vllm-project/vllm/issues/40094) | [Bug]: Turbo Quant keep failing TRITON_ATTN 'kv_cache_dtype not supported' | bug | 2026-07-18T07:51:26Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/40094 |
 | [#48147](https://github.com/vllm-project/vllm/issues/48147) | [RFC]: Optimizing Asynchronous Stream Serialization in OpenAI API Entrypoint | RFC | 2026-07-09T17:19:48Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48147 |
-| [#47280](https://github.com/vllm-project/vllm/issues/47280) | [RFC]: Implement return indexer topk for sparse attention. | RFC | 2026-07-01T09:45:53Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47280 |
 | [#18037](https://github.com/vllm-project/vllm/issues/18037) | [RFC]: Enabling Suffix Decoding, LSTM Speculator, Sequence Parallelism from Arctic Inference | RFC, speculative-decoding, keep-open | 2025-10-07T08:25:54Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/18037 |
 | [#8779](https://github.com/vllm-project/vllm/issues/8779) | vLLM's V1 Engine Architecture | RFC, keep-open | 2025-07-09T02:50:56Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/8779 |
 
@@ -716,8 +704,8 @@ NVIDIA B200/B300 and GB200/GB300 issues where short-lived scarce hardware access
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#56868](https://github.com/vllm-project/vllm/issues/56868) | [Bug]: GLM-5.3-Flash long-decode degeneration after accumulated reasoning decode | bug, tool-calling, quantization, glm | 2026-09-30T19:58:05Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56868 |
 | [#59189](https://github.com/vllm-project/vllm/issues/59189) | [Bug]: GB200 DP4+EP serving crashes in NCCL symmetric reduce-scatter after #48247 | quantization, kimi | 2026-09-29T10:09:22Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59189 |
-| [#56868](https://github.com/vllm-project/vllm/issues/56868) | [Bug]: GLM-5.3-Flash long-decode degeneration after accumulated reasoning decode | bug, tool-calling, quantization, glm | 2026-09-29T09:21:14Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56868 |
 | [#58638](https://github.com/vllm-project/vllm/issues/58638) | [RFC]: KV cache grouping for hybrid models with speculative drafters | RFC, kimi | 2026-09-27T21:51:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58638 |
 | [#51494](https://github.com/vllm-project/vllm/issues/51494) | [Performance] MiniMax-M3-NVFP4 on 8x B200, first numbers after the #48929 correctness fix: 1M real-prose envelope, EAGLE3 2.1-2.3x decode |  | 2026-09-27T18:54:39Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51494 |
 | [#58031](https://github.com/vllm-project/vllm/issues/58031) | FlashInfer autotune for trtllm_fp4_block_scale_moe wedges forever on SM103 (GB300): trtllm_gemm cubin is sm_100a-only, no PTX, and the autotuner has no timeout |  | 2026-09-23T18:47:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58031 |
@@ -797,8 +785,6 @@ Speculative decoding, draft models, EAGLE, MTP, ngram, tree attention.
 | [#42109](https://github.com/vllm-project/vllm/issues/42109) | [RFC]: Disaggregated Speculative Decoding with Standalone Parallel Draft Model | RFC | 2026-07-20T15:47:00Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/42109 |
 | [#49090](https://github.com/vllm-project/vllm/issues/49090) | [RFC][SpecDecode] Move MTP completeness validation to the weight-update transaction boundary |  | 2026-07-20T09:10:59Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49090 |
 | [#45531](https://github.com/vllm-project/vllm/issues/45531) | [Bug]: minimax M3MXFP8 with mtp can not start success | bug | 2026-07-03T02:24:31Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/45531 |
-| [#46707](https://github.com/vllm-project/vllm/issues/46707) | [RFC]: Support for Domino speculative decoding in vLLM | RFC, speculative-decoding | 2026-07-01T13:40:17Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/46707 |
-| [#46977](https://github.com/vllm-project/vllm/issues/46977) | [Feature]: Support combining multiple speculative decoding methods (e.g. MTP + ngram) | feature request | 2026-07-01T03:39:20Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/46977 |
 
 ### distributed_pd
 
@@ -806,9 +792,9 @@ Distributed execution, tensor/data/pipeline parallelism, disaggregated prefill, 
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#59394](https://github.com/vllm-project/vllm/issues/59394) | [Bug] DeepSeek-V4.1-Flash cannot use TP > 8: Engram hash-head sharding assertion rejects tp_size=16 across 2 nodes | deepseek, DSv4.1 | 2026-09-30T11:13:27Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59394 |
+| [#59382](https://github.com/vllm-project/vllm/issues/59382) | [RFC]: MoRIIO WRITE failure handling and safe KV block reclamation | RFC | 2026-09-30T06:07:12Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59382 |
 | [#42515](https://github.com/vllm-project/vllm/issues/42515) | [RFC]: External Elastic EP Scaling | RFC | 2026-09-29T19:00:12Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/42515 |
-| [#59268](https://github.com/vllm-project/vllm/issues/59268) | [Bug]: vllm.utils.system_utils.suppress_stdout crashes when sys.stdout has no file descriptor | bug | 2026-09-29T18:30:14Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59268 |
-| [#59055](https://github.com/vllm-project/vllm/issues/59055) | [RFC]: Release all releasable GPU memory in sleep mode (tracking) | feature request | 2026-09-29T16:55:17Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59055 |
 | [#52777](https://github.com/vllm-project/vllm/issues/52777) | [RFC]: Rank-Skew-Aware Collective Attribution for Tensor-Parallel Serving |  | 2026-09-28T07:40:48Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52777 |
 | [#56828](https://github.com/vllm-project/vllm/issues/56828) | [Bug][KV Offload][P2P] Peer-down on one rank does not fail loads or block new loads to sibling ranks of the same source |  | 2026-09-27T15:52:56Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56828 |
 | [#57373](https://github.com/vllm-project/vllm/issues/57373) | [RFC]: Share KV transfer planning primitives across KV connectors | kv-connector | 2026-09-24T07:22:01Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57373 |
@@ -840,7 +826,6 @@ Distributed execution, tensor/data/pipeline parallelism, disaggregated prefill, 
 | [#47918](https://github.com/vllm-project/vllm/issues/47918) | [Bug]: V1 + Ray distributed executor + LoRA — execute_model returns NoneType on NVIDIA GPU |  | 2026-07-07T20:36:21Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47918 |
 | [#47768](https://github.com/vllm-project/vllm/issues/47768) | [RFC]: vLLM gRPC server API for downstream integrations | RFC | 2026-07-06T18:36:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47768 |
 | [#46679](https://github.com/vllm-project/vllm/issues/46679) | [Bug]: GLM5.2 RuntimeError: The expanded size of the tensor (10210) must match the existing size (16384) at non-singleton dimension 1.  Target sizes: [12, 10210].  Tensor sizes: [12, 16384] | bug | 2026-07-03T03:23:13Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/46679 |
-| [#47326](https://github.com/vllm-project/vllm/issues/47326) | [Bug]: Incoherent output depending on tensor-parallel-size during inference on Leanstral (Mistral Small 4 family) | bug | 2026-07-01T19:23:54Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47326 |
 
 ### structured_output_tooling
 
@@ -848,12 +833,12 @@ Structured outputs, guided decoding, xgrammar, tool calling, reasoning parsers.
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#47161](https://github.com/vllm-project/vllm/issues/47161) | [RFC]: Streaming Derender for Disaggregated Serving | RFC, tool-calling, kv-connector | 2026-09-29T15:48:55Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47161 |
+| [#47161](https://github.com/vllm-project/vllm/issues/47161) | [RFC]: Streaming Derender for Disaggregated Serving | RFC, tool-calling, kv-connector | 2026-09-30T18:18:28Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47161 |
+| [#58147](https://github.com/vllm-project/vllm/issues/58147) | [Bug]: Qwen3 parser turns tool-call markup the model quotes into real tool calls (names outside request.tools, and duplicates of offered ones) | tool-calling | 2026-09-30T09:03:40Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58147 |
 | [#55313](https://github.com/vllm-project/vllm/issues/55313) | [Bug]: Qwen3.8 + DSpark + streaming json_schema can desync XGrammar and emit 250k trailing spaces with HTTP 200 | bug, structured-output | 2026-09-27T16:57:25Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55313 |
 | [#58697](https://github.com/vllm-project/vllm/issues/58697) | [RFC]: Shared JSON Schema structure for structured-output checks and transformations | structured-output | 2026-09-25T10:05:39Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58697 |
 | [#53181](https://github.com/vllm-project/vllm/issues/53181) | [Bug] Xgrammar "Failed to advance FSM" still fires after #52805 (0.27.2rc1.dev256+geac636a7f) — follow-up to #52852 | structured-output | 2026-09-23T22:51:43Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53181 |
 | [#57499](https://github.com/vllm-project/vllm/issues/57499) | [RFC]: Stateless Responses API in the Rust frontend | rust | 2026-09-23T17:26:16Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57499 |
-| [#58147](https://github.com/vllm-project/vllm/issues/58147) | [Bug]: Qwen3 parser turns tool-call markup the model quotes into real tool calls (names outside request.tools, and duplicates of offered ones) | tool-calling | 2026-09-23T05:27:31Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58147 |
 | [#56605](https://github.com/vllm-project/vllm/issues/56605) | [Bug]: GLM-5.3-Flash degenerates into repeated-token "word salad" in multi-turn agentic use | bug, glm | 2026-09-22T13:16:57Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56605 |
 | [#43116](https://github.com/vllm-project/vllm/issues/43116) | [Bug]: Granite 3.3 / 4.0 H-Small Python-style tool calls not converted to OpenAI tool_calls format | unstale, tool-calling | 2026-09-01T01:49:54Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/43116 |
 | [#37558](https://github.com/vllm-project/vllm/issues/37558) | “vLLM-deployed Qwen3.5 with Reasoning Parser Shows Empty reasoningContent in Spring AI OpenAI Model” | bug, tool-calling | 2026-08-31T23:45:22Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/37558 |
@@ -912,7 +897,6 @@ DeepSeek V4 model-family issues, including DeepSeek-V4 Flash/Pro, MoE routing, d
 | [#48602](https://github.com/vllm-project/vllm/issues/48602) | [Bug]: DeepSeekv4 flash on RTXpro6000 vllm benchmark input 8192 output 1024 encounter a err | bug | 2026-07-15T00:35:36Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48602 |
 | [#48465](https://github.com/vllm-project/vllm/issues/48465) | [Bug]: deepseek-v4-pro-dspark --max-num-batched-tokens 16384 no use | bug | 2026-07-13T06:05:41Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48465 |
 | [#48077](https://github.com/vllm-project/vllm/issues/48077) | [Usage]: Does it support the deployment of P node TEP and D node DEP modes | usage | 2026-07-09T05:38:08Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48077 |
-| [#46796](https://github.com/vllm-project/vllm/issues/46796) | [Bug]: DeepSeek-V4-Flash fails to start on B300 (SM100) — DeepGEMM sm100_tf32_hc_prenorm_gemm kernel launch fails (invalid argument on CUDA 13, invalid configuration argument on CUDA 12.9) |  | 2026-07-01T01:58:29Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/46796 |
 
 ### moe
 
@@ -920,7 +904,7 @@ Mixture of Experts, routing, expert parallelism, DeepEP, EPLB, MoE kernels.
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#59248](https://github.com/vllm-project/vllm/issues/59248) | [Bug]: Qwen3-Coder-Next AutoRound routed MoE gate ignores checkpoint quantization | quantization | 2026-09-29T16:06:57Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59248 |
+| [#59248](https://github.com/vllm-project/vllm/issues/59248) | [Bug]: Qwen3-Coder-Next AutoRound routed MoE gate ignores checkpoint quantization | quantization | 2026-09-30T08:18:30Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59248 |
 | [#48305](https://github.com/vllm-project/vllm/issues/48305) | [RFC] Training-Inference Consistency for RL | RFC, rl | 2026-09-29T02:30:16Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48305 |
 | [#57794](https://github.com/vllm-project/vllm/issues/57794) | [RFC]: Expert-granular MoE residency — drive UVA offload from EPLB's per-expert load statistics |  | 2026-09-27T17:25:39Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57794 |
 | [#50772](https://github.com/vllm-project/vllm/issues/50772) | [Bug]: --load_format fastsafetensors produces corrupted/incoherent generation for DeepSeek-V4-Flash-0731 with TP+EP (works with default loader) | quantization | 2026-09-26T22:25:06Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/50772 |
@@ -944,7 +928,6 @@ Mixture of Experts, routing, expert parallelism, DeepEP, EPLB, MoE kernels.
 | [#49638](https://github.com/vllm-project/vllm/issues/49638) | NVFP4 fused-expert scales dropped in Qwen3_5_VL_MoE weight_loader (qwen3_5_vl_moe) | quantization | 2026-07-29T02:56:21Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49638 |
 | [#44806](https://github.com/vllm-project/vllm/issues/44806) | [Bug]: Qwen3.5 397B NVFP4 DEP8 mixed prefill-decode step 6x times longer than decode-only step | bug | 2026-07-04T11:47:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/44806 |
 | [#47334](https://github.com/vllm-project/vllm/issues/47334) | [RFC]: Port vLLM-built Hopper and Blackwell C++ CUDA kernels to CuTeDSL | RFC | 2026-07-02T15:16:56Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47334 |
-| [#43750](https://github.com/vllm-project/vllm/issues/43750) | [Bug]: [XPU] compressed-tensors WNA16 MoE selector ignores XPU platform, crashes on Marlin path | bug, intel-gpu | 2026-07-01T07:56:46Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/43750 |
 | [#20323](https://github.com/vllm-project/vllm/issues/20323) | [RFC]: Elastic Expert Parallelism | RFC, keep-open | 2026-06-09T10:09:28Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/20323 |
 
 ### openai_server
@@ -953,10 +936,11 @@ OpenAI-compatible API server, streaming, chat completions, tools, metrics.
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#59433](https://github.com/vllm-project/vllm/issues/59433) | [Startup UX]: Serial per-process Python imports across the API server → EngineCore → worker tree add significant startup time |  | 2026-09-30T15:09:59Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59433 |
+| [#56851](https://github.com/vllm-project/vllm/issues/56851) | [RFC]: Request level text and derender output on `/inference/v1/generate` | RFC | 2026-09-30T12:59:01Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56851 |
 | [#59210](https://github.com/vllm-project/vllm/issues/59210) | [Feature]: Helm chart: add an optional ServiceMonitor with a configurable regex filter to reduce the number of exported metrics | feature request | 2026-09-29T11:57:59Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59210 |
 | [#59087](https://github.com/vllm-project/vllm/issues/59087) | [Bug]: `--tool-call-parser mistral` on a non-Mistral tokenizer can start but then answers EVERY chat request with 500 | bug, tool-calling, mistral | 2026-09-28T23:13:27Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59087 |
 | [#58253](https://github.com/vllm-project/vllm/issues/58253) | [RFC]: Increase vLLM Review Capacity with a Reviewer Role | RFC | 2026-09-28T22:45:51Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58253 |
-| [#56851](https://github.com/vllm-project/vllm/issues/56851) | [RFC]: Request level text and derender output on `/inference/v1/generate` | RFC | 2026-09-28T20:01:28Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56851 |
 | [#42729](https://github.com/vllm-project/vllm/issues/42729) | [RFC]: Derender Endpoints to Provide Detokenization for Disaggregated Serving | RFC, kv-connector | 2026-09-28T14:41:43Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/42729 |
 | [#58227](https://github.com/vllm-project/vllm/issues/58227) | [Bug]: an unclosed <tool_call> opener written in prose holds the Qwen3 parser in tool state and swallows a later genuine tool call | tool-calling | 2026-09-27T01:11:59Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58227 |
 | [#58657](https://github.com/vllm-project/vllm/issues/58657) | Use-case proposal: payment-gated self-hosted vLLM for agents (HTTP 402 + Nano) |  | 2026-09-25T02:56:17Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58657 |
@@ -982,11 +966,9 @@ Multimodal inputs, prompt embeddings, HF processors, image/video/audio preproces
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#59271](https://github.com/vllm-project/vllm/issues/59271) | [Bug]: DeepSeek-V4 VL dummy image is not the worst case for multimodal profiling | bug, multi-modality, deepseek, DSv4 | 2026-09-29T19:21:24Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59271 |
-| [#59267](https://github.com/vllm-project/vllm/issues/59267) | [Bug]: AudioSpec(target_channels=1) does not produce 1D mono output for single-channel 2D audio | bug | 2026-09-29T18:28:46Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59267 |
+| [#51948](https://github.com/vllm-project/vllm/issues/51948) | [RFC]: Bounded-memory video sessions — KV retention for long-running streaming-input requests | RFC | 2026-09-30T11:24:48Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51948 |
 | [#58943](https://github.com/vllm-project/vllm/issues/58943) | [Bug]: Official MiniCPM-V-4.6 GPTQ/AWQ checkpoints fail to load (vision tower built quantized) | bug, quantization | 2026-09-27T21:18:51Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58943 |
 | [#56916](https://github.com/vllm-project/vllm/issues/56916) | [RFC]: Windowed Hidden-State Collection for vLLM Rollouts | RFC | 2026-09-20T02:47:24Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56916 |
-| [#51948](https://github.com/vllm-project/vllm/issues/51948) | [RFC]: Bounded-memory video sessions — KV retention for long-running streaming-input requests | RFC | 2026-09-16T09:37:08Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51948 |
 | [#49546](https://github.com/vllm-project/vllm/issues/49546) | [Bug]: VLLM_MARLIN_INPUT_DTYPE=fp8 (Marlin W4A8-FP8) silently corrupts output on GB10/sm_121a — WNA16 INT4 MoE emits repeated </think> loop at temp 0 (kernel runs ~2.5% faster) | tool-calling, quantization | 2026-09-12T04:47:38Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49546 |
 | [#55639](https://github.com/vllm-project/vllm/issues/55639) | [RFC][EPD] Avoid redundant encoder work when Prefill can reuse KV or embeddings | multi-modality | 2026-09-11T11:36:35Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55639 |
 | [#56172](https://github.com/vllm-project/vllm/issues/56172) | [Feature]: Lightweight vLLM Render API: Offload Heavy Multimodal Preprocessing from CPU Sidecars | feature request, multi-modality | 2026-09-10T00:04:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56172 |
@@ -1016,7 +998,6 @@ Gemma 4 / Gemma4 model-family issues, especially multimodal, tool calling, quant
 | [#56712](https://github.com/vllm-project/vllm/issues/56712) | [Bug]: DiffusionGemma image input crashes the EngineCore — borrowed Gemma4 methods read `_enable_mm_lora`, which DiffusionGemma never sets | multi-modality | 2026-09-13T22:47:45Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56712 |
 | [#55649](https://github.com/vllm-project/vllm/issues/55649) | [Bug]: NVFP4 gated-MoE end-padding silently corrupts Gemma-4-26B at TP2 on B200 (SM100) |  | 2026-09-10T11:34:13Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/55649 |
 | [#39392](https://github.com/vllm-project/vllm/issues/39392) | [Bug]: Gemma4 tool-call-parser produces <pad> tokens under concurrent requests | bug, unstale, tool-calling | 2026-08-31T23:45:01Z | triage | high | medium | Read Gemma4ToolParser state handling and reproduce concurrent tool calls | https://github.com/vllm-project/vllm/issues/39392 |
-| [#50889](https://github.com/vllm-project/vllm/issues/50889) | [Bug]: Gemma4 tool parser (non-streaming): finish_reason=tool_calls with empty tool_calls array — model's move silently lost under concurrent load | tool-calling | 2026-08-31T23:37:37Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/50889 |
 | [#49878](https://github.com/vllm-project/vllm/issues/49878) | [Bug]: Dramatic KV cache size increase (~40%) for Gemma4 from v0.25.1 to v0.26 | bug, quantization | 2026-08-31T13:49:46Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49878 |
 | [#51744](https://github.com/vllm-project/vllm/issues/51744) | [Bug]: vllm/vllm-openai:latest fails to start Gemma4 with Transformers 5.15.0 | bug | 2026-08-28T08:54:26Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/51744 |
 | [#53836](https://github.com/vllm-project/vllm/issues/53836) | [Bug]: NVIDIA DGX Spark vllms and gemma 4 26B won't work | bug, nvidia | 2026-08-27T04:51:32Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/53836 |
@@ -1032,6 +1013,7 @@ Tokenizers, tokenizer modes, chat templates, prompt formatting, HF processor/tok
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#59415](https://github.com/vllm-project/vllm/issues/59415) | [Bug]: Qwen3.6-35B-A3B-FP8 model with TP 4 gives gibberish output !!!!!!!!!!!! on Intel B70 cards | bug, intel-gpu | 2026-09-30T12:08:56Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59415 |
 | [#58647](https://github.com/vllm-project/vllm/issues/58647) | [RFC]: Hardening /v1/messages (Anthropic API) for Claude Code across model families | RFC, frontend, kimi, k3 | 2026-09-29T10:09:50Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58647 |
 | [#58233](https://github.com/vllm-project/vllm/issues/58233) | [Performance]: 【求助】8卡H200跑DeepSeek-V4.1-Flash，并发才8就慢成狗，首字等好几分钟，有没有大佬遇到过？ | performance, deepseek, DSv4.1 | 2026-09-24T06:53:32Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/58233 |
 | [#56700](https://github.com/vllm-project/vllm/issues/56700) | [SM120] Field report: running DeepSeek-V4.1-Flash end-to-end on 8x RTX PRO 6000 — pitfall map + working configuration (1M context verified) | deepseek, DSv4.1 | 2026-09-23T08:08:41Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/56700 |
@@ -1041,7 +1023,6 @@ Tokenizers, tokenizer modes, chat templates, prompt formatting, HF processor/tok
 | [#52029](https://github.com/vllm-project/vllm/issues/52029) | [Usage]: RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {} | usage, quantization | 2026-08-12T17:38:19Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52029 |
 | [#49411](https://github.com/vllm-project/vllm/issues/49411) | [RFC] [Feature] [Experimental] Support GigaToken Accelerated Tokenizer Mode | RFC | 2026-07-29T02:36:14Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/49411 |
 | [#48707](https://github.com/vllm-project/vllm/issues/48707) | [Bug]:  vLLM 0.25.0 crashed | usage | 2026-07-16T16:26:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/48707 |
-| [#47236](https://github.com/vllm-project/vllm/issues/47236) | [Bug]: 较高版本 Transformers 与已知 Mindformers YAML 配置冲突，导致 AISBench 测试报错 TypeError: Can't instantiate abstract class MindformersTokenizer | bug | 2026-07-01T02:23:22Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/47236 |
 
 ### model_family_gpt_oss
 
@@ -1049,6 +1030,7 @@ gpt-oss model-family issues, including Harmony formatting, Responses API behavio
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#59457](https://github.com/vllm-project/vllm/issues/59457) | [Bug]: [gpt-oss-20b-bf16] W4A8 quantized model produces garbled output on ARM CPU | bug, cpu, gpt-oss, quantization | 2026-09-30T15:51:53Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/59457 |
 | [#57099](https://github.com/vllm-project/vllm/issues/57099) | [Bug]: Encountered `openai_harmony.HarmonyError` when using GPT-OSS-120B. | bug, gpt-oss | 2026-09-16T07:19:17Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/57099 |
 | [#52051](https://github.com/vllm-project/vllm/issues/52051) | [Bug]: gpt-oss-120b MXFP4 + --enable-expert-parallel crashes at startup: modular MoE finalize allocates padded (3072) output for an unpadded (2880) expert result | quantization | 2026-08-12T21:33:59Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/52051 |
 | [#38976](https://github.com/vllm-project/vllm/issues/38976) | [Bug]:TimeoutError: RPC call to sample_tokens timed out. when pp is on under xpu env | bug, intel-gpu, unstale | 2026-08-11T05:38:10Z | new |  |  |  | https://github.com/vllm-project/vllm/issues/38976 |

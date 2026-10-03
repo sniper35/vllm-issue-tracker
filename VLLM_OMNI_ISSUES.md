@@ -1,6 +1,6 @@
 # vLLM Issue Tracker
 
-Generated at: 2026-10-02T20:07:18+00:00
+Generated at: 2026-10-03T18:54:23+00:00
 
 ## Action Queue
 
@@ -15,7 +15,6 @@ Generated at: 2026-10-02T20:07:18+00:00
 | [#6226](https://github.com/vllm-project/vllm-omni/issues/6226) | [RFC] Session-Affinity Routing for Multi-Replica Real-Time AR-Diffusion | enhancement, RFC | 2026-10-01T00:01:21Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6226 |
 | [#8098](https://github.com/vllm-project/vllm-omni/issues/8098) | [RFC]: Unified Diffusion MoE LoRA via MoERunner | RFC | 2026-09-30T07:12:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8098 |
 | [#4864](https://github.com/vllm-project/vllm-omni/issues/4864) | [RFC]: Deterministic Rollout Support for vLLM-Omni | RL | 2026-09-30T01:18:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4864 |
-| [#7625](https://github.com/vllm-project/vllm-omni/issues/7625) | [Bug]: weekly CI, tests/e2e/accuracy/ltx/test_ltx_official_similarity.py::test_ltx_matches_official[ltx2_distilled_t2v], OOM | bug, ci-failure, low priority | 2026-09-28T12:24:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7625 |
 | [#8076](https://github.com/vllm-project/vllm-omni/issues/8076) | [Feature]: Qwen image 2.1 | enhancement, diffusion | 2026-09-24T23:52:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8076 |
 | [#6592](https://github.com/vllm-project/vllm-omni/issues/6592) | [RFC]: Align Qwen3-Omni Streaming Input (Text / Audio / Video) with the OpenAI Realtime API | RFC | 2026-09-21T01:49:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6592 |
 | [#6389](https://github.com/vllm-project/vllm-omni/issues/6389) | [RFC]: Standalone Stage Mode for vllm-omni | enhancement, RFC | 2026-09-20T12:23:07Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6389 |
@@ -80,7 +79,7 @@ Generated at: 2026-10-02T20:07:18+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#8264](https://github.com/vllm-project/vllm-omni/issues/8264) | [Draft][RFC]: vLLM-Omni Q4 2026 Roadmap — Community Discussion | RFC | 2026-10-02T15:18:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8264 |
+| [#8264](https://github.com/vllm-project/vllm-omni/issues/8264) | [Draft][RFC]: vLLM-Omni Q4 2026 Roadmap — Community Discussion | RFC | 2026-10-03T07:51:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8264 |
 | [#6227](https://github.com/vllm-project/vllm-omni/issues/6227) | [RFC] Real-Time Stateful Video Generation Serving Runtime | enhancement, diffusion, RFC | 2026-10-01T00:01:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6227 |
 | [#5936](https://github.com/vllm-project/vllm-omni/issues/5936) | v0.26.0 image ships without `cosmos-guardrail`; default guardrails-on serve of Cosmos3-Super fails at init with a misleading license-compliance error | bug, diffusion, CI/CD | 2026-10-01T00:00:11Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5936 |
 | [#8325](https://github.com/vllm-project/vllm-omni/issues/8325) | [RFC]: Server-side per-turn busy RTF and stall ratio for duplex sessions | enhancement, RFC | 2026-09-30T23:52:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8325 |
@@ -110,7 +109,7 @@ Generated at: 2026-10-02T20:07:18+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#8415](https://github.com/vllm-project/vllm-omni/issues/8415) | [Bug]: YuE2 returns 400 for every request when enable_prefix_caching is on |  | 2026-10-02T03:29:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8415 |
+| [#8415](https://github.com/vllm-project/vllm-omni/issues/8415) | [Bug]: YuE2 returns 400 for every request when enable_prefix_caching is on | bug | 2026-10-03T00:08:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8415 |
 | [#6176](https://github.com/vllm-project/vllm-omni/issues/6176) | [RFC]: Audit and clean up bundled deploy YAML arguments and documentation | documentation, RFC | 2026-10-01T00:01:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6176 |
 | [#8288](https://github.com/vllm-project/vllm-omni/issues/8288) | [Bug]: CosyVoice3 talker corrupts inputs when a new request lands in front of running ones in the batch (FLASH_ATTN, no reorder) | bug, tts | 2026-09-30T03:15:01Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8288 |
 | [#8085](https://github.com/vllm-project/vllm-omni/issues/8085) | [RFC]: OpenAI /v1/live/sessions fullduplex handler | RFC | 2026-09-28T18:18:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8085 |
@@ -194,9 +193,9 @@ Generated at: 2026-10-02T20:07:18+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#8236](https://github.com/vllm-project/vllm-omni/issues/8236) | [Bug]: weekly CI, Diffusion · SANA-Video · H100 · Single-GPU, Not Found for url: https://vllm-public-assets.s3.us-west-2.amazonaws.com/omni-assets/sana-video/v2/720p/i2v/manifest.json | bug, ci-failure, low priority | 2026-10-03T19:04:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8236 |
 | [#5212](https://github.com/vllm-project/vllm-omni/issues/5212) | [RFC]: Engine-managed persistent state for cache-aware streaming ASR | tts, RFC | 2026-10-02T16:19:41Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5212 |
 | [#8013](https://github.com/vllm-project/vllm-omni/issues/8013) | [RFC]: Shared pytest fixtures for in-process AsyncOmni (start / shutdown / leftover-worker cleanup) | CI/CD, RFC | 2026-10-01T10:19:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8013 |
-| [#8236](https://github.com/vllm-project/vllm-omni/issues/8236) | [Bug]: weekly CI, Diffusion · SANA-Video · H100 · Single-GPU, Not Found for url: https://vllm-public-assets.s3.us-west-2.amazonaws.com/omni-assets/sana-video/v2/720p/i2v/manifest.json | bug, ci-failure, low priority | 2026-09-28T08:08:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8236 |
 | [#6895](https://github.com/vllm-project/vllm-omni/issues/6895) | [RFC][Tracking]: Enhancement of Duplex benchmarks and metrics | RFC | 2026-09-24T08:42:36Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6895 |
 | [#6326](https://github.com/vllm-project/vllm-omni/issues/6326) | [RFC]: Stage-Level Numerical Parity and Calibrated Quality Gates for Diffusion Optimizations | diffusion, CI/CD, RFC | 2026-09-12T23:55:36Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6326 |
 | [#6028](https://github.com/vllm-project/vllm-omni/issues/6028) | [RFC]: Moving MiniCPM-o 4.5 and PersonaPlex out of Experimental | high priority, RFC | 2026-08-17T02:37:04Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6028 |
@@ -209,10 +208,10 @@ Generated at: 2026-10-02T20:07:18+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#7382](https://github.com/vllm-project/vllm-omni/issues/7382) | [RFC]: Kernel Reuse and Hardware Integration in vLLM-Omni | help wanted, diffusion, RFC, Kernel optimization | 2026-10-03T03:52:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7382 |
 | [#8382](https://github.com/vllm-project/vllm-omni/issues/8382) | [RFC]: Unified Dense / Sparse Attention Adapter for Inference | RFC | 2026-10-02T17:00:04Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8382 |
 | [#8372](https://github.com/vllm-project/vllm-omni/issues/8372) | [RFC]: MiniMax-H3 valid-KV prefix slicing for SAGE_ATTN (SageAttention 2.x) | diffusion, RFC | 2026-10-01T23:50:23Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8372 |
 | [#8396](https://github.com/vllm-project/vllm-omni/issues/8396) | [RFC]: Shared block-sparse execution across attention backends | RFC | 2026-10-01T13:47:21Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8396 |
-| [#7382](https://github.com/vllm-project/vllm-omni/issues/7382) | [RFC]: Kernel Reuse and Hardware Integration in vLLM-Omni | help wanted, diffusion, RFC, Kernel optimization | 2026-10-01T11:25:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7382 |
 | [#7727](https://github.com/vllm-project/vllm-omni/issues/7727) | [RFC]: Make attention backends own their cross-rank communication | RFC | 2026-09-17T14:50:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7727 |
 | [#7589](https://github.com/vllm-project/vllm-omni/issues/7589) | [RFC]: Compose Ulysses and AllGather-KV as 2D sequence parallelism for diffusion attention | diffusion, RFC | 2026-09-16T22:53:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7589 |
 | [#7665](https://github.com/vllm-project/vllm-omni/issues/7665) | [Perf][Diffusion] SenseNova-U1.5 A6+A9: resident flash-format KV and denoise-loop sync removal | diffusion | 2026-09-16T15:23:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7665 |
@@ -299,7 +298,7 @@ Generated at: 2026-10-02T20:07:18+00:00
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#8429](https://github.com/vllm-project/vllm-omni/issues/8429) | [RFC]: Input-clocked duplex sessions: model time driven by client input, with per-input acknowledgements |  | 2026-10-02T15:42:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8429 |
+| [#8429](https://github.com/vllm-project/vllm-omni/issues/8429) | [RFC]: Input-clocked duplex sessions: model time driven by client input, with per-input acknowledgements | enhancement, RFC | 2026-10-03T07:43:43Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8429 |
 | [#8182](https://github.com/vllm-project/vllm-omni/issues/8182) | [RFC]: Extend the diffusion scheduler seam (#6269) to custom-loop pipelines and close the remaining RL rollout gaps | RL, diffusion, RFC | 2026-09-26T23:49:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8182 |
 
 ### lora_adapters
@@ -324,7 +323,6 @@ Diffusion, image, and video generation issues for Hunyuan, Wan, Qwen-Image, Flux
 | [#6226](https://github.com/vllm-project/vllm-omni/issues/6226) | [RFC] Session-Affinity Routing for Multi-Replica Real-Time AR-Diffusion | enhancement, RFC | 2026-10-01T00:01:21Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6226 |
 | [#8098](https://github.com/vllm-project/vllm-omni/issues/8098) | [RFC]: Unified Diffusion MoE LoRA via MoERunner | RFC | 2026-09-30T07:12:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8098 |
 | [#4864](https://github.com/vllm-project/vllm-omni/issues/4864) | [RFC]: Deterministic Rollout Support for vLLM-Omni | RL | 2026-09-30T01:18:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/4864 |
-| [#7625](https://github.com/vllm-project/vllm-omni/issues/7625) | [Bug]: weekly CI, tests/e2e/accuracy/ltx/test_ltx_official_similarity.py::test_ltx_matches_official[ltx2_distilled_t2v], OOM | bug, ci-failure, low priority | 2026-09-28T12:24:59Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7625 |
 | [#8076](https://github.com/vllm-project/vllm-omni/issues/8076) | [Feature]: Qwen image 2.1 | enhancement, diffusion | 2026-09-24T23:52:55Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8076 |
 | [#6592](https://github.com/vllm-project/vllm-omni/issues/6592) | [RFC]: Align Qwen3-Omni Streaming Input (Text / Audio / Video) with the OpenAI Realtime API | RFC | 2026-09-21T01:49:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6592 |
 | [#6389](https://github.com/vllm-project/vllm-omni/issues/6389) | [RFC]: Standalone Stage Mode for vllm-omni | enhancement, RFC | 2026-09-20T12:23:07Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6389 |
@@ -391,7 +389,7 @@ Orchestrator, engine layer, model runner, multi-stage pipeline, stage overrides,
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#8264](https://github.com/vllm-project/vllm-omni/issues/8264) | [Draft][RFC]: vLLM-Omni Q4 2026 Roadmap — Community Discussion | RFC | 2026-10-02T15:18:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8264 |
+| [#8264](https://github.com/vllm-project/vllm-omni/issues/8264) | [Draft][RFC]: vLLM-Omni Q4 2026 Roadmap — Community Discussion | RFC | 2026-10-03T07:51:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8264 |
 | [#6227](https://github.com/vllm-project/vllm-omni/issues/6227) | [RFC] Real-Time Stateful Video Generation Serving Runtime | enhancement, diffusion, RFC | 2026-10-01T00:01:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6227 |
 | [#5936](https://github.com/vllm-project/vllm-omni/issues/5936) | v0.26.0 image ships without `cosmos-guardrail`; default guardrails-on serve of Cosmos3-Super fails at init with a misleading license-compliance error | bug, diffusion, CI/CD | 2026-10-01T00:00:11Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5936 |
 | [#8325](https://github.com/vllm-project/vllm-omni/issues/8325) | [RFC]: Server-side per-turn busy RTF and stall ratio for duplex sessions | enhancement, RFC | 2026-09-30T23:52:33Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8325 |
@@ -423,7 +421,7 @@ TTS, audio, speech, voice cloning, Qwen3-TTS, CosyVoice, VoxCPM, MiMo-Audio, and
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#8415](https://github.com/vllm-project/vllm-omni/issues/8415) | [Bug]: YuE2 returns 400 for every request when enable_prefix_caching is on |  | 2026-10-02T03:29:22Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8415 |
+| [#8415](https://github.com/vllm-project/vllm-omni/issues/8415) | [Bug]: YuE2 returns 400 for every request when enable_prefix_caching is on | bug | 2026-10-03T00:08:18Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8415 |
 | [#6176](https://github.com/vllm-project/vllm-omni/issues/6176) | [RFC]: Audit and clean up bundled deploy YAML arguments and documentation | documentation, RFC | 2026-10-01T00:01:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6176 |
 | [#8288](https://github.com/vllm-project/vllm-omni/issues/8288) | [Bug]: CosyVoice3 talker corrupts inputs when a new request lands in front of running ones in the batch (FLASH_ATTN, no reorder) | bug, tts | 2026-09-30T03:15:01Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8288 |
 | [#8085](https://github.com/vllm-project/vllm-omni/issues/8085) | [RFC]: OpenAI /v1/live/sessions fullduplex handler | RFC | 2026-09-28T18:18:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8085 |
@@ -515,9 +513,9 @@ CI failures, accuracy/performance regressions, nightly coverage, Buildkite failu
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#8236](https://github.com/vllm-project/vllm-omni/issues/8236) | [Bug]: weekly CI, Diffusion · SANA-Video · H100 · Single-GPU, Not Found for url: https://vllm-public-assets.s3.us-west-2.amazonaws.com/omni-assets/sana-video/v2/720p/i2v/manifest.json | bug, ci-failure, low priority | 2026-10-03T19:04:32Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8236 |
 | [#5212](https://github.com/vllm-project/vllm-omni/issues/5212) | [RFC]: Engine-managed persistent state for cache-aware streaming ASR | tts, RFC | 2026-10-02T16:19:41Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/5212 |
 | [#8013](https://github.com/vllm-project/vllm-omni/issues/8013) | [RFC]: Shared pytest fixtures for in-process AsyncOmni (start / shutdown / leftover-worker cleanup) | CI/CD, RFC | 2026-10-01T10:19:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8013 |
-| [#8236](https://github.com/vllm-project/vllm-omni/issues/8236) | [Bug]: weekly CI, Diffusion · SANA-Video · H100 · Single-GPU, Not Found for url: https://vllm-public-assets.s3.us-west-2.amazonaws.com/omni-assets/sana-video/v2/720p/i2v/manifest.json | bug, ci-failure, low priority | 2026-09-28T08:08:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8236 |
 | [#6895](https://github.com/vllm-project/vllm-omni/issues/6895) | [RFC][Tracking]: Enhancement of Duplex benchmarks and metrics | RFC | 2026-09-24T08:42:36Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6895 |
 | [#6326](https://github.com/vllm-project/vllm-omni/issues/6326) | [RFC]: Stage-Level Numerical Parity and Calibrated Quality Gates for Diffusion Optimizations | diffusion, CI/CD, RFC | 2026-09-12T23:55:36Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6326 |
 | [#6028](https://github.com/vllm-project/vllm-omni/issues/6028) | [RFC]: Moving MiniCPM-o 4.5 and PersonaPlex out of Experimental | high priority, RFC | 2026-08-17T02:37:04Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/6028 |
@@ -532,10 +530,10 @@ Attention kernels, KV cache, prefix caching, sparse/ring attention, FlashAttenti
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [#7382](https://github.com/vllm-project/vllm-omni/issues/7382) | [RFC]: Kernel Reuse and Hardware Integration in vLLM-Omni | help wanted, diffusion, RFC, Kernel optimization | 2026-10-03T03:52:42Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7382 |
 | [#8382](https://github.com/vllm-project/vllm-omni/issues/8382) | [RFC]: Unified Dense / Sparse Attention Adapter for Inference | RFC | 2026-10-02T17:00:04Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8382 |
 | [#8372](https://github.com/vllm-project/vllm-omni/issues/8372) | [RFC]: MiniMax-H3 valid-KV prefix slicing for SAGE_ATTN (SageAttention 2.x) | diffusion, RFC | 2026-10-01T23:50:23Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8372 |
 | [#8396](https://github.com/vllm-project/vllm-omni/issues/8396) | [RFC]: Shared block-sparse execution across attention backends | RFC | 2026-10-01T13:47:21Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8396 |
-| [#7382](https://github.com/vllm-project/vllm-omni/issues/7382) | [RFC]: Kernel Reuse and Hardware Integration in vLLM-Omni | help wanted, diffusion, RFC, Kernel optimization | 2026-10-01T11:25:02Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7382 |
 | [#7727](https://github.com/vllm-project/vllm-omni/issues/7727) | [RFC]: Make attention backends own their cross-rank communication | RFC | 2026-09-17T14:50:30Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7727 |
 | [#7589](https://github.com/vllm-project/vllm-omni/issues/7589) | [RFC]: Compose Ulysses and AllGather-KV as 2D sequence parallelism for diffusion attention | diffusion, RFC | 2026-09-16T22:53:16Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7589 |
 | [#7665](https://github.com/vllm-project/vllm-omni/issues/7665) | [Perf][Diffusion] SenseNova-U1.5 A6+A9: resident flash-format KV and denoise-loop sync removal | diffusion | 2026-09-16T15:23:58Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/7665 |
@@ -640,7 +638,7 @@ Reinforcement learning, deterministic rollout, and training support for omni-mod
 
 | issue | title | labels | updated_at | my_status | learning_value | fixability | next_action | url |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [#8429](https://github.com/vllm-project/vllm-omni/issues/8429) | [RFC]: Input-clocked duplex sessions: model time driven by client input, with per-input acknowledgements |  | 2026-10-02T15:42:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8429 |
+| [#8429](https://github.com/vllm-project/vllm-omni/issues/8429) | [RFC]: Input-clocked duplex sessions: model time driven by client input, with per-input acknowledgements | enhancement, RFC | 2026-10-03T07:43:43Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8429 |
 | [#8182](https://github.com/vllm-project/vllm-omni/issues/8182) | [RFC]: Extend the diffusion scheduler seam (#6269) to custom-loop pipelines and close the remaining RL rollout gaps | RL, diffusion, RFC | 2026-09-26T23:49:27Z | new |  |  |  | https://github.com/vllm-project/vllm-omni/issues/8182 |
 
 ### lora_adapters
